@@ -64,9 +64,6 @@ Note: Must `sudo chmod a+w /usr/local/bin` for some reason still. Fails on downl
 
 ## To enable SSH key prompt only once (Seems to not survive a reboot?)
 
-1. `ssh-agent zsh`
-    Or if using bash
-    `ssh-agent bash`
-
+1. `ssh-agent $SHELL`
 2. `ssh-add /home/$USER/.ssh/id_rsa`
     USER = your username
