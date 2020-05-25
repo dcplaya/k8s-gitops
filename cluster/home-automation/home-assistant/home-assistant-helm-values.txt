@@ -1,0 +1,31 @@
+ingress:
+  hosts:
+  - home.$DOMAIN
+  tls:
+  - hosts:
+    - home.$DOMAIN
+extraEnv:
+  CAMERA_AUTH: $CAMERA_AUTH
+configurator:
+  ingress:
+    hosts:
+    - hass-config.$DOMAIN
+    tls:
+    - hosts:
+      - hass-config.$DOMAIN
+  hassApiPassword: $HASS_API_PASSWORD
+  hassApiUrl: https://home.$DOMAIN/api/
+vscode:
+  ingress:
+    hosts:
+    - vscode.home.$DOMAIN
+    tls:
+    - hosts:
+      - vscode.home.$DOMAIN
+    annotations:
+      nginx.ingress.kubernetes.io/auth-url: "https://auth.$DOMAIN/oauth2/auth"
+      nginx.ingress.kubernetes.io/auth-signin: https://auth.$DOMAIN/oauth2/start
+  password: $HASS_API_PASSWORD
+  extraEnv:
+    HASS_SERVER: http://localhost:8123
+    HASS_TOKEN: $HASS_TOKEN

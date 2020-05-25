@@ -1,0 +1,13 @@
+apiVersion: ricoberger.de/v1alpha1
+kind: VaultSecret
+metadata:
+  name: rtorrent-flood-helm-values
+  namespace: media-management
+  annotations:
+    fluxcd.io/ignore: "true"
+    fluxcd.io/automated: "false"
+spec:
+  keys:
+    - values.yaml
+  path: cluster/media-management/rtorrent-flood/rtorrent-flood-helm-values.txt
+  type: Opaque

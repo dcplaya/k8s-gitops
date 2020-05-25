@@ -1,0 +1,18 @@
+apiVersion: bitnami.com/v1alpha1
+kind: SealedSecret
+metadata:
+  creationTimestamp: null
+  name: kms-vault
+  namespace: kube-system
+  annotations:
+    fluxcd.io/ignore: "true"
+    fluxcd.io/automated: "false"
+spec:
+  encryptedData:
+    config.hcl: AgAtNJ78BUP2cbhRjmgtM25Ovc+7L1gNyutXO4DRFcNn5c78gMnhZwddaJlXNybBdBsVtQ5jrf5vq2f3yuxZ2QXvYCbBgb+tb7sHfWcMSIZcqfG8YOwaKn6na+iQgd8QGR1ZYXRxkbXAxOm9sPbqC0JsCdF4yVYpdaTOWYW/zbLrCqARxSKwqsnQxmL3XrU0ziO09SU0iovK1zw7mjWx8woXypVHQcnQySL3GRrwmBk0O7aUsR26NKmsj4JUp5oMhZ4etkc7EKehgIPx12IiHbZk5oWjZa0XVTLL3oOPgvnNA6WSVNXsSMZSgpFzJ6Uf65uUI7I2BY5NV8/onF3VlZ8NX+NiC4zPT4br0x5+/TAarc8FDBYAUzP/Q1baWf7xk/zo/lGbdZw2vXucmKKZtqnlxP32acpyC9wHlBCx0F0HxQjvW55Swe/eyUCne1s0aiALpZbWTto3laxZx/Fp42sNAZtqwFg9HKeZ5GX3NeK3LDgpHxfGjhl58UAIuVvgy1J5DjDxS8bQkWQ9TitEmqGGI3o6R6CADHJk3znjPsl/mm+wVFRV2Wp+GlT22zpnwdnPsEq9NubxVNb08AKcagBFWx8dSZrB7CUuZ1R9q9vaDTs1HwtgvMa/AhMd6I+3HlBHLOKbgnuWWn7fIHX5i2A3yYp7g/1Gvfw+lByBl/13MTaFeM3NTeV9VdnT/L4gnZZI3xVuE7KtHWz1mDk32XJKZraiyyPAdXcuBKts8P1G5vtW5yxl9dAUavEQ+FFCMrOtGuV/tCW7mpEQA9ZtWHx8PDBsqknD9iFIJhO7xjmPIv2d9/VG/uxQylIx/fLhuTtSGVtb3WN1DvM8flyTu+RjveaiUy8ZuuVI6ZP8Hl7qk+5vNgCduw==
+  template:
+    metadata:
+      creationTimestamp: null
+      name: kms-vault
+      namespace: kube-system
+status: {}

@@ -1,0 +1,53 @@
+---
+apiVersion: helm.fluxcd.io/v1
+kind: HelmRelease
+metadata:
+  name: nzbget
+  namespace: media-management
+  annotations:
+    fluxcd.io/automated: true
+    fluxcd.io/tag.chart-image: 'regexp:^(v[0-9]+\.[0-9]+-ls.*)$'
+spec:
+  releaseName: nzbget
+  helmVersion: v3
+  rollback:
+    enable: true
+  chart:
+    repository: https://billimek.com/billimek-charts/
+    name: nzbget
+    version: 3.2.0
+  values:
+    image:
+      repository: linuxserver/nzbget
+      tag: v21.0-ls55
+    service:
+      type: LoadBalancer
+      loadBalancerIP: 10.201.70.10
+    ingress:
+      enabled: true
+      annotations:
+        kubernetes.io/ingress.class: "nginx"
+    timezone: "America/Los_Angeles"
+    persistence:
+      downloads:
+        enabled: false
+      extraMounts:
+      - name: media
+        claimName: nfs-media-pvc
+      config:
+        enabled: true
+        storageClass: "nfs-client"
+        size: 30Gi
+    # podAnnotations:
+    #   backup.velero.io/backup-volumes: config
+    tolerations:
+    - key: "arm"
+      operator: "Exists"
+    resources:
+      requests:
+        memory: 300Mi
+        cpu: 25m
+      limits:
+        memory: 400Mi
+  valueFileSecrets:
+  - name: "nzbget-helm-values"

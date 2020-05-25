@@ -1,0 +1,62 @@
+---
+# k3s options
+k3s_release_version: false
+k3s_no_traefik: true
+k3s_no_servicelb: true
+k3s_use_experimental: false
+k3s_control_workers: true
+k3s_cluster_cidr: "10.42.0.0/16"
+k3s_service_cidr: "10.43.0.0/16"
+k3s_use_docker: false
+k3s_no_flannel: true
+k3s_flannel_backend: "none"
+k3s_copy_config_local: true
+k3s_become_for_systemd: true
+k3s_become_for_usr_local_bin: true
+#k3s_write_kubeconfig_mode: 644                                              # So kubectl works from the terminal, do NOT enable. It will fail to properly configure nodes
+k3s_control_node_address: "node00.cluster.elcarpenter.com"                  # Used in k3s.yaml file that is created. Should be set to the master control node (node00 for me)
+k3s_master_lb: "{{ hostvars[groups['master'][0]]['ansible_host'] }}"
+k3s_default_local_storage_path: "/dev/shm/k8s"
+
+# ansible options
+ansible_user: "carpenam"
+local_user: "{{ ansible_user }}"
+user_shell: "zsh"                   # Leave blank for bash for now. Only supports zsh
+# ansible_ssh_private_key_file: "~/.ssh/id_rsa"
+
+# k3s options
+#k3s_master: "{{ hostvars[groups['master'][0]]['ansible_nodename'] }}" ## Only used in tear-down. Needs to be re-worked.
+#master_ip: "{{ hostvars[groups['master'][0]]['ansible_host'] | default(groups['master'][0]) }}"
+
+# github options
+github_username: dcplaya
+github_k8s_reponame: k8s-gitops
+github_k8s_reponame_branch: master
+
+# ceph options
+ceph:
+  converged: true
+  zap_disks: false # This subcommand is used to zap lvs, partitions or raw devices that have been used by ceph OSDs so that they may be reused.
+  disks:           # Disks to zap, looks like its only for zapping
+    - /dev/sdb
+    - /dev/sdc
+    - /dev/sdd
+
+# helm options
+helm_operator: enabled
+
+# server options
+timezone: America/Los_Angeles
+REPO_ROOT: "{{ lookup('pipe', 'git rev-parse --show-toplevel') }}"
+
+# calico options
+calico:
+  manifest_file: "{{ REPO_ROOT }}/manifests/calico/calico.yaml"
+  bgp: enabled
+  bgp_peer: 10.10.200.1
+  bgp_as: 64512
+
+# hardware specific options
+devices:
+  arm_in_cluster: false             # Skips over taints of arm devices for now
+  allow_master_pods: false           # Allows all nodes, including masters to run pods. When running multi-nodes, set this to false. Master node gets tainted already?

@@ -1,0 +1,60 @@
+---
+apiVersion: helm.fluxcd.io/v1
+kind: HelmRelease
+metadata:
+  name: rtorrent-flood
+  namespace: media-management
+  annotations:
+    fluxcd.io/ignore: true
+    fluxcd.io/automated: false
+    fluxcd.io/tag.chart-image: glob:0.9.*
+spec:
+  releaseName: rtorrent-flood
+  helmVersion: v3
+  rollback:
+    enable: true
+  chart:
+    repository: https://billimek.com/billimek-charts/
+    name: rtorrent-flood
+    version: 4.1.1
+  values:
+    # rtorrent:
+    #   enabled: true
+    #   image:
+    #     repository: billimek/rtorrent
+    #     tag: latest
+    # flood:
+    #   image:
+    #     repository: jfurrow/flood-ui
+    #     tag: latest
+    uid: 1001
+    gid: 1001
+    guiService:
+      type: ClusterIP
+      port: 3000
+    btService:
+      type: LoadBalancer
+      port: 49161
+      loadBalancerIP: 10.201.70.40
+    ingress:
+      enabled: true
+      annotations:
+        kubernetes.io/ingress.class: "nginx"
+    podAnnotations:
+      backup.velero.io/backup-volumes: config
+    persistence:
+      config:
+        enabled: true
+        size: 1Gi
+        storageClass: rook-ceph-block
+      data:
+        enabled: true
+        existingClaim: nfs-media-downloads-pvc
+    resources:
+      requests:
+        memory: 250Mi
+        cpu: 35m
+      limits:
+        memory: 1000Mi
+  valueFileSecrets:
+  - name: "rtorrent-flood-helm-values"

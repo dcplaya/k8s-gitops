@@ -1,0 +1,10 @@
+apiVersion: ricoberger.de/v1alpha1
+kind: VaultSecret
+metadata:
+  name: sonarr-helm-values
+  namespace: media-management
+spec:
+  keys:
+    - values.yaml
+  path: cluster/media-management/sonarr/sonarr-helm-values.txt
+  type: Opaque

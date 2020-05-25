@@ -1,0 +1,46 @@
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: data-nfs-server-provisioner-0
+spec:
+  capacity:
+    storage: 200Gi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: /mnt/tank/share/k8s
+  claimRef:
+    namespace: kube-system
+    name: data-nfs-server-provisioner-0
+
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: nfs-tank-share-pv
+spec:
+  capacity:
+    storage: 1Mi
+  accessModes:
+    - ReadWriteMany
+  claimRef:
+    namespace: default
+    name: nfs-tank-share-pvc
+  storageClassName: nfs-client
+  nfs:
+    # IP of where NFS share should be hosted at
+    server: 10.10.200.50
+    path: "/"
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: nfs-tank-share-pvc
+spec:
+  accessModes:
+    - ReadWriteMany
+  storageClassName: nfs-client
+  resources:
+    requests:
+      storage: 1Mi

@@ -1,0 +1,8 @@
+---
+roles:
+- src: xanmanning.k3s
+  version: v1.5.1
+- src: gantsign.antigen                 # Used to intall ZSH and plugins
+- src: andrewrothstein.calicoctl        # Used for Calico load balancer
+- src: andrewrothstein.fluxctl          # Used for setting up Flux
+- src: andrewrothstein.kubernetes-helm  # Helm install

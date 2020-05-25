@@ -1,0 +1,21 @@
+- hosts: localhost
+  gather_facts: yes
+  become: yes
+  vars:
+  roles:
+    - { role: andrewrothstein.kubernetes-helm }
+    - { role: andrewrothstein.calicoctl }
+    - { role: andrewrothstein.fluxctl }
+
+
+# Setup tools on local host
+
+# kubectl - done
+# helm
+# calicoctl - done
+# velero
+# fluxctl - done
+# istioctl
+# restic
+# tiller
+# vault

@@ -1,0 +1,34 @@
+---
+
+- hosts: k3s_cluster
+  gather_facts: yes
+  become: yes
+#  become_user: "{{ ansible_user }}"
+  vars:
+    # Antigen variables
+    - antigen_install_oh_my_zsh: yes # Should Oh-My-Zsh be installed with Antigen (doesn't call `antigen use`)
+    - users: # Antigen is installed per user so you need to specify the users to install it for
+      - username: "{{ ansible_user }}" # The username of the user to install Antigen for
+        antigen_libraries:
+          - name: oh-my-zsh # The name of the library (e.g. oh-my-zsh or prezto) must be unique
+        antigen_theme:
+          name: agnoster # The name of the library (e.g. one of the themes that come with Oh-My-Zsh)
+        antigen_bundles:
+          - name: git # The name of the Antigen bundle (e.g. one of the plugins that come with Oh-My-Zsh)
+          - name: command-not-found
+          - name: docker
+          - name: zsh-completions
+            url: zsh-users/zsh-completions # Optional. If the it's not one of the Oh-My-Zsh plugins you must specify the URL (use owner/repo shorthand for GitHub)
+          - name: zsh-autosuggestions
+            url: zsh-users/zsh-completions # Optional. If the it's not one of the Oh-My-Zsh plugins you must specify the URL (use owner/repo shorthand for GitHub)
+          - name: zsh-syntax-highlighting
+            url: zsh-users/zsh-completions # Optional. If the it's not one of the Oh-My-Zsh plugins you must specify the URL (use owner/repo shorthand for GitHub)
+          - name: common-aliases
+          - name: cp
+          - name: extract
+          - name: tmux
+  roles:
+    - { role: server_deps }
+    #- { role: raspbian }
+    - { role: gantsign.antigen,
+      when: (user_shell == 'zsh')}

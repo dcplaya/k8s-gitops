@@ -1,0 +1,46 @@
+################################################################################
+# Ser2Socket is a serial-to-TCP/IP gateway.
+# Could be useful for Home Assistant devices
+################################################################################
+---
+apiVersion: helm.fluxcd.io/v1
+kind: HelmRelease
+metadata:
+  name: ser2sock
+  namespace: home-automation
+  annotations:
+    fluxcd.io/ignore: "true"
+    fluxcd.io/automated: "false"
+spec:
+  releaseName: ser2sock
+  helmVersion: v3
+  rollback:
+    enable: true
+  chart:
+    repository: https://billimek.com/billimek-charts/
+    name: ser2sock
+    version: 1.0.1
+  values:
+    image:
+      repository: tenstartups/ser2sock
+      tag: armhf
+      imagePullPolicy: Always
+    timezone: "America/Los_Angeles"
+    affinity:
+      nodeAffinity:
+        requiredDuringSchedulingIgnoredDuringExecution:
+          nodeSelectorTerms:
+          - matchExpressions:
+            - key: usb
+              operator: In
+              values:
+              - alarmdecoder
+    tolerations:
+    - key: "arm"
+      operator: "Exists"
+    resources:
+      requests:
+        memory: 50Mi
+        cpu: 15m
+      limits:
+        memory: 250Mi
