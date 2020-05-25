@@ -52,15 +52,15 @@ GENERATED_SECRETS="${REPO_ROOT}/cluster/zz_generated_secrets.yaml"
 for file in "${REPO_ROOT}"/secrets/helm-templates/*.txt
 do
   # Get the path and basename of the txt file
-  # e.g. "deployments/default/pihole/pihole"
+  # e.g. "cluster/default/pihole/pihole"
   secret_path="$(dirname "$file")/$(basename -s .txt "$file")"
 
   # Get the filename without extension
   # e.g. "pihole"
   secret_name=$(basename "${secret_path}")
 
-  # Find namespace by looking for the chart file in the deployments folder
-  namespace="$(find ${REPO_ROOT}/deployments -type f -name "${secret_name}.yaml" | awk -F/ '{print $(NF-1)}')"
+  # Find namespace by looking for the chart file in the cluster folder
+  namespace="$(find ${REPO_ROOT}/cluster -type f -name "${secret_name}.yaml" | awk -F/ '{print $(NF-1)}')"
   echo "  Generating helm secret '${secret_name}' in namespace '${namespace}'..."
 
   # Create secret
