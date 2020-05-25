@@ -9,13 +9,6 @@
   become: true
   vars:
     #k3s_build_cluster: false             #	When multiple play_hosts are available, attempt to cluster.
-  roles:
-    - name: Set permissions for /usr/local/bin
-      become: yes
-      file:
-        path: /usr/local/bin
-        mode: '0777'
-
     - { role: xanmanning.k3s }
     - { role: andrewrothstein.calicoctl }
     - { role: andrewrothstein.fluxctl }
