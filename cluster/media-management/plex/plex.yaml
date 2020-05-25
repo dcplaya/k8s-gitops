@@ -51,4 +51,4 @@ spec:
         cpu: 35m
         memory: 1500Mi
   valueFileSecrets:
-  - name: "plex-helm-values.txt"
+  - name: "plex-helm-values"

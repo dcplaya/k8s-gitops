@@ -1,6 +1,0 @@
-floodSecret: "2600"
-ingress:
-  hosts: [torrent.$DOMAIN]
-  tls:
-  - hosts:
-    - torrent.$DOMAIN
