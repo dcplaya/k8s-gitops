@@ -115,6 +115,35 @@ kubeseal --format=yaml --cert="${PUB_CERT}" \
   >> "${GENERATED_SECRETS}"
 echo "---" >> "${GENERATED_SECRETS}"
 
+# NginX Basic Auth - home-automation namespace
+kubectl create secret generic nginx-basic-auth \
+  --from-literal=auth="${NGINX_BASIC_AUTH}" \
+  --namespace home-automation --dry-run=client -o json \
+  | \
+kubeseal --format=yaml --cert="${PUB_CERT}" \
+  >> "${GENERATED_SECRETS}"
+echo "---" >> "${GENERATED_SECRETS}"
+
+# NginX Basic Auth - media-management namespace
+kubectl create secret generic nginx-basic-auth \
+  --from-literal=auth="${NGINX_BASIC_AUTH}" \
+  --namespace media-management --dry-run=client -o json \
+  | \
+kubeseal --format=yaml --cert="${PUB_CERT}" \
+  >> "${GENERATED_SECRETS}"
+echo "---" >> "${GENERATED_SECRETS}"
+
+# NginX Basic Auth - network-management namespace
+kubectl create secret generic nginx-basic-auth \
+  --from-literal=auth="${NGINX_BASIC_AUTH}" \
+  --namespace network-management --dry-run=client -o json \
+  | \
+kubeseal --format=yaml --cert="${PUB_CERT}" \
+  >> "${GENERATED_SECRETS}"
+echo "---" >> "${GENERATED_SECRETS}"
+
+
+
 # Cloudflare API Key - cert-manager namespace
 kubectl create secret generic cloudflare-api-key \
   --from-literal=api-key="${CF_API_KEY}" \
@@ -124,20 +153,23 @@ kubeseal --format=yaml --cert="${PUB_CERT}" \
   >> "${GENERATED_SECRETS}"
 echo "---" >> "${GENERATED_SECRETS}"
 
-# qBittorrent Prune - default namespace
+
+
+
+# qBittorrent Prune - media-management namespace
 kubectl create secret generic qbittorrent-prune \
   --from-literal=username="${QB_USERNAME}" \
   --from-literal=password="${QB_PASSWORD}" \
-  --namespace default --dry-run=client -o json \
+  --namespace media-management --dry-run=client -o json \
   | \
 kubeseal --format=yaml --cert="${PUB_CERT}" \
   >> "${GENERATED_SECRETS}"
 echo "---" >> "${GENERATED_SECRETS}"
 
-# sonarr episode prune - default namespace
+# sonarr episode prune - media-management namespace
 kubectl create secret generic sonarr-episode-prune \
   --from-literal=api-key="${SONARR_APIKEY}" \
-  --namespace default --dry-run=client -o json \
+  --namespace media-management --dry-run=client -o json \
   | \
 kubeseal --format=yaml --cert="${PUB_CERT}" \
   >> "${GENERATED_SECRETS}"
@@ -146,7 +178,7 @@ echo "---" >> "${GENERATED_SECRETS}"
 # sonarr exporter
 kubectl create secret generic sonarr-exporter \
   --from-literal=api-key="${SONARR_APIKEY}" \
-  --namespace monitoring --dry-run=client -o json \
+  --namespace media-management --dry-run=client -o json \
   | \
 kubeseal --format=yaml --cert="${PUB_CERT}" \
   >> "${GENERATED_SECRETS}"
@@ -155,7 +187,7 @@ echo "---" >> "${GENERATED_SECRETS}"
 # radarr exporter
 kubectl create secret generic radarr-exporter \
   --from-literal=api-key="${RADARR_APIKEY}" \
-  --namespace monitoring --dry-run=client -o json \
+  --namespace media-management --dry-run=client -o json \
   | \
 kubeseal --format=yaml --cert="${PUB_CERT}" \
   >> "${GENERATED_SECRETS}"
