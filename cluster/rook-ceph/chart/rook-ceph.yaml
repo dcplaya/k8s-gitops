@@ -24,6 +24,6 @@ spec:
         cpu: 500m
         memory: 1000Mi
     ## If true, create & use RBAC resources
-    rbacEnable: false
+    rbacEnable: true
     ## If true, create & use PSP resources
     pspEnable: true
