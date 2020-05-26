@@ -29,7 +29,7 @@ if [ "$(uname)" == "Darwin" ]; then
   set +a
 else
   . "${REPO_ROOT}/secrets/.secrets.env"
-  echo "Secrets pushed to env. Domain: " ${DOMAIN}
+  echo "${DOMAIN}/secrets/.secrets.env"
 fi
 
 # Path to Public Cert
