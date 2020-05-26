@@ -23,7 +23,7 @@ spec:
   storageClassName: nfs-server
   resources:
     requests:
-      storage: 200Gi
+      storage: 20Gi
   accessModes:
     - ReadWriteMany
 
