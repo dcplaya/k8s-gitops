@@ -3,6 +3,9 @@ kind: Deployment
 metadata:
   name: rook-ceph-tools
   namespace: rook-ceph
+  annotations:
+    fluxcd.io/ignore: true
+    fluxcd.io/automated: false
   labels:
     app: rook-ceph-tools
 spec:
