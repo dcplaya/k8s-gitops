@@ -21,7 +21,7 @@ k3s_default_local_storage_path: "/dev/shm/k8s"
 # ansible options
 ansible_user: "carpenam"
 local_user: "{{ ansible_user }}"
-user_shell: "zsh"                   # Leave blank for bash for now. Only supports zsh
+user_shell: "bash"                   # Leave blank for bash for now. Only supports zsh
 # ansible_ssh_private_key_file: "~/.ssh/id_rsa"
 
 # k3s options
