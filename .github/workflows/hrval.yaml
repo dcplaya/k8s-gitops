@@ -1,23 +1,22 @@
-name: CI
+name: main
 
 on: [push, pull_request]
 
 jobs:
-  hrval:
+  main:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
-      - name: Validate Helm v2 Releases in root dir
-        uses: stefanprodan/hrval-action@v2.9.0
+      - name: Checkout
+        uses: actions/checkout@v1
+
+      - name: Lint Ansible
+        uses: ansible/ansible-lint-action@master
         with:
-          helmRelease: ./
-          helmVersion: v2
-          kubernetesVersion: 1.17.0
-          ignoreValues: true
-      - name: Validate Helm v3 in root dir
-        uses: stefanprodan/hrval-action@v2.9.0
+          targets: ./ansible
+
+      - name: Validate Helm Releases
+        uses: stefanprodan/hrval-action@v3.1.0
         with:
-          helmRelease: ./
-          helmVersion: v3
-          kubernetesVersion: 1.17.0
-          ignoreValues: true
+          helmRelease: cluster/
+          kubernetesVersion: 1.17.3
+          ignoreValues: false
