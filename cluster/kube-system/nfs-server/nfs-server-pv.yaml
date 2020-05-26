@@ -26,3 +26,17 @@ spec:
       storage: 200Gi
   accessModes:
     - ReadWriteMany
+
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: nfs-media-pvc
+  namespace: media-management
+spec:
+  storageClassName: nfs-server
+  resources:
+    requests:
+      storage: 200Gi
+  accessModes:
+    - ReadWriteMany
