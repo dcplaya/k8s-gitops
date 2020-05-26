@@ -36,7 +36,7 @@ spec:
         volumeMounts:
           - mountPath: /mnt/tank/share
             name: nfs-vol
-          - mountPath: /mnt/tank/media
-            name: nfs-media
+#          - mountPath: /mnt/tank/media
+#            name: nfs-media
       nodeSelector:
         node-role.kubernetes.io/nfs: "true"
