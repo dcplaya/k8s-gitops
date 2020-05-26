@@ -3,7 +3,7 @@ apiVersion: helm.fluxcd.io/v1
 kind: HelmRelease
 metadata:
   name: sonarr
-  namespace: default
+  namespace: media-management
   annotations:
     fluxcd.io/automated: false
     fluxcd.io/tag.chart-image: semver:3.0
@@ -30,7 +30,7 @@ spec:
     persistence:
       config:
         enabled: true
-        storageClass: "rook-ceph-block"
+        storageClass: "nfs-client"
         size: 2Gi
       downloads:
         enabled: false
