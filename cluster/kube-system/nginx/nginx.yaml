@@ -5,8 +5,8 @@ metadata:
   name: nginx-ingress
   namespace: kube-system
   annotations:
-    fluxcd.io/ignore: "false"
-    fluxcd.io/automated: "false"
+    fluxcd.io/ignore: false
+    fluxcd.io/automated: true
     fluxcd.io/tag.chart-image: semver:~0.
 spec:
   releaseName: nginx-ingress
@@ -15,7 +15,7 @@ spec:
   chart:
     repository: https://kubernetes-charts.storage.googleapis.com/
     name: nginx-ingress
-    version: 2.3.0
+    version: latest
   values:
     controller:
       # image:
