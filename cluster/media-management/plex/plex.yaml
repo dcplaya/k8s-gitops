@@ -40,9 +40,9 @@ spec:
         enabled: true
         claimName: nfs-media-pvc
       config:
-        storageClass: "rook-ceph-block"
-        accessMode: ReadWriteOnce
-        size: 21Gi
+        storageClass: "nfs-client"
+#        accessMode: ReadWriteOnce
+        size: 100Gi
     resources:
       limits:
         gpu.intel.com/i915: 1

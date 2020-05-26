@@ -41,8 +41,6 @@ spec:
     # podAnnotations:
     #   backup.velero.io/backup-volumes: config
     tolerations:
-    - key: "arm"
-      operator: "Exists"
     resources:
       requests:
         memory: 300Mi
