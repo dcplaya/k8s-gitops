@@ -17,10 +17,10 @@ spec:
       - name: nfs-vol
         persistentVolumeClaim:
           claimName: data-nfs-server-pvc
-      - name: nfs-media
-        persistentVolumeClaim:
-          claimName: nfs-media-pvc
-          namespace: media-management
+#      - name: nfs-media
+#        persistentVolumeClaim:
+#          claimName: nfs-media-pvc
+#          namespace: media-management
       restartPolicy: Always
       containers:
       - name: nfs-server
