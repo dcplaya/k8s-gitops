@@ -5,20 +5,21 @@ metadata:
   name: rook-ceph
   namespace: rook-ceph
   annotations:
-    fluxcd.io/automated: true
+    fluxcd.io/ignore: "false"
+    fluxcd.io/automated: "false"
 spec:
   releaseName: rook-ceph
   chart:
     repository: https://charts.rook.io/release
     name: rook-ceph
-    version: v1.3.3
+    version: v1.3.4
   values:
     csi:
       kubeletDirPath: /var/lib/kubelet
     resources:
-      limits:
-        cpu: 500m
-        memory: 256Mi
       requests:
         cpu: 100m
         memory: 128Mi
+      limits:
+        cpu: 500m
+        memory: 1000Mi

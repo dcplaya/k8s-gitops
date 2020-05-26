@@ -1,3 +1,4 @@
+---
 apiVersion: ceph.rook.io/v1
 kind: CephCluster
 metadata:
@@ -5,31 +6,32 @@ metadata:
   namespace: rook-ceph
 spec:
   cephVersion:
-    image: ceph/ceph:v14.2.9
+    image: ceph/ceph:v14.2.8
   dataDirHostPath: /var/lib/rook
   mon:
     count: 3
     allowMultiplePerNode: false
+  monitoring:
+    enabled: true
   mgr:
     modules:
     - name: pg_autoscaler
       enabled: true
   dashboard:
     enabled: true
-  # cluster level storage configuration and selection
   resources:
     api:
       requests:
           cpu: 25m
           memory: 250Mi
       limits:
-        memory: 512Mi
+        memory: 1024Mi
     mgr:
       requests:
           cpu: 50m
           memory: 300Mi
       limits:
-        memory: 512Mi
+        memory: 1024Mi
     mon:
       requests:
           cpu: 35m
@@ -38,16 +40,16 @@ spec:
         memory: 1024Mi
     osd:
       requests:
-        cpu: "35m"
-        memory: "2048Mi"
+        cpu: 35m
+        memory: 2048Mi
       limits:
-        memory: "4096Mi"
+        memory: 8192Mi
     rbdmirror:
       requests:
           cpu: 25m
           memory: 250Mi
       limits:
-        memory: 512Mi
+        memory: 1024Mi
   storage:
     useAllNodes: true
     useAllDevices: true
@@ -55,22 +57,4 @@ spec:
     location:
     config:
       metadataDevice:
-      # databaseSizeMB: "1024" # this value can be removed for environments with normal sized disks (100 GB or larger)
-      # journalSizeMB: "1024"  # this value can be removed for environments with normal sized disks (20 GB or larger)
       osdsPerDevice: "1"
-    # nodes:
-    # - name: "k3s-0"
-    #   devices:
-    #   - name: "sdb"
-    # - name: "k3os-a"
-    #   devices:
-    #   - name: "sdb"
-    # - name: "k3os-b"
-    #   devices:
-    #   - name: "sdb"
-    # - name: "k3os-c"
-    #   devices:
-    #   - name: "sdb"
-    # - name: "k3s-3"
-    #   devices:
-    #   - name: "sda"
