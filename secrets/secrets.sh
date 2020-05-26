@@ -29,7 +29,7 @@ if [ "$(uname)" == "Darwin" ]; then
   set +a
 else
   . "${REPO_ROOT}/secrets/.secrets.env"
-  echo "${DOMAIN}/secrets/.secrets.env"
+  echo "The Domain is currently set to: ${DOMAIN}"
 fi
 
 # Path to Public Cert
@@ -63,6 +63,7 @@ do
   # Find namespace by looking for the chart file in the cluster folder
   namespace="$(find ${REPO_ROOT}/cluster -type f -name "${secret_name}.yaml" | awk -F/ '{print $(NF-2)}')"
   echo "  Generating helm secret '${secret_name}' in namespace '${namespace}'..."
+  echo "-----The Domain is currently set to: ${DOMAIN}-------"
 
   # Create secret
   envsubst < "$file" \
@@ -225,6 +226,7 @@ do
   # Get the filename without extension
   secret_name=$(basename "${secret_path}")
   echo "  Applying manifest ${secret_name} to cluster..."
+  echo "The CF email is currently set to: ${CF_API_EMAIL}"
   # Apply this manifest to our cluster
   if output=$(envsubst < "$file"); then
     printf '%s' "$output" | kubectl apply -f -
