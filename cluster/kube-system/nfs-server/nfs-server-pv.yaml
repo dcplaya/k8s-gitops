@@ -10,9 +10,9 @@ spec:
     - ReadWriteMany
   hostPath:
     path: /mnt/tank/share/
-  claimRef:
-    namespace: kube-system
-    name: data-nfs-server-pvc
+#  claimRef:
+#    namespace: kube-system
+#    name: data-nfs-server-pvc
 ---
 kind: PersistentVolumeClaim
 apiVersion: v1
