@@ -15,7 +15,7 @@ spec:
   chart:
     repository: https://kubernetes-charts.storage.googleapis.com/
     name: nginx-ingress
-    version: latest
+#    version: 2.3.0
   values:
     controller:
       # image:
