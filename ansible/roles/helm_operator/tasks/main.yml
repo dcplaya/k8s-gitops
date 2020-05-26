@@ -26,8 +26,8 @@
     --set 'createCRD=false' \
     --set 'git.ssh.secretName=flux-git-deploy' \
     --set 'helm.versions=v3' \
-    --set 'chartsSyncInterval=10m' \
-    --set 'statusUpdateInterval=10m' \
+    --set 'chartsSyncInterval=5m' \
+    --set 'statusUpdateInterval=5m' \
     --set 'prometheus.enabled=true' \
     --set 'prometheus.serviceMonitor.create=false' \
     --set 'prometheus.serviceMonitor.interval=30s' \
