@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: data-nfs-server-pv
+  name: media-nfs-server-pv
 spec:
   capacity:
     storage: 200Gi
@@ -9,20 +9,21 @@ spec:
   accessModes:
     - ReadWriteMany
   hostPath:
-    path: /mnt/tank/share/
+    path: /mnt/tank/media/
   claimRef:
-    namespace: kube-system
-    name: data-nfs-server-pvc
+    namespace: media-management
+    name: nfs-media-pvc
+
 ---
 kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
-  name: data-nfs-server-pvc
-  namespace: kube-system
+  name: nfs-media-pvc
+  namespace: media-management
 spec:
   storageClassName: nfs-server
   resources:
     requests:
-      storage: 20Gi
+      storage: 200Gi
   accessModes:
     - ReadWriteMany
