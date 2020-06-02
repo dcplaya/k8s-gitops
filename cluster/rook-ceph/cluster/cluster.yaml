@@ -51,7 +51,7 @@ spec:
   storage:
     useAllNodes: true
     useAllDevices: true
-    deviceFilter:
+    deviceFilter: "^"
     location:
     config:
       metadataDevice:
