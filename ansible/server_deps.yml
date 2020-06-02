@@ -30,5 +30,5 @@
   roles:
     - { role: server_deps }
     #- { role: raspbian }
-    - { role: gantsign.antigen,
-      when: (user_shell == 'zsh')}
+    #- { role: gantsign.antigen,
+    #  when: (user_shell == 'zsh')}
