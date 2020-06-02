@@ -9,6 +9,7 @@
   become: true
   vars:
     #k3s_build_cluster: false             #	When multiple play_hosts are available, attempt to cluster.
+  roles:
     - { role: xanmanning.k3s }
     - { role: andrewrothstein.calicoctl }
     - { role: andrewrothstein.fluxctl }
