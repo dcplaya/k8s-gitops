@@ -1,0 +1,9 @@
+apiVersion: crd.projectcalico.org/v1
+kind: BGPConfiguration
+metadata:
+  name: default
+spec:
+  logSeverityScreen: Info
+  nodeToNodeMeshEnabled: true
+  serviceClusterIPs:
+    - cidr: 10.43.0.0/16
