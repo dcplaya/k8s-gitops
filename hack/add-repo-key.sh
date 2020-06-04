@@ -1,5 +1,5 @@
 #!/bin/sh
-
+ 
 # Script Source: https://github.com/billimek
 # This script will, for the current repo:
 # 1. delete any existing repo keys
