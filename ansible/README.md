@@ -66,4 +66,3 @@ Note: Must `sudo chmod a+w /usr/local/bin` for some reason still. Fails on downl
 
 1. `ssh-agent $SHELL`
 2. `ssh-add /home/$USER/.ssh/id_rsa`
-    USER = your username
