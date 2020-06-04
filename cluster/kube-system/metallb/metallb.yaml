@@ -20,10 +20,11 @@ spec:
         peer-asn: 65500
         my-asn: 65501
       address-pools:
-      - name: default
+      - name: bgp
         protocol: bgp
         addresses:
         - 10.201.0.0/16
+        avoid-buggy-ips: true
     prometheus:
       serviceMonitor:
         enabled: true
