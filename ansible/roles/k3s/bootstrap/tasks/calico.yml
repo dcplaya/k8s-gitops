@@ -22,7 +22,7 @@
     apiVersion: projectcalico.org/v3
     kind: BGPPeer
     metadata:
-      name: bgppeer-global-2001
+      name: edgerouter-bgppeer-64512
     spec:
       peerIP: {{ calico.bgp_peer }}
       asNumber: {{ calico.bgp_as }}
