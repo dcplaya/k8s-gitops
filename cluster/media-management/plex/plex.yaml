@@ -34,8 +34,8 @@ spec:
     persistence:
       transcode:
         enabled: true
-        claimName: nfs-data-pvc
-        subPath: plex
+        storageClass: "local-path"
+        accessMode: ReadWriteOnce
       data:
         enabled: true
         claimName: nfs-media-pvc
