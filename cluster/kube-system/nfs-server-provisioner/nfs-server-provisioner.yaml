@@ -19,7 +19,7 @@ spec:
     persistence:
       enabled: true
       storageClass: "-"
-      size: 200Gi
+      size: 210Gi
     storageClass:
       default: false
     nodeSelector:

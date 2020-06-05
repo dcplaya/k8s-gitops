@@ -31,9 +31,9 @@ spec:
     persistence:
       downloads:
         enabled: false
-#      extraMounts:
-#      - name: media
-#        claimName: nfs-media-pvc
+      extraMounts:
+      - name: media
+        claimName: nfs-media-pvc
       config:
         enabled: true
         storageClass: "rook-ceph-block"
