@@ -15,21 +15,20 @@ spec:
     version: 0.12.0
   values:
     configInline:
-#      peers:
-#      - peer-address: 127.0.0.1
-#        peer-asn: 65500
-#        my-asn: 65501
-#      - name: bgp
-#        protocol: bgp
-#        addresses:
-#        - 10.201.0.0/16
-#        avoid-buggy-ips: true
-      address-pools:
-      - name: default
-        protocol: layer2
+      peers:
+      - peer-address: 10.10.200.1
+        peer-asn: 64512
+        my-asn: 65500
+      - name: bgp
+        protocol: bgp
         addresses:
         - 10.201.0.0/16
         avoid-buggy-ips: true
+#      - name: default
+#        protocol: layer2
+#        addresses:
+#        - 10.201.0.0/16
+#        avoid-buggy-ips: true
     prometheus:
       serviceMonitor:
         enabled: true
