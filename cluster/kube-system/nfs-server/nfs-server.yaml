@@ -27,14 +27,14 @@ spec:
         image: itsthenetwork/nfs-server-alpine
         env:
         - name: SHARED_DIRECTORY
-          value: /mnt/tank/share
+          value: /mnt/tank
         ports:
           - name: nfs-2049
             containerPort: 2049
         securityContext:
           privileged: true
         volumeMounts:
-          - mountPath: /mnt/tank/share
+          - mountPath: /mnt/tank
             name: nfs-vol
 #          - mountPath: /mnt/tank/media
 #            name: nfs-media
