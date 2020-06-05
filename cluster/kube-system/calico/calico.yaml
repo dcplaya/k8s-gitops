@@ -11,14 +11,14 @@ spec:
 #     - cidr: 10.43.0.0/16
 #   serviceExternalIPs:
 #     - cidr: 10.102.0.0/16
----
-apiVersion: crd.projectcalico.org/v1
-kind: IPPool
-metadata:
-  name: metallb-ippool
-spec:
-  cidr: 10.201.0.0/16
-  disabled: true
+#---
+#apiVersion: crd.projectcalico.org/v1
+#kind: IPPool
+#metadata:
+#  name: metallb-ippool
+#spec:
+#  cidr: 10.201.0.0/16
+#  disabled: true
 ---
 apiVersion: crd.projectcalico.org/v1
 kind: BGPPeer
@@ -27,11 +27,11 @@ metadata:
 spec:
   peerIP: 10.10.200.1
   asNumber: 64512
----
-apiVersion: crd.projectcalico.org/v1
-kind: BGPPeer
-metadata:
-  name: metallb-bgppeer-65501
-spec:
-  peerIP: 127.0.0.1
-  asNumber: 65501
+#---
+#apiVersion: crd.projectcalico.org/v1
+#kind: BGPPeer
+#metadata:
+#  name: metallb-bgppeer-65501
+#spec:
+#  peerIP: 127.0.0.1
+#  asNumber: 65501
