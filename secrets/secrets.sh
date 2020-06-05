@@ -1,6 +1,6 @@
 dry-run=client#!/usr/bin/env bash
 
-# Get Absolute Path of the base repo
+# Get Absolute Path of the base repos
 export REPO_ROOT=$(git rev-parse --show-toplevel)
 
 need() {
