@@ -3,6 +3,9 @@ kind: Deployment
 metadata:
   name: nfs-server
   namespace: kube-system
+  annotations:
+    fluxcd.io/automated: "true"
+    fluxcd.io/ignore: "true"
 spec:
   replicas: 1
   selector:
