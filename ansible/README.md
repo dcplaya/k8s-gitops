@@ -48,7 +48,13 @@ Note: Must `sudo chmod a+w /usr/local/bin` for some reason still. Fails on downl
    ```
    Node: I am not sure what the recovery/root token are for yet.
 
-6. Run ansible main.yml (-K option is for BECOME password on remote server)
+6. ## To enable SSH key prompt only once (Seems to not survive a reboot?)
+   ```
+   ssh-agent $SHELL
+   ssh-add /home/$USER/.ssh/id_rsa
+   ```
+
+7. Run ansible main.yml (-K option is for BECOME password on remote server)
    Note: Must be in ansible directory for ansible to automatically pick up the hosts.yml file
    ```
    cd ~/k8s-gitops/ansible/
@@ -56,13 +62,7 @@ Note: Must `sudo chmod a+w /usr/local/bin` for some reason still. Fails on downl
    ```
 
    Or, if you do not have SSH keys, a lowercase -k option to set SSH password
-      ```
+   ```
    cd ~/k8s-gitops/ansible/
    ansible-playbook main.yml -k -K
    ```
-
-
-## To enable SSH key prompt only once (Seems to not survive a reboot?)
-
-1. `ssh-agent $SHELL`
-2. `ssh-add /home/$USER/.ssh/id_rsa`
