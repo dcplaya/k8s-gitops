@@ -32,10 +32,10 @@ spec:
       downloads:
         enabled: false
       extraMounts:
-      - name: media2
+      - name: mnt                         # local mount path
         storageClass: "media"
         claimName: nfs-media-pvc
-#        mountPath: /media
+        mountPath: /mnt
       config:
         enabled: true
         storageClass: "rook-ceph-block"

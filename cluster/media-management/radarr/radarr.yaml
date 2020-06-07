@@ -37,9 +37,9 @@ spec:
       movies:
         enabled: false
       extraExistingClaimMounts:
-        - name: media
+        - name: mnt
           existingClaim: nfs-media-pvc
-          mountPath: /media
+          mountPath: /mnt
           readOnly: false
     resources:
       requests:
