@@ -19,7 +19,7 @@ spec:
   values:
     image:
       repository: linuxserver/nzbget
-      tag: v21.0-ls56
+      tag: v21.0-ls55
     service:
       type: LoadBalancer
       loadBalancerIP: 10.201.70.10
@@ -32,8 +32,10 @@ spec:
       downloads:
         enabled: false
       extraMounts:
-      - name: media
+      - name: media2
+        storageClass: "media"
         claimName: nfs-media-pvc
+#        mountPath: /media
       config:
         enabled: true
         storageClass: "rook-ceph-block"
