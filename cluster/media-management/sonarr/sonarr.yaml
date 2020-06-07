@@ -37,10 +37,10 @@ spec:
       tv:
         enabled: false
       extraExistingClaimMounts:
-        - name: TVmedia
+        - name: media
           existingClaim: nfs-media-pvc
-          mountPath: /media
-          readOnly: false
+          mountPath: "/mnt/unionfs/Media/TV/TV Shows"
+          readOnly: true
     resources:
       requests:
         memory: 350Mi
