@@ -6,12 +6,12 @@ metadata:
 spec:
   storageClassName: media
   capacity:
-    storage: 1Mi
+    storage: 400Gi
   accessModes:
     - ReadWriteMany
   persistentVolumeReclaimPolicy: Retain
   nfs:
-    server: 10.10.1.50
+    server: 10.10.1.60
     path: /mnt/kubernetes
   mountOptions:
     - tcp
@@ -33,4 +33,4 @@ spec:
   storageClassName: media
   resources:
     requests:
-      storage: 1Mi
+      storage: 300Gi
