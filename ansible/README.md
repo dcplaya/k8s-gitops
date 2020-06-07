@@ -66,3 +66,15 @@ Note: Must `sudo chmod a+w /usr/local/bin` for some reason still. Fails on downl
    cd ~/k8s-gitops/ansible/
    ansible-playbook main.yml -k -K
    ```
+<<<<<<< HEAD
+=======
+
+7. Install for ceph
+  `sudo apt-get install -y lvm2`
+
+
+## To enable SSH key prompt only once (Seems to not survive a reboot?)
+
+1. `ssh-agent $SHELL`
+2. `ssh-add /home/$USER/.ssh/id_rsa`
+>>>>>>> 9d541c1d16f5d0251e86147a43886496a51ae323
