@@ -61,6 +61,9 @@ Note: Must `sudo chmod a+w /usr/local/bin` for some reason still. Fails on downl
    ansible-playbook main.yml -k -K
    ```
 
+7. Install for ceph
+  `sudo apt-get install -y lvm2`
+
 
 ## To enable SSH key prompt only once (Seems to not survive a reboot?)
 
