@@ -13,7 +13,6 @@ This handles the automatic upgrade creation of secrets? Still trying to figure o
   sudo apt install yq -y
   ```
 2. Put all secrets into .secrets.env file, use the sample as an example
-3. Source the secrets file (This is in the script but doesnt work for some reason)
-  `. /home/$USER/k8s-gitops/secrets/.secrets.env`
-4. Run ./secrets.sh
+
+3. Run ``./secrets.sh`
     - This will create a file `zz_generated_secrets.yaml` in the cluster folder. This file is encrypted and can be uploaded to github
