@@ -10,7 +10,6 @@ spec:
   accessModes:
     - ReadWriteMany
   persistentVolumeReclaimPolicy: Retain
-  allowVolumeExpansion: true
   nfs:
     server: 10.10.1.60
     path: /mnt
