@@ -5,8 +5,8 @@ metadata:
   name: rtorrent-flood
   namespace: media-management
   annotations:
-    fluxcd.io/ignore: true
-    fluxcd.io/automated: false
+    fluxcd.io/ignore: false
+    fluxcd.io/automated: true
     fluxcd.io/tag.chart-image: glob:0.9.*
 spec:
   releaseName: rtorrent-flood
@@ -27,8 +27,8 @@ spec:
     #   image:
     #     repository: jfurrow/flood-ui
     #     tag: latest
-    uid: 1001
-    gid: 1001
+    uid: 1000
+    gid: 1000
     guiService:
       type: ClusterIP
       port: 3000
@@ -49,7 +49,7 @@ spec:
         storageClass: rook-ceph-block
       data:
         enabled: true
-        existingClaim: nfs-media-downloads-pvc
+        existingClaim: nfs-media-pvc
     resources:
       requests:
         memory: 250Mi

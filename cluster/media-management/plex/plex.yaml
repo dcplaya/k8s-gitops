@@ -42,7 +42,7 @@ spec:
       config:
         storageClass: "rook-ceph-block"
         accessMode: ReadWriteOnce
-        size: 150Gi
+        size: 275Gi
     resources:
       limits:
         gpu.intel.com/i915: 1

@@ -31,7 +31,7 @@ spec:
       config:
         enabled: true
         storageClass: "rook-ceph-block"
-        size: 3Gi
+        size: 12Gi
       downloads:
         enabled: false
       tv:

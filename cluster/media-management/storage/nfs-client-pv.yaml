@@ -34,4 +34,4 @@ spec:
   storageClassName: media
   resources:
     requests:
-      storage: 300Gi
+      storage: 400Gi

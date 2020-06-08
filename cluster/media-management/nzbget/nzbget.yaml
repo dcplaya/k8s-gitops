@@ -39,7 +39,7 @@ spec:
       config:
         enabled: true
         storageClass: "rook-ceph-block"
-        size: 30Gi
+        size: 3Gi
     # podAnnotations:
     #   backup.velero.io/backup-volumes: config
     tolerations:
