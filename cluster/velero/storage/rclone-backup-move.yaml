@@ -2,7 +2,7 @@
 kind: Deployment
 apiVersion: apps/v1
 metadata:
-  namespace: media-management
+  namespace: velero
   name: rclone-sync
   annotations:
     fluxcd.io/ignore: true
