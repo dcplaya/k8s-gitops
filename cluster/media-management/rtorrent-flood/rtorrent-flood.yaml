@@ -49,7 +49,11 @@ spec:
         storageClass: rook-ceph-block
       data:
         enabled: true
+<<<<<<< HEAD
         mountPath: /mnt/kubernetes/media-management
+=======
+        mountPath: /mnt/kubernetes
+>>>>>>> 2f441a6cb88de6c7abd3b280fcd88346b81e5b4b
         existingClaim: nfs-media-pvc
     resources:
       requests:
