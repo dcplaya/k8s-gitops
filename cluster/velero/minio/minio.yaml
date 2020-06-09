@@ -27,7 +27,7 @@ spec:
       tag: 1.16
     persistence:
       existingClaim: "nfs-backup-pvc"
-      subPath: "minio"
+      subPath: "kubernetes/velero/minio"
     ingress:
       enabled: true
       annotations:
