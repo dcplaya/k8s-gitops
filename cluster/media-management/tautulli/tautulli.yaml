@@ -18,7 +18,7 @@ spec:
   values:
     image:
       repository: linuxserver/tautulli
-      tag: v2.2.4-ls7
+      tag: arm64v8-7f9d46ea-ls6
     podAnnotations:
       backup.velero.io/backup-volumes: config
     ingress:
@@ -48,6 +48,6 @@ spec:
             - key: node-role.kubernetes.io/worker
               operator: In
               values:
-                - "true"
+              - "true"
   valueFileSecrets:
   - name: "tautulli-helm-values"
