@@ -14,11 +14,11 @@ spec:
   chart:
     repository: https://billimek.com/billimek-charts/
     name: nzbhydra2
-    version: 2.3.0
+    version: v2.23.0-ls9
   values:
     image:
       repository: linuxserver/nzbhydra2
-      tag: arm64v8-dev
+      tag: amd64
     podAnnotations:
       backup.velero.io/backup-volumes: config
     timezone: "America/Los_Angeles"
