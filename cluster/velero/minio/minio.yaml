@@ -17,16 +17,17 @@ spec:
     version: 5.0.27
   values:
     image:
-      repository: jessestuart/minio
-      tag: RELEASE.2020-04-23T00-58-49Z
+      repository: minio/minio
+      tag: RELEASE.2020-04-28T23-56-56Z
     mcImage:
-      repository: jessestuart/mc
-      tag: RELEASE.2020-04-17T08-55-48Z
+      repository: minio/mc
+      tag: RELEASE.2020-04-25T00-43-23Z
     helmKubectlJqImage:
-      repository: drnic/kubectl
-      tag: 1.16
+      repository: bskim45/helm-kubectl-jq
+      tag: 3.1.0
     persistence:
       existingClaim: "nfs-backup-pvc"
+      storageClass: "backup"
       subPath: "kubernetes/velero/minio"
     ingress:
       enabled: true
