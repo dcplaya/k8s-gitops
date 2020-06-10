@@ -3,7 +3,7 @@ apiVersion: helm.fluxcd.io/v1
 kind: HelmRelease
 metadata:
   name: minio
-  namespace: velero
+    namespace: velero
   annotations:
     fluxcd.io/ignore: false
     fluxcd.io/automated: false
@@ -46,6 +46,6 @@ spec:
       enabled: false
     metrics:
       serviceMonitor:
-        enabled: true
+        enabled: false
   valueFileSecrets:
   - name: "minio-helm-values"
