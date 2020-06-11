@@ -19,7 +19,7 @@ spec:
   values:
     image:
       repository: linuxserver/tautulli
-      tag: 7f9d46ea-ls6
+      tag: amd64-7f9d46ea-ls6
     podAnnotations:
       backup.velero.io/backup-volumes: config
     ingress:
