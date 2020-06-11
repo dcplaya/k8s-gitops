@@ -6,7 +6,7 @@ metadata:
   namespace: media-management
   annotations:
     fluxcd.io/ignore: false
-    fluxcd.io/automated: true
+    fluxcd.io/automated: false
 spec:
   releaseName: nzbhydra2
   rollback:
@@ -18,7 +18,7 @@ spec:
   values:
     image:
       repository: linuxserver/nzbhydra2
-      tag: arm64v8-dev
+      tag: v2.22.2-ls9
     podAnnotations:
       backup.velero.io/backup-volumes: config
     timezone: "America/Los_Angeles"
