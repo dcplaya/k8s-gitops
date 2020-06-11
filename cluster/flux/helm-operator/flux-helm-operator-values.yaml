@@ -2,8 +2,8 @@
 git:
   ssh:
     secretName: flux-git-deploy
-chartsSyncInterval: "10m"
-statusUpdateInterval: "10m"
+chartsSyncInterval: "1m"
+statusUpdateInterval: "1m"
 helm:
   versions: "v3"
 prometheus:
