@@ -34,8 +34,9 @@ spec:
     persistence:
       transcode:
         enabled: true
-        storageClass: "local-path"
-        accessMode: ReadWriteOnce
+        storageClass: rook-ceph-block
+        accessMode: ReadWriteMany
+        size: 50Gi
       data:
         enabled: true
         claimName: nfs-media-pvc
