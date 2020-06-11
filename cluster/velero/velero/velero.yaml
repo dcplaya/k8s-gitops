@@ -36,7 +36,7 @@ spec:
         enabled: true
     snapshotsEnabled: false
     deployRestic: true
-    # installCRDs: false
+    installCRDs: true
     restic:
       podVolumePath: /var/lib/kubelet/pods
       privileged: false
