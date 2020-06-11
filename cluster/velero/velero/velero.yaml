@@ -23,7 +23,7 @@ spec:
         name: plugins
     resources:
       requests:
-        memory: 300Mi
+        memory: 301Mi
         cpu: 25m
       limits:
         memory: 1500Mi
