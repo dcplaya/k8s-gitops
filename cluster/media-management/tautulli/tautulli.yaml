@@ -6,7 +6,7 @@ metadata:
   namespace: media-management
   annotations:
     fluxcd.io/ignore: false
-    fluxcd.io/automated: true
+    fluxcd.io/automated: false
 spec:
   releaseName: tautulli
   rollback:
@@ -18,7 +18,7 @@ spec:
   values:
     image:
       repository: linuxserver/tautulli
-      tag: arm64v8-7f9d46ea-ls6
+      tag: 7f9d46ea-ls6
     podAnnotations:
       backup.velero.io/backup-volumes: config
     ingress:
