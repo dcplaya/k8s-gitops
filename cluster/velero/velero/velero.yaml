@@ -23,26 +23,20 @@ spec:
         name: plugins
     resources:
       requests:
-        memory: 301Mi
+        memory: 300Mi
         cpu: 25m
       limits:
         memory: 1500Mi
-     tolerations:
-     - key: "arm"
-       operator: "Exists"
     metrics:
       enabled: true
       serviceMonitor:
         enabled: true
     snapshotsEnabled: false
     deployRestic: true
-    installCRDs: true
+    installCRDs: false
     restic:
       podVolumePath: /var/lib/kubelet/pods
       privileged: false
-      tolerations:
-      - key: "arm"
-        operator: "Exists"
       resources:
         requests:
           memory: 200Mi
