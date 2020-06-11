@@ -46,6 +46,6 @@ spec:
       enabled: false
     metrics:
       serviceMonitor:
-        enabled: false
+        enabled: true
   valueFileSecrets:
   - name: "minio-helm-values"
