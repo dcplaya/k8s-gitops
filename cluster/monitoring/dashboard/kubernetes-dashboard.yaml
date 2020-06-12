@@ -6,6 +6,7 @@ metadata:
   namespace: monitoring
   annotations:
     fluxcd.io/automated: true
+    fluxcd.io/ignore: false
     luxcd.io/tag.chart-image: '^'
 spec:
   releaseName: kubernetes-dashboard
@@ -28,8 +29,9 @@ spec:
       annotations:
         kubernetes.io/ingress.class: "nginx"
     timezone: "America/Los_Angeles"
-    # podAnnotations:
-    #   backup.velero.io/backup-volumes: config
+    enableSkipLogin: false                                                      ## Enable possibility to skip login
+    podAnnotations:
+      backup.velero.io/backup-volumes: config
     tolerations:
     resources:
       requests:
@@ -37,5 +39,5 @@ spec:
         cpu: 25m
       limits:
         memory: 400Mi
-#  valueFileSecrets:
-#  - name: "nzbget-helm-values"
+  valueFileSecrets:
+  - name: "kubernetes-dashboard-helm-values"
