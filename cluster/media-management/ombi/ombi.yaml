@@ -18,7 +18,7 @@ spec:
   values:
     image:
       repository: linuxserver/ombi
-      tag: v4.0.346-ls1
+      tag: arm32v7-v4-preview
     podAnnotations:
       backup.velero.io/backup-volumes: config
     ingress:
@@ -49,6 +49,6 @@ spec:
             - key: node-role.kubernetes.io/worker
               operator: In
               values:
-                - "true"
+              - "true"
   valueFileSecrets:
   - name: "ombi-helm-values"
