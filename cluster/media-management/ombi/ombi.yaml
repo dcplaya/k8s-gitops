@@ -19,7 +19,7 @@ spec:
   values:
     image:
       repository: linuxserver/ombi
-      tag: arm32v7-v4-preview
+      tag: v4.0.367-ls3
     podAnnotations:
       backup.velero.io/backup-volumes: config
     ingress:
