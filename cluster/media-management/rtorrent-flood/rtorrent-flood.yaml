@@ -49,6 +49,7 @@ spec:
         storageClass: rook-ceph-block
       data:
         enabled: true
+        storageClass: "media"
         subPath: "kubernetes/media-management/torrent"
         existingClaim: nfs-media-pvc
     resources:
