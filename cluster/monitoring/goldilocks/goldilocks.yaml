@@ -3,9 +3,10 @@ apiVersion: helm.fluxcd.io/v1
 kind: HelmRelease
 metadata:
   name: goldilocks
-  namespace: default
+  namespace: monitoring
   annotations:
-    fluxcd.io/automated: "false"
+    fluxcd.io/automated: true
+    fluxcd.io/ignore: false
     fluxcd.io/tag.chart-image: 'semver:0'
 spec:
   releaseName: goldilocks
