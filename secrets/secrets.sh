@@ -1,4 +1,4 @@
-dry-run=client#!/usr/bin/env bash
+#!/usr/bin/env bash
 
 #
 # Get Absolute Path of the base repos
