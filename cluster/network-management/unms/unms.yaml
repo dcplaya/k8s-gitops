@@ -1,0 +1,46 @@
+---
+apiVersion: helm.fluxcd.io/v1
+kind: HelmRelease
+metadata:
+  name: unms
+  namespace: network-management
+  annotations:
+    fluxcd.io/ignore: false
+    fluxcd.io/automated: true
+    fluxcd.io/tag.chart-image: 'regexp:^(1\.[0-9][0-9]\.[0-9]+)$'
+spec:
+  releaseName: unms
+  helmVersion: v3
+  rollback:
+    enable: false
+  chart:
+    repository: https://storage.googleapis.com/t3n-helm-charts
+    name: unms
+    version: 1.1.1
+  values:
+    image:
+      repository: ubnt/unms
+      tag: 0.13.3
+    persistence:
+      enabled: true
+      size: 10Gi
+      storageClass: rook-ceph-block
+    timezone: "America/Los_Angeles"
+    ingress:
+      enabled: true
+      annotations:
+        kubernetes.io/ingress.class: "nginx"
+        nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
+        ingress.kubernetes.io/proxy-body-size: "50m"
+        nginx.ingress.kubernetes.io/proxy-body-size: 500m
+    podAnnotations:
+      backup.velero.io/backup-volumes: unifi-data
+    resources:
+      requests:
+        memory: 128Mi
+        cpu: 100m
+      limits:
+        memory: 750Mi
+        cpu: 200m
+  valueFileSecrets:
+  - name: "unifi-helm-values"
