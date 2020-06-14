@@ -7,7 +7,7 @@ metadata:
   annotations:
     fluxcd.io/ignore: false
     fluxcd.io/automated: true
-    fluxcd.io/tag.chart-image: 'regexp:^(1\.[0-9][0-9]\.[0-9]+)$'
+#    fluxcd.io/tag.chart-image: 'regexp:^(1\.[0-9][0-9]\.[0-9]+)$'
 spec:
   releaseName: unms
   helmVersion: v3
@@ -43,4 +43,4 @@ spec:
         memory: 750Mi
         cpu: 200m
   valueFileSecrets:
-  - name: "unifi-helm-values"
+  - name: "unms-helm-values"
