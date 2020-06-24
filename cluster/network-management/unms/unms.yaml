@@ -20,7 +20,7 @@ spec:
   values:
     image:
       repository: ubnt/unms
-      tag: 1.2.3
+      #tag: 1.2.3
     persistence:
       enabled: true
       size: 10Gi
