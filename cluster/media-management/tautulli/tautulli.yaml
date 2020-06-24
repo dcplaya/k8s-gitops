@@ -19,7 +19,7 @@ spec:
   values:
     image:
       repository: linuxserver/tautulli
-      tag: amd64-4390f5cb-ls7
+      tag: amd64-develop
     podAnnotations:
       backup.velero.io/backup-volumes: config
     ingress:
