@@ -1,0 +1,53 @@
+---
+apiVersion: helm.fluxcd.io/v1
+kind: HelmRelease
+metadata:
+  name: bazarr
+  namespace: media-management
+  annotations:
+    fluxcd.io/ignore: false
+    fluxcd.io/automated: true
+spec:
+  releaseName: bazarr
+  rollback:
+    enable: false
+  chart:
+    repository: https://billimek.com/billimek-charts/
+    name: bazarr
+    version: 1.0.0
+  values:
+    image:
+      repository: linuxserver/bazarr
+      tag: v0.8.4.3-ls74
+    podAnnotations:
+      backup.velero.io/backup-volumes: config
+    ingress:
+      enabled: true
+      annotations:
+        kubernetes.io/ingress.class: "nginx"
+    timezone: "America/Los_Angeles"
+    puid: 1000
+    pgid: 1000
+    persistence:
+      config:
+        enabled: true
+        storageClass: "rook-ceph-block"
+        accessMode: ReadWriteOnce
+        size: 5Gi
+      tv:
+        enabled: false
+      movies:
+        enabled: false
+      extraExistingClaimMounts:
+        - name: media
+          existingClaim: nfs-media-pvc
+          mountPath: unionfs/Media
+          readOnly: false
+    resources:
+      requests:
+        memory: 350Mi
+        cpu: 25m
+      limits:
+        memory: 4000Mi
+  valueFileSecrets:
+  - name: "bazarr-helm-values"
