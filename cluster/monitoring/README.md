@@ -57,4 +57,4 @@ Based on this [custom helm chart](https://github.com/billimek/billimek-charts/tr
 | prometheus-operator    	| N/A             	|       	|
 | speedtest-prometheus   	| N/A             	|       	|
 | uptimerobot           	| N/A             	|       	|
-| kubernetes-dashboard    |  10.201.80.10     |         |
+| kubernetes-dashboard    |  N/A              |         |
