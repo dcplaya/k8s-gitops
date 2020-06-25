@@ -14,9 +14,9 @@ spec:
   rollback:
     enable: false
   chart:
-    repository: https://storage.googleapis.com/t3n-helm-charts
-    name: unms
-    version: 1.1.1
+    git: git@github.com:t3n/helm-charts
+    path: unms
+    ref: helm-v3
   values:
     image:
       repository: ubnt/unms
