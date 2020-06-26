@@ -18,7 +18,7 @@ spec:
   values:
     image:
       repository: linuxserver/bazarr
-      tag: v0.8.4.3-ls74
+      tag: arm64v8-latest
     ingress:
       enabled: true
       annotations:
@@ -39,10 +39,10 @@ spec:
       movies:
         enabled: false
       extraExistingClaimMounts:
-        - name: media
-          existingClaim: nfs-media-pvc
+      - name: media
+        existingClaim: nfs-media-pvc
 #          mountPath: unionfs/Media
-          readOnly: false
+        readOnly: false
     resources:
       requests:
         memory: 350Mi
