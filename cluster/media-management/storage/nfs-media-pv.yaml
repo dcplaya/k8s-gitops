@@ -5,8 +5,8 @@ metadata:
   name: nfs-media-pv
 spec:
   storageClassName: media
-#  capacity:
-#    storage: 400Gi
+  capacity:
+    storage: 1Pb
   accessModes:
     - ReadWriteMany
   persistentVolumeReclaimPolicy: Retain
@@ -31,6 +31,6 @@ spec:
   accessModes:
     - ReadWriteMany
   storageClassName: media
-#  resources:
-#    requests:
-#      storage: 400Gi
+  resources:
+    requests:
+      storage: 0.9Pb
