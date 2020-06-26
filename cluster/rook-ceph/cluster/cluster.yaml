@@ -48,6 +48,7 @@ spec:
           memory: 250Mi
       limits:
         memory: 512Mi
+  removeOSDsIfOutAndSafeToRemove: true
   storage:
     useAllNodes: false
     useAllDevices: true
