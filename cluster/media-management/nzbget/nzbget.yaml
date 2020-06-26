@@ -28,20 +28,20 @@ spec:
       annotations:
         kubernetes.io/ingress.class: "nginx"
     timezone: "America/Los_Angeles"
+    podAnnotations:
+      backup.velero.io/backup-volumes: config
     persistence:
       downloads:
         enabled: false
       extraMounts:
       - name: mnt                         # local mount path
-        storageClass: "media"
-        claimName: nfs-media-pvc
+        storageClass: media
+        claimName: nfs-data-pvc
         mountPath: /mnt
       config:
         enabled: true
         storageClass: "rook-ceph-block"
         size: 3Gi
-    # podAnnotations:
-    #   backup.velero.io/backup-volumes: config
     tolerations:
     resources:
       requests:

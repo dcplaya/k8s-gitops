@@ -51,7 +51,7 @@ spec:
         enabled: true
         storageClass: "media"
         subPath: "kubernetes/media-management/torrent"
-        existingClaim: nfs-media-pvc
+        existingClaim: nfs-data-pvc
     resources:
       requests:
         memory: 250Mi
