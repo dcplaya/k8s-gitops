@@ -39,7 +39,7 @@ spec:
       extraExistingClaimMounts:
         - name: media
           existingClaim: nfs-media-pvc
-#          mountPath: "/mnt"
+          mountPath: "/"
           readOnly: false
     resources:
       requests:
