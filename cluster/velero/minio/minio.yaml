@@ -25,6 +25,10 @@ spec:
     helmKubectlJqImage:
       repository: bskim45/helm-kubectl-jq
       tag: 3.1.0
+    securityContext:
+      enabled: true
+      runAsUser: 1000
+      runAsGroup: 1000
     persistence:
       existingClaim: "nfs-backup-pvc"
       storageClass: "backup"
