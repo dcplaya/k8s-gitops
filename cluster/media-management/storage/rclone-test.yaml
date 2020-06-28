@@ -1,0 +1,71 @@
+---
+apiVersion: helm.fluxcd.io/v1
+kind: HelmRelease
+metadata:
+  name: kube-rclone-google
+  namespace: media-management
+  annotations:
+    fluxcd.io/ignore: false
+    fluxcd.io/automated: true
+    fluxcd.io/tag.chart-image: 'regexp:^(v4.[0-9]+\.[0-9]+-ls.*)$'
+spec:
+  releaseName: kube-rclone
+  rollback:
+    enable: true
+  chart:
+    repository: https://charts.simplyzee.dev/
+    name: kube-rclone
+    version: 0.1.0
+  values:
+    images:
+      initContainer:
+        repository: busybox
+        tag: latest
+      container:
+        repository: quay.io/chaosaffe/rclone
+        tag: v1.47.0
+  rclone:
+    #  remote to mount from rclone config
+    remote: "google:"
+    # mount path for  remote
+    path: /mnt/disks/google
+    # read only file system for remote (to protect from deletion of files)
+    readOnly: true
+    # additional arguments for customising rclone
+    # mount options can be found here - https://rclone.org/commands/rclone_mount/#options
+    additionalArgs:
+      - --user-agent='Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.131 Safari/537.36'
+      - --allow-other
+      - --fast-list
+      - --drive-skip-gdocs
+      - --vfs-read-chunk-size=128M
+      - --vfs-read-chunk-size-limit=off
+      - --buffer-size=1G
+      - --poll-interval=1m
+      - --dir-cache-time=168h
+      - --timeout=10m
+      - --umask=002
+      - --drive-chunk-size=256M
+      - --log-level=INFO
+      - --drive-acknowledge-abuse=true
+#  --config=/home/carpenam/.config/rclone/rclone.conf \
+#  --rc \
+#  --rc-addr=localhost:5573 \
+    resources:
+      requests:
+        memory: 1Gi
+        cpu: 250m
+      limits:
+        memory: 3Gi
+        cpu: 350m
+    affinity:
+      nodeAffinity:
+        requiredDuringSchedulingIgnoredDuringExecution:
+          nodeSelectorTerms:
+          - matchExpressions:
+            - key: node-role.kubernetes.io/worker
+              operator: In
+              values:
+              - "true"
+  valueFileSecrets:
+  - name: "rclone-helm-values"
