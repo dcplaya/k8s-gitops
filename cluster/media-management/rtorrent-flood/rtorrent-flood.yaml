@@ -50,7 +50,7 @@ spec:
       data:
         enabled: true
         storageClass: "media"
-        subPath: "kubernetes/media-management/torrent"
+        subPath: "/mnt"
         existingClaim: nfs-data-pvc
     resources:
       requests:
