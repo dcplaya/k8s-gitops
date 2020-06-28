@@ -16,7 +16,7 @@ spec:
     repository: https://charts.simplyzee.dev/
     name: kube-rclone
     version: 0.1.0
-  values:
+  Values:
     images:
       initContainer:
         repository: busybox
