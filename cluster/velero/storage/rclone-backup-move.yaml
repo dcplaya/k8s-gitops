@@ -3,9 +3,9 @@ kind: Deployment
 apiVersion: apps/v1
 metadata:
   namespace: velero
-  name: rclone-sync
+  name: rclone-sync-backups
   annotations:
-    fluxcd.io/ignore: true
+    fluxcd.io/ignore: false
     fluxcd.io/automated: true
   labels:
     app: rclone-sync
@@ -29,19 +29,19 @@ spec:
             - name: CRON_ABORT
               value: 30 7 * * *
             - name: SYNC_SRC
-              value: /media/Library/
+              value: /mnt/kubernetes/velero
             - name: SYNC_DEST
-              value: gdrive-crypt:/
+              value: backups:/Kubernetes/Velero
             - name: SYNC_OPTS
               value: -v --ignore-errors --transfers 10 --checkers 10 --bwlimit 40M --exclude ".@__thumb/**" --exclude ".Trashes/**" --exclude ".DS_Store"
             - name: TZ
-              value: America/New_York
+              value: America/Los_Angeles
           volumeMounts:
-          - mountPath: /config
+          - mountPath: /mnt/kubernetes/rclone
             name: rclone-sync-config
             subPath: rclone-sync
-          - mountPath: /media
-            name: rclone-sync-media
+          - mountPath: /mnt
+            name: rclone-sync-backup
           resources:
             requests:
               memory: 500Mi
@@ -52,7 +52,7 @@ spec:
       volumes:
       - name: rclone-sync-config
         persistentVolumeClaim:
-          claimName: nfs-data-pvc
-      - name: rclone-sync-media
+          claimName: nfs-backup-pvc
+      - name: rclone-sync-backup
         persistentVolumeClaim:
-          claimName: nfs-media-pvc
+          claimName: nfs-backup-pvc
