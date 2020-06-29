@@ -6,7 +6,7 @@ metadata:
 spec:
   storageClassName: backup
   capacity:
-    storage: 400Gi
+    storage: 1000Gi
   accessModes:
     - ReadWriteMany
   persistentVolumeReclaimPolicy: Retain
@@ -33,4 +33,4 @@ spec:
   storageClassName: backup
   resources:
     requests:
-      storage: 400Gi
+      storage: 500Gi
