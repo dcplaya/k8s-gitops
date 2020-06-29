@@ -44,9 +44,9 @@ spec:
         - name: GID
           value: 1000
         volumeMounts:
-        - mountPath: /mnt
-          name: rclone-sync-config
-          subPath: rclone-sync
+#        - mountPath: /mnt
+#          name: rclone-sync-backup
+#          subPath: Kubernetes/rclone
         - mountPath: /mnt
           name: rclone-sync-backup
         resources:
@@ -57,11 +57,11 @@ spec:
             memory: 2000Mi
             cpu: 10000m
       volumes:
-      - name: rclone-sync-config
-        persistentVolumeClaim:
-          claimName: nfs-backup-pvc
-          size: 10Mi
+#      - name: rclone-sync-config
+#        persistentVolumeClaim:
+#          claimName: nfs-backup-pvc
+#          size: 10Mi
       - name: rclone-sync-backup
         persistentVolumeClaim:
           claimName: nfs-backup-pvc
-          size: 100Gi
+  #        size: 100Gi
