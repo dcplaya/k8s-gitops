@@ -60,6 +60,8 @@ spec:
       - name: rclone-sync-config
         persistentVolumeClaim:
           claimName: nfs-backup-pvc
+          size: 10Mi
       - name: rclone-sync-backup
         persistentVolumeClaim:
           claimName: nfs-backup-pvc
+          size: 100Gi
