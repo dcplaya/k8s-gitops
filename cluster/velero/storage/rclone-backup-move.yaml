@@ -38,7 +38,7 @@ spec:
         - name: TZ
           value: America/Los_Angeles
         - name: FORCE_SYNC
-          value: 1
+          value: "1"
         - name: UID
           value: 1000
         - name: GID
