@@ -34,7 +34,7 @@ spec:
           value: backups:/Kubernetes/Velero
         - name: SYNC_OPTS
           value: -v --ignore-errors --transfers 10 --checkers 10 --bwlimit 40M --exclude
-            ".@__thumb/**" --exclude ".Trashes/**" --exclude ".DS_Store --config=/mnt/kubernetes/rclone/rclone.conf"
+            ".@__thumb/**" --exclude ".Trashes/**" --exclude ".DS_Store"
         - name: TZ
           value: America/Los_Angeles
         - name: FORCE_SYNC
