@@ -19,7 +19,7 @@ spec:
   values:
     image:
       repository: linuxserver/tautulli
-      tag: amd64-v2.5.2-ls7
+      tag: amd64-356f64ca-ls9
     ingress:
       enabled: true
       annotations:
