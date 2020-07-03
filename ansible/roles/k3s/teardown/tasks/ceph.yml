@@ -35,9 +35,9 @@
   command: "{{ item }}"
   ignore_errors: yes
   with_items:
-    - wipefs -af /dev/sdb
-    - wipefs -af /dev/sdc
-    - wipefs -af /dev/sdd
+    - wipefs -af /dev/nvme0n1p3
+#    - wipefs -af /dev/sdc
+#    - wipefs -af /dev/sdd
   when:
     - storage is defined
     - storage == 'ceph'
