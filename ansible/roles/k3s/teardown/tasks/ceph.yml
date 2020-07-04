@@ -10,9 +10,9 @@
   command: "{{ item }}"
   ignore_errors: yes
   with_items:
-    - sgdisk --zap-all /dev/sdb
-    - sgdisk --zap-all /dev/sdc
-    - sgdisk --zap-all /dev/sdd
+    - sgdisk --zap-all /dev/nvme0n1p3
+#    - sgdisk --zap-all /dev/sdc
+#    - sgdisk --zap-all /dev/sdd
   when:
     - storage is defined
     - storage == 'ceph'
