@@ -8,7 +8,7 @@ metadata:
 spec:
   storageClassName: media
   capacity:
-    storage: 1Ti
+    storage: 500Gi
   accessModes:
     - ReadWriteMany
   persistentVolumeReclaimPolicy: Retain
@@ -35,4 +35,4 @@ spec:
   storageClassName: media
   resources:
     requests:
-      storage: 600Gi
+      storage: 1Mi
