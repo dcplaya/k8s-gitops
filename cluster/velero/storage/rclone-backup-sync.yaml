@@ -17,7 +17,7 @@ spec:
         app: rclone-sync-backup
     spec:
       containers:
-        - name: rclone-sync
+        - name: rclone-sync-backup
           image: pfidr/rclone:1.52.2
           imagePullPolicy: IfNotPresent
           env:
