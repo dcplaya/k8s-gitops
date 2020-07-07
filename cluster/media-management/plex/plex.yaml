@@ -49,10 +49,9 @@ spec:
       data:
         enabled: false
       extraMounts:
-      - name: "mnt"                         # local mount path
+      - name: "mnt/unionfs"                         # local mount path
         storageClass: media
         claimName: nfs-media-pvc
-        mountPath: "/mnt/unionfs"
       config:
         storageClass: "rook-ceph-block"
         accessMode: ReadWriteOnce
