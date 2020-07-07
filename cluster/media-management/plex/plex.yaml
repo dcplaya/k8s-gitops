@@ -16,11 +16,13 @@ spec:
   chart:
     repository: https://billimek.com/billimek-charts/
     name: plex
-    version: 1.0.0
+    version: 1.6.0
   values:
+    fullnameOverride: plex-kube-plex
     image:
       repository: plexinc/pms-docker
       tag: 1.19.4.2935-79e214ead
+    hostNetwork: true
     ingress:
       enabled: true
       annotations:
@@ -29,6 +31,13 @@ spec:
     service:
       type: LoadBalancer
       loadBalancerIP: 10.201.70.20
+      annotations:
+        metallb.universe.tf/allow-shared-ip: plex-svc
+    serviceUDP:
+      type: LoadBalancer
+      loadBalancerIP: 10.201.70.20
+      annotations:
+        metallb.universe.tf/allow-shared-ip: plex-svc
     podAnnotations:
       backup.velero.io/backup-volumes: config
     persistence:
@@ -38,8 +47,13 @@ spec:
         accessMode: ReadWriteMany
         size: 50Gi
       data:
-        enabled: true
+        enabled: false
         claimName: nfs-media-pvc
+      extraMounts:
+      - name: mnt/unionfs                         # local mount path
+        storageClass: media
+        claimName: nfs-media-pvc
+        mountPath: "/mnt/unionfs"
       config:
         storageClass: "rook-ceph-block"
         accessMode: ReadWriteOnce
