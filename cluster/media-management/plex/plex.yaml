@@ -50,7 +50,7 @@ spec:
         enabled: false
         claimName: nfs-media-pvc
       extraMounts:
-      - name: "mnt/unionfs"                         # local mount path
+      - name: "mnt"                         # local mount path
         storageClass: media
         claimName: nfs-media-pvc
         mountPath: "/mnt/unionfs"
