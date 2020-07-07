@@ -5,7 +5,7 @@ metadata:
   namespace: velero
   name: rclone-sync-backups
   annotations:
-    fluxcd.io/ignore: true
+    fluxcd.io/ignore: false
     fluxcd.io/automated: true
   labels:
     app: rclone-sync
@@ -46,7 +46,7 @@ spec:
         volumeMounts:
         - mountPath: /config
           name: rclone-sync-backup
-          subPath: Kubernetes/rclone
+          subPath: kubernetes/rclone
         - mountPath: /mnt
           name: rclone-sync-backup
         resources:
