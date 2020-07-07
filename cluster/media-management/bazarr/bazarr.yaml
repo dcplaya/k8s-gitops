@@ -39,9 +39,9 @@ spec:
       movies:
         enabled: false
       extraExistingClaimMounts:
-      - name: media
+      - name: mnt/unionfs
         existingClaim: nfs-media-pvc
-#          mountPath: unionfs/Media
+          mountPath: ""/mnt/unionfs"
         readOnly: false
     resources:
       requests:
