@@ -35,7 +35,7 @@ spec:
               value: America/Los_Angeles
           volumeMounts:
           - mountPath: /config
-            name: rclone-sync-config
+            name: rclone-sync-backup
             subPath: kubernetes/rclone
           - mountPath: /mnt
             name: rclone-sync-backup
@@ -47,9 +47,9 @@ spec:
               memory: 2000Mi
               cpu: 10000m
       volumes:
-      - name: rclone-sync-config
-        persistentVolumeClaim:
-          claimName: nfs-backup-pvc
+#      - name: rclone-sync-config
+#        persistentVolumeClaim:
+#          claimName: nfs-backup-pvc
       - name: rclone-sync-backup
         persistentVolumeClaim:
           claimName: nfs-backup-pvc
