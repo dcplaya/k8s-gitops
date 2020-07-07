@@ -28,6 +28,8 @@ spec:
       annotations:
         kubernetes.io/ingress.class: "nginx"
     timezone: "America/Los_Angeles"
+    puid: 1000
+    guid: 1000
     podAnnotations:
       backup.velero.io/backup-volumes: config
     persistence:
