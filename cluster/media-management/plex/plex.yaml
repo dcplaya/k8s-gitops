@@ -48,7 +48,6 @@ spec:
         size: 50Gi
       data:
         enabled: false
-        claimName: nfs-media-pvc
       extraMounts:
       - name: "mnt"                         # local mount path
         storageClass: media
