@@ -47,7 +47,10 @@ spec:
         accessMode: ReadWriteMany
         size: 50Gi
       data:
-        enabled: false
+        #claimName: nfs-media-pvc
+        storageClass: rook-ceph-block
+        accessMode: ReadWriteMany
+        size: 50Gi
       extraMounts:
       - name: "mnt/unionfs"                         # local mount path
         storageClass: media
