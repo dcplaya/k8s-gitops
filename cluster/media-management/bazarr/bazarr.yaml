@@ -41,7 +41,7 @@ spec:
       extraExistingClaimMounts:
       - name: mnt/unionfs
         existingClaim: nfs-media-pvc
-          mountPath: ""/mnt/unionfs"
+          mountPath: "/mnt/unionfs"
         readOnly: false
     resources:
       requests:
