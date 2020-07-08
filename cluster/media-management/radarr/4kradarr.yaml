@@ -2,14 +2,14 @@
 apiVersion: helm.fluxcd.io/v1
 kind: HelmRelease
 metadata:
-  name: radarr
+  name: 4kradarr
   namespace: media-management
   annotations:
     fluxcd.io/ignore: false
     fluxcd.io/automated: true
     fluxcd.io/tag.chart-image: semver:3.0
 spec:
-  releaseName: radarr
+  releaseName: 4kradarr
   helmVersion: v3
   rollback:
     enable: true
@@ -54,4 +54,4 @@ spec:
     - key: "arm"
       operator: "Exists"
   valueFileSecrets:
-  - name: "radarr-helm-values"
+  - name: "radarr-4k-helm-values"
