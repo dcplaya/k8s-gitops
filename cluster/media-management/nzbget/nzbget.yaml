@@ -14,9 +14,9 @@ spec:
   rollback:
     enable: true
   chart:
-    repository: https://billimek.com/billimek-charts/
-    name: nzbget
-    version: 3.2.0
+    git: git@github.com:dcplaya/billimek-charts
+    path: charts/nzbget
+    ref: master
   values:
     image:
       repository: linuxserver/nzbget
@@ -37,10 +37,10 @@ spec:
       downloads:
         enabled: false
       extraMounts:
-      - name: media/unionfs                        # local mount path
+      - name: "media"
         storageClass: media
         claimName: nfs-media-pvc
-#        mountPath: "/mnt/unionfs"
+        mountPath: /mnt/unionfs
       config:
         enabled: true
         storageClass: "rook-ceph-block"
