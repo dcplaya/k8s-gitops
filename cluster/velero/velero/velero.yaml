@@ -44,8 +44,8 @@ spec:
         limits:
           memory: 2000Mi
     schedules:
-      daily-backup:
-        schedule: "0 6 * * *"
+      twice-daily-backup:
+        schedule: "0 6,18 * * *"
         template:
           ttl: "120h"
   valueFileSecrets:
