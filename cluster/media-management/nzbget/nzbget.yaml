@@ -37,7 +37,7 @@ spec:
       downloads:
         enabled: false
       extraMounts:
-      - name: media                        # local mount path
+      - name: media/unionfs                        # local mount path
         storageClass: media
         claimName: nfs-media-pvc
 #        mountPath: "/mnt/unionfs"
