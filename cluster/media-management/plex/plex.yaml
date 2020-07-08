@@ -14,9 +14,9 @@ spec:
   rollback:
     enable: false
   chart:
-    repository: https://billimek.com/billimek-charts/
-    name: plex
-    version: 1.6.0
+    git: git@github.com:dcplaya/billimek-charts
+    path: charts/nzbget
+    ref: master
   values:
     fullnameOverride: plex-kube-plex
     image:
@@ -52,9 +52,10 @@ spec:
         accessMode: ReadWriteMany
         size: 50Gi
       extraMounts:
-      - name: "mnt/unionfs"                         # local mount path
+      - name: media
         storageClass: media
         claimName: nfs-media-pvc
+        mountPath: mnt/unionfs
       config:
         storageClass: "rook-ceph-block"
         accessMode: ReadWriteOnce
