@@ -50,9 +50,10 @@ spec:
     tolerations:
     resources:
       requests:
-        memory: 300Mi
+        memory: 1000Mi
         cpu: 250m
       limits:
-        memory: 4000Mi
+        memory: 6000Mi
+        cpu: 2500m
   valueFileSecrets:
   - name: "nzbget-helm-values"
