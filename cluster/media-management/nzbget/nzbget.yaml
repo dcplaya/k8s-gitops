@@ -40,7 +40,7 @@ spec:
       - name: media                        # local mount path
         storageClass: media
         claimName: nfs-media-pvc
-        mountPath: "/mnt/unionfs"
+#        mountPath: "/mnt/unionfs"
       config:
         enabled: true
         storageClass: "rook-ceph-block"
