@@ -180,7 +180,7 @@ echo "---" >> "${GENERATED_SECRETS}"
 
 # 4k sonarr episode prune - media-management namespace
 kubectl create secret generic sonarr-4k-episode-prune \
-  --from-literal=api-key="${4K_SONARR_APIKEY}" \
+  --from-literal=api-key="${SONARR_4K_APIKEY}" \
   --namespace media-management --dry-run=client -o json \
   | \
 kubeseal --format=yaml --cert="${PUB_CERT}" \
@@ -198,7 +198,7 @@ echo "---" >> "${GENERATED_SECRETS}"
 
 # sonarr 4K exporter
 kubectl create secret generic sonarr-4k-exporter \
-  --from-literal=api-key="${4K_SONARR_APIKEY}" \
+  --from-literal=api-key="${SONARR_4K_APIKEY}" \
   --namespace media-management --dry-run=client -o json \
   | \
 kubeseal --format=yaml --cert="${PUB_CERT}" \
@@ -216,7 +216,7 @@ echo "---" >> "${GENERATED_SECRETS}"
 
 # radarr 4K exporter
 kubectl create secret generic radarr-4k-exporter \
-  --from-literal=api-key="${4K_RADARR_APIKEY}" \
+  --from-literal=api-key="${RADARR_4K_APIKEY}" \
   --namespace media-management --dry-run=client -o json \
   | \
 kubeseal --format=yaml --cert="${PUB_CERT}" \
