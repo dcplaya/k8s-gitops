@@ -18,7 +18,7 @@ spec:
   values:
     image:
       repository: linuxserver/bazarr
-      tag: v0.8.4.3-ls74
+      tag: arm64v8-254e9953-ls28
     ingress:
       enabled: true
       annotations:
