@@ -20,8 +20,8 @@ spec:
       repository: postgres
       tag: 12.2
     postgresqlDataDir: "/data/pgdata"
-    postgresqlUsername: "homeassistant"
-    postgresqlDatabase: "homeassistant"
+#    postgresqlUsername: "homeassistant"
+#    postgresqlDatabase: "homeassistant"
     persistence:
       enabled: true
       storageClass: "rook-ceph-block"
