@@ -178,6 +178,15 @@ kubeseal --format=yaml --cert="${PUB_CERT}" \
   >> "${GENERATED_SECRETS}"
 echo "---" >> "${GENERATED_SECRETS}"
 
+# 4k sonarr episode prune - media-management namespace
+kubectl create secret generic sonarr-4k-episode-prune \
+  --from-literal=api-key="${4K_SONARR_APIKEY}" \
+  --namespace media-management --dry-run=client -o json \
+  | \
+kubeseal --format=yaml --cert="${PUB_CERT}" \
+  >> "${GENERATED_SECRETS}"
+echo "---" >> "${GENERATED_SECRETS}"
+
 # sonarr exporter
 kubectl create secret generic sonarr-exporter \
   --from-literal=api-key="${SONARR_APIKEY}" \
@@ -187,9 +196,27 @@ kubeseal --format=yaml --cert="${PUB_CERT}" \
   >> "${GENERATED_SECRETS}"
 echo "---" >> "${GENERATED_SECRETS}"
 
+# sonarr 4K exporter
+kubectl create secret generic sonarr-4k-exporter \
+  --from-literal=api-key="${4K_SONARR_APIKEY}" \
+  --namespace media-management --dry-run=client -o json \
+  | \
+kubeseal --format=yaml --cert="${PUB_CERT}" \
+  >> "${GENERATED_SECRETS}"
+echo "---" >> "${GENERATED_SECRETS}"
+
 # radarr exporter
 kubectl create secret generic radarr-exporter \
   --from-literal=api-key="${RADARR_APIKEY}" \
+  --namespace media-management --dry-run=client -o json \
+  | \
+kubeseal --format=yaml --cert="${PUB_CERT}" \
+  >> "${GENERATED_SECRETS}"
+echo "---" >> "${GENERATED_SECRETS}"
+
+# radarr 4K exporter
+kubectl create secret generic radarr-4k-exporter \
+  --from-literal=api-key="${4K_RADARR_APIKEY}" \
   --namespace media-management --dry-run=client -o json \
   | \
 kubeseal --format=yaml --cert="${PUB_CERT}" \
