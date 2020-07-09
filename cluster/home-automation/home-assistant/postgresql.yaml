@@ -22,6 +22,9 @@ spec:
     postgresqlDataDir: "/data/pgdata"
 #    postgresqlUsername: "homeassistant"
 #    postgresqlDatabase: "homeassistant"
+    securityContext:
+      fsGroup: 1000
+      runAsUser: 1000
     persistence:
       enabled: true
       storageClass: "rook-ceph-block"
