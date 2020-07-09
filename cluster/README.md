@@ -14,3 +14,10 @@
 | rook-ceph          	| 10.201.110.0/24 	|       	|
 | velero             	| 10.201.120.0/24 	|       	|
 | testing-grounds    	| 10.201.250.0/24 	|       	|
+
+
+# Rook Ceph Dashbaord Set password
+
+```
+kubectl -n rook-ceph get secret rook-ceph-dashboard-password -o jsonpath="{['data']['password']}" | base64 --decode && echo
+```

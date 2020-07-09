@@ -72,3 +72,4 @@ Installs [frigate](https://github.com/blakeblackshear/frigate/): Realtime object
 | ser2sock       	| N/A          	|       	|
 | vernemq        	| 10.201.40.10 	|       	|
 | zwave2mqtt     	| N/A          	|       	|
+| unifi-video    	| 10.201.40.20 	|       	|

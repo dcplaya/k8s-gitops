@@ -18,7 +18,7 @@ spec:
   values:
     image:
       repository: linuxserver/bazarr
-      tag: arm64v8-00cecaab-ls28
+      tag: arm64v8-43a5533a-ls28
     ingress:
       enabled: true
       annotations:
@@ -39,9 +39,8 @@ spec:
       movies:
         enabled: false
       extraExistingClaimMounts:
-      - name: media
+      - name: mnt/unionfs
         existingClaim: nfs-media-pvc
-#          mountPath: unionfs/Media
         readOnly: false
     resources:
       requests:

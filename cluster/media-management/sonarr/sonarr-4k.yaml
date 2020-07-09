@@ -2,25 +2,25 @@
 apiVersion: helm.fluxcd.io/v1
 kind: HelmRelease
 metadata:
-  name: radarr
+  name: 4ksonarr
   namespace: media-management
   annotations:
     fluxcd.io/ignore: false
     fluxcd.io/automated: true
     fluxcd.io/tag.chart-image: semver:3.0
 spec:
-  releaseName: radarr
+  releaseName: 4ksonarr
   helmVersion: v3
   rollback:
     enable: true
   chart:
     repository: https://billimek.com/billimek-charts/
-    name: radarr
+    name: sonarr
     version: 3.2.0
   values:
     image:
-      repository: linuxserver/radarr
-      tag: 3.0.0.2719-ls1
+      repository: linuxserver/sonarr
+      tag: 3.0.3.731-ls186
     ingress:
       enabled: true
       annotations:
@@ -37,7 +37,7 @@ spec:
         size: 12Gi
       downloads:
         enabled: false
-      movies:
+      tv:
         enabled: false
       extraExistingClaimMounts:
         - name: media
@@ -54,4 +54,4 @@ spec:
     - key: "arm"
       operator: "Exists"
   valueFileSecrets:
-  - name: "radarr-helm-values"
+  - name: "sonarr-4k-helm-values"

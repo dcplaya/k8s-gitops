@@ -5,6 +5,7 @@ metadata:
   name: nzbget
   namespace: media-management
   annotations:
+    fluxcd.io/ignore: false
     fluxcd.io/automated: true
     fluxcd.io/tag.chart-image: 'regexp:^(v[0-9]+\.[0-9]+-ls.*)$'
 spec:
@@ -13,9 +14,9 @@ spec:
   rollback:
     enable: true
   chart:
-    repository: https://billimek.com/billimek-charts/
-    name: nzbget
-    version: 3.2.0
+    git: git@github.com:dcplaya/billimek-charts
+    path: charts/nzbget
+    ref: master
   values:
     image:
       repository: linuxserver/nzbget
@@ -28,16 +29,20 @@ spec:
       annotations:
         kubernetes.io/ingress.class: "nginx"
     timezone: "America/Los_Angeles"
+    puid: 1000
+    guid: 1000
     podAnnotations:
       backup.velero.io/backup-volumes: config
     persistence:
       downloads:
-        enabled: false
+        enabled: true
+        storageClass: "rook-ceph-block"
+        size: 200Gi
       extraMounts:
-      - name: mnt                         # local mount path
+      - name: "media"
         storageClass: media
-        claimName: nfs-data-pvc
-        mountPath: /mnt
+        claimName: nfs-media-pvc
+        mountPath: mnt/unionfs
       config:
         enabled: true
         storageClass: "rook-ceph-block"
@@ -45,9 +50,10 @@ spec:
     tolerations:
     resources:
       requests:
-        memory: 300Mi
-        cpu: 25m
+        memory: 1000Mi
+        cpu: 250m
       limits:
-        memory: 400Mi
+        memory: 6000Mi
+        cpu: 2500m
   valueFileSecrets:
   - name: "nzbget-helm-values"

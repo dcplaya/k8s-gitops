@@ -46,6 +46,13 @@ Based on this [custom helm chart](https://github.com/billimek/billimek-charts/tr
 * [uptimerobot/uptimerobot.yaml](uptimerobot/uptimerobot.yaml)
 * [uptimerobot/uptimerobot-helm-values.yaml](uptimerobot/uptimerobot-helm-values.yaml)
 
+# Kubernetes dashboard
+
+To get token key to log in
+
+```
+kubectl get secret -n monitoring $(kubectl get serviceaccount -n monitoring admin-user -o jsonpath="{.secrets[0].name}") -o jsonpath="{.data.token}" | base64 --decode
+```
 
 
 # LoadBalanceIP addresses for monitoring namespace
