@@ -30,6 +30,12 @@ data:
                 class: ["02"]
                 vendor: ["0658"]
                 device: ["0200"]
+        - name: "zigbee"
+          matchOn:
+            - usbId:
+                class: ["255"]
+                vendor: ["10c4"]
+                device: ["8a2a"]
         - name: "coral-tpu"
           matchOn:
             - usbId:
