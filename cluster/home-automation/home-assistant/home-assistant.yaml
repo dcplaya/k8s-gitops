@@ -15,7 +15,7 @@ spec:
   rollback:
     enable: true
   chart:
-    git: git@github.com:dcplaya/billimek-chart
+    git: git@github.com:dcplaya/billimek-charts
     path: charts/home-assistant
     ref: master
   values:
@@ -32,7 +32,7 @@ spec:
         kubernetes.io/ingress.class: "nginx"
     socat:
       enabled: true
-      arguments: ["pty,link=/dev/ttyUSB0,raw,user=0,group=0,mode=777", "tcp:ser2sock.home-automation.svc:10000"]
+      arguments: ["pty,link=/dev/ttyUSB0,raw,user=0,group=0,mode=777", "tcp:ser2sock-zigbee.home-automation.svc:10000"]
     probes:
       liveness:
         enabled: false
