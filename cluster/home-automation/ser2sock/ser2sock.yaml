@@ -9,8 +9,8 @@ metadata:
   name: ser2sock
   namespace: home-automation
   annotations:
-    fluxcd.io/ignore: "true"
-    fluxcd.io/automated: "false"
+    fluxcd.io/ignore: false
+    fluxcd.io/automated: false
 spec:
   releaseName: ser2sock
   helmVersion: v3
@@ -19,22 +19,24 @@ spec:
   chart:
     repository: https://billimek.com/billimek-charts/
     name: ser2sock
-    version: 1.0.1
+    version: 1.0.2
   values:
     image:
       repository: tenstartups/ser2sock
-      tag: armhf
+      tag: latest
       imagePullPolicy: Always
     timezone: "America/Los_Angeles"
+    device: "/dev/serial/by-id/usb-Silicon_Labs_HubZ_Smart_Home_Controller_813004F4-if00-port0"
     affinity:
       nodeAffinity:
         requiredDuringSchedulingIgnoredDuringExecution:
           nodeSelectorTerms:
           - matchExpressions:
-            - key: usb
+            - key: "feature.node.kubernetes.io/usb-ff_10c4_8a2a.present"
               operator: In
               values:
-              - alarmdecoder
+              - true
+              # feature.node.kubernetes.io/usb-ff_10c4_8a2a.present: true
     tolerations:
     - key: "arm"
       operator: "Exists"
