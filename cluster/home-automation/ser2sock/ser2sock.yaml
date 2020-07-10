@@ -12,7 +12,7 @@ metadata:
     fluxcd.io/ignore: false
     fluxcd.io/automated: false
 spec:
-  releaseName: ser2sock
+  releaseName: ser2sock-zigbee
   helmVersion: v3
   rollback:
     enable: true
