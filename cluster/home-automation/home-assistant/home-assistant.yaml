@@ -15,9 +15,9 @@ spec:
   rollback:
     enable: true
   chart:
-    repository: https://kubernetes-charts.storage.googleapis.com/
-    name: home-assistant
-    version: 0.13.2
+    git: git@github.com:dcplaya/billimek-charts
+    path: charts/home-assistant
+    ref: master
   values:
     image:
       repository: homeassistant/home-assistant
@@ -33,6 +33,18 @@ spec:
     # tolerations:
     # - key: "arm"
     #   operator: "Exists"
+    socat:
+      enabled: true
+      arguments: "["pty,link=/dev/ttyUSB1,raw,user=0,group=0,mode=777", "tcp:ser2sock.home-automation.svc:10000"]"
+    affinity:
+      nodeAffinity:
+        requiredDuringSchedulingIgnoredDuringExecution:
+          nodeSelectorTerms:
+          - matchExpressions:
+            - key: usb
+              operator: In
+              values:
+              - alarmdecoder
     probes:
       liveness:
         enabled: false
