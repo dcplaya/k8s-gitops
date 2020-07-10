@@ -14,6 +14,10 @@ spec:
     name: prometheus-operator
     version: 8.14.0
   values:
+    defaultRules:
+      rules:
+        kubeApiserverAvailability: false
+        kubeApiserver: false
     prometheusOperator:
       createCustomResource: false
     alertmanager:
