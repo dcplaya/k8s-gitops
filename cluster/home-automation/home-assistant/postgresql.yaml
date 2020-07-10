@@ -29,7 +29,7 @@ spec:
       enabled: true
       storageClass: "rook-ceph-block"
       mountPath: "/data/"
-      size: 20Gi
+      size: 50Gi
     metrics:
       enabled: true
       serviceMonitor:
