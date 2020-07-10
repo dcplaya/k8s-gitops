@@ -15,7 +15,7 @@ spec:
   rollback:
     enable: true
   chart:
-    git: git@github.com:dcplaya/billimek-charts
+    git: git@github.com:dcplaya/billimek-chart
     path: charts/home-assistant
     ref: master
   values:
