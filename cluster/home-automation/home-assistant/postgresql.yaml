@@ -25,6 +25,8 @@ spec:
     securityContext:
       fsGroup: 1000
       runAsUser: 1000
+    podAnnotations:
+      backup.velero.io/backup-volumes: data
     persistence:
       enabled: true
       storageClass: "rook-ceph-block"
