@@ -14,14 +14,12 @@ spec:
   chart:
     repository: https://charts.bitnami.com/bitnami
     name: postgresql
-    version: 8.10.14
+    version: 8.10.15
   values:
     image:
       repository: postgres
       tag: 12.2
     postgresqlDataDir: "/data/pgdata"
-#    postgresqlUsername: "homeassistant"
-#    postgresqlDatabase: "homeassistant"
     securityContext:
       fsGroup: 1000
       runAsUser: 1000
