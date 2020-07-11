@@ -33,7 +33,6 @@ data:
         - name: "zigbee"
           matchOn:
             - usbId:
-                class: ["ff"]
                 vendor: ["10c4"]
                 device: ["8a2a"]
         - name: "coral-tpu"
