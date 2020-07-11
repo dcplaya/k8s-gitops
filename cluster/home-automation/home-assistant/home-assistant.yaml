@@ -32,7 +32,7 @@ spec:
         kubernetes.io/ingress.class: "nginx"
     cmdOverride:
       enabled: true
-      shellArgs: "zha start && python -m homeassistant --config /config"
+      shellArgs: "zha start && && zwave start && python -m homeassistant --config /config"
     extraVolumes:
     - name: zha
       configMap:
@@ -41,10 +41,20 @@ spec:
         items:
         - key: zha                                                              # name of data inside configMap
           path: zha
+    - name: zwave
+      configMap:
+        defaultMode: 0555
+        name: zwave                                                             # name of configMap
+        items:
+        - key: zhave                                                            # name of data inside configMap
+          path: zwave
     extraVolumeMounts:
     - name: zha                                                                 # name of extraVolumes associated with it
       mountPath: /usr/bin/zha
       subPath: zha
+    - name: zwave                                                               # name of extraVolumes associated with it
+      mountPath: /usr/bin/zwave
+      subPath: zwave
     probes:
       liveness:
         enabled: false
