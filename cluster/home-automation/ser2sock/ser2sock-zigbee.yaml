@@ -7,10 +7,7 @@ apiVersion: helm.fluxcd.io/v1
 kind: HelmRelease
 metadata:
   name: ser2sock-zigbee
-  namespace: home-automation
-  annotations:
-    fluxcd.io/ignore: false
-    fluxcd.io/automated: false
+  namespace: home-assistant
 spec:
   releaseName: ser2sock-zigbee
   helmVersion: v3
@@ -27,16 +24,15 @@ spec:
       imagePullPolicy: Always
     timezone: "America/Los_Angeles"
     device: "/dev/serial/by-id/usb-Silicon_Labs_HubZ_Smart_Home_Controller_813004F4-if01-port0"
+    tolerations:
+    - key: "arm"
+      operator: "Exists"
     affinity:
       nodeAffinity:
         requiredDuringSchedulingIgnoredDuringExecution:
           nodeSelectorTerms:
-          - matchExpressions:
-              - {key: "feature.node.kubernetes.io/usb-ff_10c4_8a2a.present", operator: In, values: ["true"]}
-              # feature.node.kubernetes.io/usb-ff_10c4_8a2a.present: true
-    tolerations:
-    - key: "arm"
-      operator: "Exists"
+            - matchExpressions:
+                - {key: "feature.node.kubernetes.io/usb-ff_10c4_8a2a.present", operator: In, values: ["true"]}
     resources:
       requests:
         memory: 50Mi
