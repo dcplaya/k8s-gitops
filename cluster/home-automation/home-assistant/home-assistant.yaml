@@ -45,7 +45,7 @@ spec:
           path: zha
     extraVolumeMounts:
     - name: zha                                                                 # name of extraVolumes
-      mountPath: /usr/bin
+      mountPath: /usr/bin/zha
     probes:
       liveness:
         enabled: false
