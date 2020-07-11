@@ -33,7 +33,7 @@ spec:
     cmdOverride:
       enabled: true
 #      shellArgs: "zha && python -m homeassistant --config /config"
-      shellArgs: "zha && python -m homeassistant --config /config"
+      shellArgs: "zha start && python -m homeassistant --config /config"
     extraVolumes:
     - name: zha
       configMap:
