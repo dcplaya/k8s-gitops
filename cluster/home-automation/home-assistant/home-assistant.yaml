@@ -42,9 +42,9 @@ spec:
         items:
         - key: zha                                                              # name of data inside configMap
           path: zha
-#    extraVolumeMounts:
-#    - name: zha                                                                 # name of extraVolumes associated with it
-#      mountPath: /usr/bin/zha
+    extraVolumeMounts:
+    - name: zha                                                                 # name of extraVolumes associated with it
+      mountPath: /usr/bin/zha
     probes:
       liveness:
         enabled: false
