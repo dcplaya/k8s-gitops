@@ -37,13 +37,12 @@ spec:
 #      - "tcp:ser2sock-zigbee.home-automation.svc:10000"
     extraVolumes:
     - name: zha
-      source:
-        configmap:
-          defaultMode: 0555
-          name: zha                                                             # name of configMap
-          items:
-            key: zha                                                            # name of data inside configMap
-            path: zha
+      configmap:
+        defaultMode: 0555
+        name: zha                                                              # name of configMap
+        items:
+          key: zha                                                             # name of data inside configMap
+          path: zha
     mountPath: /usr/bin/
     subPath: zha
     probes:
