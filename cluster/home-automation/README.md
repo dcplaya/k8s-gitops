@@ -20,6 +20,17 @@ This also installs a postgresql deployment for holding the Home Assistant state 
 
 * [home-assistant.yaml](home-assistant/home-assistant.yaml)
 * [postgresql.yaml](home-assistant/postgresql.yaml)
+To migrate the PostGRE SQL database, you must migrate them using `pg_dump` since the container does not have busybox or SSH
+
+When you want to export from locahost
+```
+pg_dump -C -h remotehost -U remoteuser dbname | psql -h localhost -U localuser dbname
+```
+
+When you want to import from remote
+```
+ pg_dump -C -h localhost -U carpenam homeassistant | psql -h 10.10.1.60 -U carpenam homeassistant
+ ```
 
 # node-red
 

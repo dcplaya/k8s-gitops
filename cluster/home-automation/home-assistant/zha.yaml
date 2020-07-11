@@ -1,0 +1,27 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: zha
+  namespace: home-automation
+  annotations:
+    fluxcd.io/ignore: false
+data:
+  zha: |
+    #!/bin/bash
+    case "$1" in
+        start)
+          socat pty,link=/dev/ttyZHA,raw,user=0,group=0,mode=777 tcp:ser2sock-zigbee.home-automation.svc:10000,forever,interval=10,fork &
+          ;;
+        stop)
+          stop
+          ;;
+        restart)
+          stop
+          start
+          ;;
+        status)
+          ;;
+        *)
+          echo "Usage: $0 {start|stop|status|restart}"
+    esac
+    exit 0

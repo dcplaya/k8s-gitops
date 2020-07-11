@@ -27,13 +27,11 @@ data:
         - name: "zwave"
           matchOn:
             - usbId:
-                class: ["02"]
-                vendor: ["0658"]
-                device: ["0200"]
+                vendor: ["10c4"]
+                device: ["8a2a"]
         - name: "zigbee"
           matchOn:
             - usbId:
-                class: ["ff"]
                 vendor: ["10c4"]
                 device: ["8a2a"]
         - name: "coral-tpu"
