@@ -7,7 +7,7 @@ metadata:
   annotations:
     fluxcd.io/ignore: false
     fluxcd.io/automated: true
-#    fluxcd.io/tag.chart-image: semver:~0.
+    fluxcd.io/tag.chart-image: semver:~0.
     filter.fluxcd.io/vscode: "regex:^3.[0-9]+-.*$"
 spec:
   releaseName: home-assistant
@@ -56,7 +56,7 @@ spec:
       enabled: false
       image:
         repository: codercom/code-server
-        tag: 3.1.1
+        tag: 3.4.1
       ingress:
         enabled: true
         annotations:
