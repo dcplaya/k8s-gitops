@@ -31,10 +31,9 @@ spec:
       annotations:
         kubernetes.io/ingress.class: "nginx"
     cmdOverride:
-      enabled: false
-      shellArgs: "zha && python -m homeassistant --config /config"
-#      - "pty,link=/dev/ttyUSB0,raw,user=0,group=0,mode=777"
-#      - "tcp:ser2sock-zigbee.home-automation.svc:10000"
+      enabled: true
+#      shellArgs: "zha && python -m homeassistant --config /config"
+      shellArgs: "python -m homeassistant --config /config"
     extraVolumes:
     - name: zha
       configMap:
@@ -44,7 +43,7 @@ spec:
         - key: zha                                                              # name of data inside configMap
           path: zha
 #    extraVolumeMounts:
-#    - name: zha                                                                 # name of extraVolumes
+#    - name: zha                                                                 # name of extraVolumes associated with it
 #      mountPath: /usr/bin/zha
     probes:
       liveness:
