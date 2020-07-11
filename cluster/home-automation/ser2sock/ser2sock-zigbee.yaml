@@ -17,9 +17,12 @@ spec:
   rollback:
     enable: true
   chart:
-    repository: https://billimek.com/billimek-charts/
-    name: ser2sock
-    version: 1.0.2
+#    repository: https://billimek.com/billimek-charts/
+#    name: ser2sock
+#    version: 1.0.2
+    git: git@github.com:dcplaya/billimek-charts
+    path: charts/ser2sock
+    ref: master
   values:
     image:
       repository: tenstartups/ser2sock
@@ -29,6 +32,7 @@ spec:
     device: "/dev/serial/by-id/usb-Silicon_Labs_HubZ_Smart_Home_Controller_813004F4-if01-port0"
     puid: "1000"
     pgid: "1000"
+    baudRate: "57600"
     affinity:
       nodeAffinity:
         requiredDuringSchedulingIgnoredDuringExecution:
