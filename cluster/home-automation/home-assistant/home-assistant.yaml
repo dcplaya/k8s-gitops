@@ -39,12 +39,13 @@ spec:
     - name: zha
       configmap:
         defaultMode: 0555
-        name: zha                                                              # name of configMap
+        name: zha                                                               # name of configMap
         items:
-          key: zha                                                             # name of data inside configMap
+        - key: zha                                                              # name of data inside configMap
           path: zha
-    mountPath: /usr/bin/
-    subPath: zha
+    extraVolumeMounts:
+    - name: zha                                                                 # name of extraVolumes
+      mountPath: /usr/bin
     probes:
       liveness:
         enabled: false
