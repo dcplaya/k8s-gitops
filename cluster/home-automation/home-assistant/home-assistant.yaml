@@ -46,7 +46,7 @@ spec:
         defaultMode: 0555
         name: zwave                                                             # name of configMap
         items:
-        - key: zhave                                                            # name of data inside configMap
+        - key: zwave                                                            # name of data inside configMap
           path: zwave
     extraVolumeMounts:
     - name: zha                                                                 # name of extraVolumes associated with it
