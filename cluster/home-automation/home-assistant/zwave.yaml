@@ -6,7 +6,7 @@ metadata:
   annotations:
     fluxcd.io/ignore: false
 data:
-  zha: |
+  zwave: |
     #!/bin/bash
     case "$1" in
         start)
