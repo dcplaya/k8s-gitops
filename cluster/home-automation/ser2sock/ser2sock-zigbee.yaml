@@ -27,6 +27,8 @@ spec:
       imagePullPolicy: Always
     timezone: "America/Los_Angeles"
     device: "/dev/serial/by-id/usb-Silicon_Labs_HubZ_Smart_Home_Controller_813004F4-if01-port0"
+    puid: "1000"
+    pgid: "1000"
     affinity:
       nodeAffinity:
         requiredDuringSchedulingIgnoredDuringExecution:
