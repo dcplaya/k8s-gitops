@@ -30,11 +30,22 @@ spec:
       enabled: true
       annotations:
         kubernetes.io/ingress.class: "nginx"
-    socat:
+    cmdOverride:
       enabled: true
-#      arguments:
+      shellArgs: "zha && python -m homeassistant --config /config"
 #      - "pty,link=/dev/ttyUSB0,raw,user=0,group=0,mode=777"
 #      - "tcp:ser2sock-zigbee.home-automation.svc:10000"
+    extraVolumes:
+    - name: zha
+      source:
+        configmap:
+          defaultMode: 0555
+          name: zha
+          #items:
+            #key: zha-config
+            #path: zha
+    mountPath: /usr/bin/zha
+    subPath: zha
     probes:
       liveness:
         enabled: false
