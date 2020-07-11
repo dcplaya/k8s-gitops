@@ -3,6 +3,8 @@ apiVersion: v1
 metadata:
   name: zha
   namespace: home-automation
+  annotations:
+    fluxcd.io/ignore: false
 data:
   zha: |
     #!/bin/bash
