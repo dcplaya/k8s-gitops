@@ -1,7 +1,7 @@
 kind: ConfigMap
 apiVersion: v1
 metadata:
-  name: zha
+  name: zwave
   namespace: home-automation
   annotations:
     fluxcd.io/ignore: true
