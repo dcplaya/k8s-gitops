@@ -7,7 +7,10 @@ apiVersion: helm.fluxcd.io/v1
 kind: HelmRelease
 metadata:
   name: ser2sock-zigbee
-  namespace: home-assistant
+  namespace: home-automation
+  annotations:
+    fluxcd.io/ignore: false
+    fluxcd.io/automated: false
 spec:
   releaseName: ser2sock-zigbee
   helmVersion: v3
