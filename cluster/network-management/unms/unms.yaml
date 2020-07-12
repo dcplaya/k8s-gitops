@@ -14,9 +14,12 @@ spec:
   rollback:
     enable: false
   chart:
-    git: git@github.com:t3n/helm-charts
+#    git: git@github.com:t3n/helm-charts
+#    path: unms
+#    ref: master
+    git: git@github.com:dcplaya/helm-charts
     path: unms
-    ref: master
+    ref: unms
   values:
     image:
       repository: ubnt/unms
@@ -24,7 +27,7 @@ spec:
     persistence:
       enabled: true
       size: 10Gi
-      storageClass: rook-ceph-block
+      storageClassName: rook-ceph-block
     timezone: "America/Los_Angeles"
     ingress:
       enabled: true
