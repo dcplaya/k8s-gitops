@@ -39,21 +39,6 @@ spec:
         nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
     podAnnotations:
       backup.velero.io/backup-volumes: data
-    # Leave default to use rabbitmq of this chart
-    rabbitmq-ha:
-      host: unms-rabbitmq-ha
-      port: "5672"
-      rabbitmqUsername: guest
-      rabbitmqPassword: guest
-      rabbitmqAuth:
-        enabled: true
-        config: |
-          auth_mechanisms.1 = PLAIN
-          auth_mechanisms.2 = AMQPLAIN
-      persistence:
-        enabled: true
-        persistence:
-          size: 5Gi
     resources:
       requests:
         memory: 128Mi
