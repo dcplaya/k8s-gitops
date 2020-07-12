@@ -36,10 +36,10 @@ spec:
         repository: alpine/socat
         tag: 1.7.3.4-r0
       devices:
-      - name: zigbee-device
-        mountPath: /dev/zigbee
-        ip: ser2sock-zigbee.home-automation.svc
-        port: 10000
+        - name: zigbee-device
+          mountPath: /dev/zigbee
+          ip: ser2sock-zigbee.home-automation.svc
+          port: 10000
 #    cmdOverride:
 #      enabled: true
 #      shellArgs: "zha start && zwave start && python -m homeassistant --config /config"
