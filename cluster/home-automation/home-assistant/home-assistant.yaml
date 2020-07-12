@@ -17,7 +17,7 @@ spec:
   chart:
     git: git@github.com:dcplaya/billimek-charts
     path: charts/home-assistant
-    ref: master
+    ref: HA-Sidecar
   values:
     image:
       repository: homeassistant/home-assistant
@@ -30,31 +30,41 @@ spec:
       enabled: true
       annotations:
         kubernetes.io/ingress.class: "nginx"
-    cmdOverride:
+    socat:
       enabled: true
-      shellArgs: "zha start && zwave start && python -m homeassistant --config /config"
-    extraVolumes:
-    - name: zha
-      configMap:
-        defaultMode: 0555
-        name: zha                                                               # name of configMap
-        items:
-        - key: zha                                                              # name of data inside configMap
-          path: zha
-    - name: zwave
-      configMap:
-        defaultMode: 0555
-        name: zwave                                                             # name of configMap
-        items:
-        - key: zwave                                                            # name of data inside configMap
-          path: zwave
-    extraVolumeMounts:
-    - name: zha                                                                 # name of extraVolumes associated with it
-      mountPath: /usr/bin/zha
-      subPath: zha
-    - name: zwave                                                               # name of extraVolumes associated with it
-      mountPath: /usr/bin/zwave
-      subPath: zwave
+      image:
+        repository: alpine/socat
+        tag: 1.7.3.4-r0
+      devices:
+      - name: zigbee-device
+        mountPath: /dev/zigbee
+        ip: ser2sock-zigbee.home-automation.svc
+        port: 10000
+#    cmdOverride:
+#      enabled: true
+#      shellArgs: "zha start && zwave start && python -m homeassistant --config /config"
+#    extraVolumes:
+#    - name: zha
+#      configMap:
+#        defaultMode: 0555
+#        name: zha                                                               # name of configMap
+#        items:
+#        - key: zha                                                              # name of data inside configMap
+#          path: zha
+#    - name: zwave
+#      configMap:
+#        defaultMode: 0555
+#        name: zwave                                                             # name of configMap
+#        items:
+#        - key: zwave                                                            # name of data inside configMap
+#          path: zwave
+#    extraVolumeMounts:
+#    - name: zha                                                                 # name of extraVolumes associated with it
+#      mountPath: /usr/bin/zha
+#      subPath: zha
+#    - name: zwave                                                               # name of extraVolumes associated with it
+#      mountPath: /usr/bin/zwave
+#      subPath: zwave
     probes:
       liveness:
         enabled: false
