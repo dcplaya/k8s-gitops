@@ -16,7 +16,7 @@ spec:
   chart:
     git: git@github.com:t3n/helm-charts
     path: unms
-    ref: helm-v3
+    ref: master
   values:
     image:
       repository: ubnt/unms
@@ -31,10 +31,24 @@ spec:
       annotations:
         kubernetes.io/ingress.class: "nginx"
         nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
-        #ingress.kubernetes.io/proxy-body-size: "50m"
-        #nginx.ingress.kubernetes.io/proxy-body-size: 500m
     podAnnotations:
       backup.velero.io/backup-volumes: data
+    # Leave default to use rabbitmq of this chart
+    rabbitmq-ha:
+      host: unms-rabbitmq-ha
+      port: "5672"
+      rabbitmqUsername: guest
+      rabbitmqPassword: guest
+      rabbitmqAuth:
+        enabled: true
+        config: |
+          auth_mechanisms.1 = PLAIN
+          auth_mechanisms.2 = AMQPLAIN
+      persistence:
+        enabled: true
+        persistence:
+          size: 5Gi
+          storageClass: rook-ceph-block
     resources:
       requests:
         memory: 128Mi
