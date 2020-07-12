@@ -14,9 +14,12 @@ spec:
   rollback:
     enable: true
   chart:
-    git: git@github.com:dcplaya/billimek-charts
-    path: charts/nzbget
-    ref: master
+    repository: https://billimek.com/billimek-charts/
+    name: nzbget
+    version: 3.2.1
+#    git: git@github.com:dcplaya/billimek-charts
+#    path: charts/nzbget
+#    ref: master
   values:
     image:
       repository: linuxserver/nzbget

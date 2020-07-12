@@ -14,9 +14,12 @@ spec:
   rollback:
     enable: false
   chart:
-    git: git@github.com:dcplaya/billimek-charts
-    path: charts/nzbget
-    ref: master
+    repository: https://billimek.com/billimek-charts/
+    name: plex
+    version: 1.6.1
+#    git: git@github.com:dcplaya/billimek-charts
+#    path: charts/nzbget
+#    ref: master
   values:
     fullnameOverride: plex-kube-plex
     image:
