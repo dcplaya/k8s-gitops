@@ -37,7 +37,7 @@ spec:
         tag: 1.7.3.4-r0
       devices:
         - name: zigbee-device
-          mountPath: /dev/zigbee
+          mountPath: /zigbee
           ip: ser2sock-zigbee.home-automation.svc
           port: 10000
 #    cmdOverride:
