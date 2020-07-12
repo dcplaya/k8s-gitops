@@ -21,7 +21,11 @@ spec:
   values:
     image:
       repository: homeassistant/home-assistant
+<<<<<<< HEAD
       tag: 0.113
+=======
+      tag: 0.113.0.dev20200712
+>>>>>>> 182ce08b552036d40c68988fd3c994ed8d069156
     persistence:
       enabled: true
       size: 10Gi
@@ -36,10 +40,10 @@ spec:
         repository: alpine/socat
         tag: 1.7.3.4-r0
       devices:
-        - name: zigbee-device
-          mountPath: /zigbee
-          ip: ser2sock-zigbee.home-automation.svc
-          port: 10000
+      - name: zigbee-device
+        mountPath: /zigbee
+        ip: ser2sock-zigbee.home-automation.svc
+        port: 10000
 #    cmdOverride:
 #      enabled: true
 #      shellArgs: "zha start && zwave start && python -m homeassistant --config /config"
