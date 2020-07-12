@@ -12,7 +12,7 @@ spec:
   releaseName: unms
   helmVersion: v3
   rollback:
-    enable: false
+    enable: true
   chart:
 #    git: git@github.com:t3n/helm-charts
 #    path: unms
