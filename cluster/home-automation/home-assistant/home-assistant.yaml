@@ -73,7 +73,7 @@ spec:
     podAnnotations:
       backup.velero.io/backup-volumes: config
     vscode:
-      enabled: false
+      enabled: true
       image:
         repository: codercom/code-server
         tag: 3.4.1
