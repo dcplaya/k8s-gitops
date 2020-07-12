@@ -48,7 +48,6 @@ spec:
         enabled: true
         persistence:
           size: 5Gi
-          storageClass: rook-ceph-block
     resources:
       requests:
         memory: 128Mi
