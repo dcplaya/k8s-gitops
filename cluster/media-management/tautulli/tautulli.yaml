@@ -19,7 +19,7 @@ spec:
   values:
     image:
       repository: linuxserver/tautulli
-      tag: amd64-latest
+      tag: amd64-4a4be979-ls10
     ingress:
       enabled: true
       annotations:
