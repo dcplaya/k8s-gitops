@@ -13,7 +13,7 @@ spec:
   releaseName: home-assistant
   helmVersion: v3
   rollback:
-    enable: true
+    enable: false
   chart:
     git: git@github.com:dcplaya/billimek-charts
     path: charts/home-assistant
