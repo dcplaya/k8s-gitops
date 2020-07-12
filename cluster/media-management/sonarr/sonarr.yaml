@@ -16,11 +16,11 @@ spec:
   chart:
     repository: https://billimek.com/billimek-charts/
     name: sonarr
-    version: 3.2.0
+    version: 3.2.1
   values:
     image:
       repository: linuxserver/sonarr
-      tag: 3.0.3.731-ls185
+      tag: 3.0.3.731-ls186
     ingress:
       enabled: true
       annotations:
