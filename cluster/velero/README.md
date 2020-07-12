@@ -6,5 +6,10 @@ Cluster backup solution
 
 
 ```
-velero restore create RESTORE_NAME --from-backup BACKUP_NAME --include-namespaces ns1,ns2 
-  ```
+velero restore create RESTORE_NAME --from-backup BACKUP_NAME --include-namespaces ns1,ns2
+```
+
+Backup just nzbget
+```
+velero backup create nzbget --selector "app.kubernetes.io/instance=nzbget" --wait
+```
