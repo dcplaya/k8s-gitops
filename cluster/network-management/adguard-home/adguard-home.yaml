@@ -36,7 +36,6 @@ spec:
       annotations:
         kubernetes.io/ingress.class: "nginx"
         nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
-        nginx.ingress.kubernetes.io/proxy-body-size: 500m
     service:
       type: LoadBalancer
       loadBalancerIP: 10.201.90.20
