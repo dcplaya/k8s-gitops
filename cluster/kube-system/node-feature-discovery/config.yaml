@@ -29,9 +29,17 @@ data:
             - usbId:
                 vendor: ["10c4"]
                 device: ["8a2a"]
+            - usbId:
+                class: ["ff"]
+                vendor: ["10c4"]
+                device: ["8a2a"]
         - name: "zigbee"
           matchOn:
             - usbId:
+                vendor: ["10c4"]
+                device: ["8a2a"]
+            - usbId:
+                class: ["ff"]
                 vendor: ["10c4"]
                 device: ["8a2a"]
         - name: "coral-tpu"
