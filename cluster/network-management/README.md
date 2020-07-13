@@ -14,3 +14,4 @@ ubiquiti unifi controller for wireless access points
 |       Service         	| IP Address       	| Notes 	|
 |:------------------:    	|-----------------	|-------	|
 | unifi                 	| 10.201.90.10     	|       	|
+| AdGuard Home           	| 10.201.90.20     	|       	|
