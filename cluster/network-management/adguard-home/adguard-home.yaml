@@ -20,7 +20,7 @@ spec:
   values:
     image:
       repository: adguard/adguardhome
-    tag: lates
+    tag: edge
     persistence:
       config:
         enabled: true
@@ -35,7 +35,6 @@ spec:
       enabled: true
       annotations:
         kubernetes.io/ingress.class: "nginx"
-        nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
     service:
       type: LoadBalancer
       loadBalancerIP: 10.201.90.20
