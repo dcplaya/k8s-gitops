@@ -16,7 +16,7 @@ spec:
   chart:
     git: git@github.com:dcplaya/billimek-charts
     path: charts/adguard-home
-    ref: adguard-home
+    ref: adguard-hom
   values:
     image:
       repository: adguard/adguardhome
