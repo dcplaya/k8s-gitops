@@ -52,17 +52,13 @@ spec:
         app: nfd
     spec:
       serviceAccount: nfd-master
-      tolerations:
-      - key: arm
-        operator: Exists
       containers:
         - env:
           - name: NODE_NAME
             valueFrom:
               fieldRef:
                 fieldPath: spec.nodeName
-          # using adaptant's custom image until there are proper multi-arch images
-          image: adaptant/node-feature-discovery:latest
+          image: quay.io/kubernetes_incubator/node-feature-discovery:latest
           name: nfd-master
           command:
             - "nfd-master"
@@ -71,14 +67,13 @@ spec:
             valueFrom:
               fieldRef:
                 fieldPath: spec.nodeName
-          # using adaptant's custom image until there are proper multi-arch images
-          image: adaptant/node-feature-discovery:latest
+          image: quay.io/kubernetes_incubator/node-feature-discovery:latest
           name: nfd-worker
           command:
             - "nfd-worker"
           args:
             - "--sleep-interval=60s"
-            - "--sources=custom,usb,pci"
+#            - "--sources=custom,usb,pci"
           volumeMounts:
             - name: host-boot
               mountPath: "/host-boot"
