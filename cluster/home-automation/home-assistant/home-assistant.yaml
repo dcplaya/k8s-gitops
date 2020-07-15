@@ -34,7 +34,7 @@ spec:
       enabled: false
       image:
         repository: alpine/socat
-        tag: latest
+        tag: 1.7.3.4-r0
       devices:
       - name: zigbee-device
         mountPath: /zigbee
