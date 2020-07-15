@@ -48,9 +48,9 @@ spec:
         size: 1Gi
         storageClass: rook-ceph-block
       data:
-        enabled: true
+        enabled: false
         storageClass: "media"
-        subPath: "/mnt/unionfs/downloads/torrents"
+        subPath: "downloads/torrents"
         existingClaim: nfs-media-pvc
     resources:
       requests:
