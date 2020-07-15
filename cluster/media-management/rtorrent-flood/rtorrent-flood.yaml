@@ -50,7 +50,7 @@ spec:
       data:
         enabled: true
         storageClass: "media"
-        subPath: mnt/unionfs
+        subPath: "/mnt/unionfs/downloads/torrents"
         existingClaim: nfs-media-pvc
     resources:
       requests:
