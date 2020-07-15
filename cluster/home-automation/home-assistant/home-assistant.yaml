@@ -31,7 +31,7 @@ spec:
       annotations:
         kubernetes.io/ingress.class: "nginx"
     socat:
-      enabled: true
+      enabled: false
       image:
         repository: alpine/socat
         tag: latest
@@ -40,6 +40,16 @@ spec:
         mountPath: /zigbee
         ip: ser2sock-zigbee.home-automation.svc
         port: 10000
+# Mount devices or folders from the host machine. Can be used for USB device mounting.
+    hostMounts:
+    - name: zha
+      hostPath: /dev/serial/by-id/usb-Silicon_Labs_HubZ_Smart_Home_Controller_6120245D-if01-port0
+    affinity:
+      nodeAffinity:
+        requiredDuringSchedulingIgnoredDuringExecution:
+          nodeSelectorTerms:
+          - matchExpressions:
+              - {key: "feature.node.kubernetes.io/custom-zigbee", operator: In, values: ["true"]}
 #    cmdOverride:
 #      enabled: true
 #      shellArgs: "zha start && zwave start && python -m homeassistant --config /config"
