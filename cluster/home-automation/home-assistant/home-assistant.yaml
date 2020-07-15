@@ -38,7 +38,7 @@ spec:
       devices:
       - name: zigbee-device
         mountPath: /zigbee
-        ip: ser2sock-zigbee.home-automation.svc
+        ip: ser2sock-zwave.home-automation.svc
         port: 10000
 # Mount devices or folders from the host machine. Can be used for USB device mounting.
 #    hostMounts:
