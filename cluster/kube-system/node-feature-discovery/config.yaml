@@ -6,6 +6,33 @@ metadata:
 data:
   nfd-worker.conf: |
     sources:
+      cpu:
+        cpuid:
+          attributeBlacklist:
+            - "BMI1"
+            - "BMI2"
+            - "CLMUL"
+            - "CMOV"
+            - "CX16"
+            - "ERMS"
+            - "F16C"
+            - "HTT"
+            - "LZCNT"
+            - "MMX"
+            - "MMXEXT"
+            - "NX"
+            - "POPCNT"
+            - "RDRAND"
+            - "RDSEED"
+            - "RDTSCP"
+            - "SGX"
+            - "SSE"
+            - "SSE2"
+            - "SSE3"
+            - "SSE4.1"
+            - "SSE4.2"
+            - "SSSE3"
+          attributeWhitelist:
       usb:
         deviceClassWhitelist:
           - "02"
