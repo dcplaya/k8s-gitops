@@ -38,6 +38,7 @@ spec:
           nodeSelectorTerms:
           - matchExpressions:
               - {key: "feature.node.kubernetes.io/custom-zwave", operator: In, values: ["true"]}
+              - {key: "feature.node.kubernetes.io/usb-ff_10c4_8a2a.present", operator: In, values: ["true"]}
     tolerations:
     - key: "arm"
       operator: "Exists"
