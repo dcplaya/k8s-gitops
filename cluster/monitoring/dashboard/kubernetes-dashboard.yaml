@@ -27,7 +27,7 @@ spec:
       annotations:
         kubernetes.io/ingress.class: "nginx"
     timezone: "America/Los_Angeles"
-    enableSkipLogin: false                                                      ## Enable possibility to skip login
+    enableSkipLogin: true                                                      ## Enable possibility to skip login
     podAnnotations:
       backup.velero.io/backup-volumes: config
     tolerations:
