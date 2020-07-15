@@ -5,7 +5,7 @@ metadata:
   name: rtorrent-flood
   namespace: media-management
   annotations:
-    fluxcd.io/ignore: true
+    fluxcd.io/ignore: false
     fluxcd.io/automated: true
     fluxcd.io/tag.chart-image: glob:0.9.*
 spec:
@@ -50,8 +50,8 @@ spec:
       data:
         enabled: true
         storageClass: "media"
-        subPath: "/mnt"
-        existingClaim: nfs-data-pvc
+        subPath: mnt/unionfs
+        existingClaim: nfs-media-pvc
     resources:
       requests:
         memory: 250Mi
