@@ -5,8 +5,8 @@ metadata:
   name: unifi-video
   namespace: home-automation
   annotations:
-    fluxcd.io/ignore: true
-    fluxcd.io/automated: true
+    fluxcd.io/ignore: false
+    fluxcd.io/automated: false
 #    fluxcd.io/tag.chart-image: 'regexp:^(1\.[0-9][0-9]\.[0-9]+)$'
 spec:
   releaseName: unifi-video
@@ -14,37 +14,41 @@ spec:
   rollback:
     enable: false
   chart:
-    git: git@github.com:t3n/helm-charts
-    path: unifi-video
-    ref: helm-v3
+    git: git@github.com:dcplaya/billimek-charts
+    path: charts/unifi-video
+    ref: unifi-video
   values:
     replicaCount: 1
     image:
       repository: pducharme/unifi-video-controller
-      tag: 3.10.10
+      tag: latest
     persistence:
-      enabled: true
-      size: 10Gi
-      storageClass: rook-ceph-block
-#    service:
-#      type: LoadBalancer
-#        loadBalancerIP: 10.201.40.20
+      config:
+        enabled: true
+        size: 5Gi
+        storageClass: rook-ceph-block
+      extraExistingClaimMounts:
+        - name: media
+          existingClaim: nfs-media-pvc
+          mountPath: "/mnt/unionfs"
+          readOnly: false
+    service:
+      type: LoadBalancer
+      loadBalancerIP: 10.201.40.20
+      annotations:
+        metallb.universe.tf/allow-shared-ip: unifi-video-svc
     timezone: "America/Los_Angeles"
     ingress:
       enabled: true
       annotations:
         kubernetes.io/ingress.class: "nginx"
-        nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
-        #ingress.kubernetes.io/proxy-body-size: "50m"
-        #nginx.ingress.kubernetes.io/proxy-body-size: 500m
     podAnnotations:
       backup.velero.io/backup-volumes: unifi-data
-    resources:
-      requests:
-        memory: 128Mi
-        cpu: 100m
-      limits:
-        memory: 750Mi
-        cpu: 200m
+#    resources:
+#      limits:
+#        memory: 750Mi
+#      requests:
+#        cpu: 100m
+#        memory: 128Mi
   valueFileSecrets:
-  - name: "unms-helm-values"
+  - name: "unifi-video-helm-values"
