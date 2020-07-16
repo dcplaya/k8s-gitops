@@ -14,9 +14,9 @@ spec:
   rollback:
     enable: false
   chart:
-    git: git@github.com:t3n/helm-charts
-    path: unifi-video
-    ref: master
+    git: git@github.com:dcplaya/billimek-charts
+    path: charts/unifi-video
+    ref: unifi-video
   values:
     replicaCount: 1
     image:
