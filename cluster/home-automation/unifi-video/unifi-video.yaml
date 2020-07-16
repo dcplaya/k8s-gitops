@@ -28,7 +28,7 @@ spec:
       storageClass: rook-ceph-block
     service:
       type: LoadBalancer
-        loadBalancerIP: 10.201.40.20
+      loadBalancerIP: 10.201.40.20
     timezone: "America/Los_Angeles"
     ingress:
       enabled: true
