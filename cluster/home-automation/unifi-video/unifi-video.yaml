@@ -29,6 +29,8 @@ spec:
     service:
       type: LoadBalancer
       loadBalancerIP: 10.201.40.20
+      annotations:
+        metallb.universe.tf/allow-shared-ip: unifi-video-svc
     timezone: "America/Los_Angeles"
     ingress:
       enabled: true
