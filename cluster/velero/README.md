@@ -11,5 +11,5 @@ velero restore create RESTORE_NAME --from-backup BACKUP_NAME --include-namespace
 
 Backup just nzbget
 ```
-velero backup create nzbget --selector "app.kubernetes.io/instance=nzbget" --wait
+velero create restore unifi --from-backup velero-twice-daily-backup-20200716060032 --include-resources persistentVolume,persistentVolumeClaim --selector "app.kubernetes.io/instance=unifi" --wait
 ```
