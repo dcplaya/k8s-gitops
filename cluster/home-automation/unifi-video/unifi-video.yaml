@@ -5,8 +5,8 @@ metadata:
   name: unifi-video
   namespace: home-automation
   annotations:
-    fluxcd.io/ignore: true
-    fluxcd.io/automated: true
+    fluxcd.io/ignore: false
+    fluxcd.io/automated: false
 #    fluxcd.io/tag.chart-image: 'regexp:^(1\.[0-9][0-9]\.[0-9]+)$'
 spec:
   releaseName: unifi-video
@@ -16,27 +16,25 @@ spec:
   chart:
     git: git@github.com:t3n/helm-charts
     path: unifi-video
-    ref: helm-v3
+    ref: master
   values:
     replicaCount: 1
     image:
       repository: pducharme/unifi-video-controller
-      tag: 3.10.10
+      tag: 3.10.12
     persistence:
       enabled: true
       size: 10Gi
       storageClass: rook-ceph-block
-#    service:
-#      type: LoadBalancer
-#        loadBalancerIP: 10.201.40.20
+    service:
+      type: LoadBalancer
+        loadBalancerIP: 10.201.40.20
     timezone: "America/Los_Angeles"
     ingress:
       enabled: true
       annotations:
         kubernetes.io/ingress.class: "nginx"
         nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
-        #ingress.kubernetes.io/proxy-body-size: "50m"
-        #nginx.ingress.kubernetes.io/proxy-body-size: 500m
     podAnnotations:
       backup.velero.io/backup-volumes: unifi-data
     resources:
