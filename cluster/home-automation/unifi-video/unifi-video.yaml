@@ -36,15 +36,13 @@ spec:
       enabled: true
       annotations:
         kubernetes.io/ingress.class: "nginx"
-#        nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
     podAnnotations:
       backup.velero.io/backup-volumes: unifi-data
-#    resources:
-#      requests:
-#        memory: 128Mi
-#        cpu: 100m
-#      limits:
-#        memory: 750Mi
-#        cpu: 200m
+    resources:
+      limits:
+        memory: 750Mi
+      requests:
+        cpu: 100m
+        memory: 128Mi
   valueFileSecrets:
   - name: "unifi-video-helm-values"
