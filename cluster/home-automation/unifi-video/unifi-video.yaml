@@ -45,4 +45,4 @@ spec:
         memory: 750Mi
         cpu: 200m
   valueFileSecrets:
-  - name: "unms-helm-values"
+  - name: "unifi-video-helm-values"
