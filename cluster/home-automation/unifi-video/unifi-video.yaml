@@ -23,9 +23,15 @@ spec:
       repository: pducharme/unifi-video-controller
       tag: latest
     persistence:
-      enabled: true
-      size: 10Gi
-      storageClass: rook-ceph-block
+      config:
+        enabled: true
+        size: 5Gi
+        storageClass: rook-ceph-block
+      extraExistingClaimMounts:
+        - name: media
+          existingClaim: nfs-media-pvc
+          mountPath: "/mnt/unionfs"
+          readOnly: false
     service:
       type: LoadBalancer
       loadBalancerIP: 10.201.40.20
@@ -38,11 +44,11 @@ spec:
         kubernetes.io/ingress.class: "nginx"
     podAnnotations:
       backup.velero.io/backup-volumes: unifi-data
-    resources:
-      limits:
-        memory: 750Mi
-      requests:
-        cpu: 100m
-        memory: 128Mi
+#    resources:
+#      limits:
+#        memory: 750Mi
+#      requests:
+#        cpu: 100m
+#        memory: 128Mi
   valueFileSecrets:
   - name: "unifi-video-helm-values"
