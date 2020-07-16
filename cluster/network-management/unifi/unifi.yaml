@@ -12,7 +12,7 @@ spec:
   releaseName: unifi
   helmVersion: v3
   rollback:
-    enable: true
+    enable: false
   chart:
     repository: https://kubernetes-charts.storage.googleapis.com/
     name: unifi
