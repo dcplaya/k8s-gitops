@@ -28,8 +28,8 @@ spec:
         size: 5Gi
         storageClass: rook-ceph-block
       extraExistingClaimMounts:
-        - name: media
-          existingClaim: nfs-media-pvc
+        - name: home
+          existingClaim: nfs-security-pvc
           mountPath: "/mnt/unionfs"
           readOnly: false
     service:
