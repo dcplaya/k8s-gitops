@@ -28,7 +28,7 @@ apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: nfs-security-pvc
-  namespace: media-management
+  namespace: home-automation
 spec:
   accessModes:
     - ReadWriteMany
