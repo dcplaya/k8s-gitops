@@ -27,7 +27,7 @@ spec:
         enabled: true
         size: 5Gi
         storageClass: rook-ceph-block
-      data:
+      video:
         enabled: true
         existingClaim: nfs-security-pvc
         storageClass: home
@@ -43,6 +43,8 @@ spec:
       annotations:
         metallb.universe.tf/allow-shared-ip: unifi-video-svc
     timezone: "America/Los_Angeles"
+    puid: 1000
+    guid: 1000
     ingress:
       enabled: true
       annotations:
