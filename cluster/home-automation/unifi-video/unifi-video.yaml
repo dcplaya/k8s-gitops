@@ -28,15 +28,12 @@ spec:
         size: 5Gi
         storageClass: rook-ceph-block
       video:
-        enabled: true
-        existingClaim: nfs-security-pvc
-        storageClass: home
-        subPath: Unifi-Video
-#      extraExistingClaimMounts:
-#        - name: home
-#          existingClaim: nfs-security-pvc
-#          mountPath: "/mnt/unionfs"
-#          readOnly: false
+        enabled: false
+      extraExistingClaimMounts:
+        - name: videos
+          existingClaim: nfs-security-pvc
+          mountPath: Unifi-Video
+          readOnly: false
     service:
       type: LoadBalancer
       loadBalancerIP: 10.201.40.20
