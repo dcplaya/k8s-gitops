@@ -4,6 +4,7 @@ kind: HelmRelease
 metadata:
   name: zwave2mqtt
   namespace: home-automation
+  annotations:
     fluxcd.io/ignore: false
     fluxcd.io/automated: false
 spec:
