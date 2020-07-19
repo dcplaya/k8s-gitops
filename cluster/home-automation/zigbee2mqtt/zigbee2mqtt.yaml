@@ -1,0 +1,51 @@
+---
+apiVersion: helm.fluxcd.io/v1
+kind: HelmRelease
+metadata:
+  name: zigbee2mqtt
+  namespace: home-automation
+    fluxcd.io/ignore: 'true'
+    fluxcd.io/automated: false
+spec:
+  releaseName: zigbee2mqtt
+  helmVersion: v3
+  rollback:
+    enable: false
+  chart:
+    repository: https://billimek.com/billimek-charts/
+    name: zigbee2mqtt
+    version: 0.1.0
+  values:
+    image:
+      repository: koenkk/zigbee2mqtt
+      tag: latest
+    timezone: "America/Los_Angeles"
+    config:
+      homeassistant: true
+      mqtt:
+        base_topic: zigbee2mqtt
+        server: 'mqtt://vernemq.home-automation.svc'
+      serial:
+        port: "/dev/serial/by-id/usb-Silicon_Labs_HubZ_Smart_Home_Controller_813004F4-if01-port0"
+    persistence:
+      enabled: true
+      storageClass: rook-ceph-block
+      size: 100Mi
+    service:
+      port: 8091
+      loadBalancerIP: 10.201.40.30
+    affinity:
+      nodeAffinity:
+        requiredDuringSchedulingIgnoredDuringExecution:
+          nodeSelectorTerms:
+          - matchExpressions:
+            - {key: "feature.node.kubernetes.io/custom-zwave", operator: In, values: ["true"]}
+    tolerations:
+    - key: "arm"
+      operator: "Exists"
+    ingress:
+      enabled: true
+      annotations:
+        kubernetes.io/ingress.class: "nginx"
+#  valueFileSecrets:
+#  - name: "zigbee2mqtt-helm-values"

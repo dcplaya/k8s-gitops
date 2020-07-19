@@ -20,22 +20,23 @@ spec:
       repository: robertslando/zwave2mqtt
       tag: 3.1.0
     timezone: "America/Los_Angeles"
-    device: "/dev/ttyACM0"
+    device: "/dev/serial/by-id/usb-Silicon_Labs_HubZ_Smart_Home_Controller_813004F4-if00-port0"
+    persistence:
+      enabled: true
+      storageClass: rook-ceph-block
+      size: 1Gi
+    service:
+      port: 8091
+      loadBalancerIP: 10.201.40.30  
     affinity:
       nodeAffinity:
         requiredDuringSchedulingIgnoredDuringExecution:
           nodeSelectorTerms:
           - matchExpressions:
-            - key: app
-              operator: In
-              values:
-              - zwave-controller
+            - {key: "feature.node.kubernetes.io/custom-zwave", operator: In, values: ["true"]}
     tolerations:
     - key: "arm"
       operator: "Exists"
-    persistence:
-      enabled: true
-      storageClass: "nfs-client"
     ingress:
       enabled: true
       annotations:
