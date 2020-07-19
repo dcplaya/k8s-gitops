@@ -4,7 +4,7 @@ kind: HelmRelease
 metadata:
   name: zwave2mqtt
   namespace: home-automation
-    fluxcd.io/ignore: 'true'
+    fluxcd.io/ignore: false
     fluxcd.io/automated: false
 spec:
   releaseName: zwave2mqtt
@@ -27,7 +27,7 @@ spec:
       size: 1Gi
     service:
       port: 8091
-      loadBalancerIP: 10.201.40.30  
+      loadBalancerIP: 10.201.40.30
     affinity:
       nodeAffinity:
         requiredDuringSchedulingIgnoredDuringExecution:
