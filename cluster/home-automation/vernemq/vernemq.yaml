@@ -6,7 +6,7 @@ metadata:
   namespace: home-automation
   annotations:
     fluxcd.io/ignore: false
-    fluxcd.io/automated: false
+    fluxcd.io/automated: true
     fluxcd.io/tag.chart-image: 'semver:0'
 spec:
   releaseName: vernemq
@@ -27,8 +27,15 @@ spec:
     service:
       type: LoadBalancer
       loadBalancerIP: 10.201.40.10
+      mqtt:
+        enabled: true
+        port: 1883                                                              # Default port. Here for visability
+      mqtts:
+        enabled: false                                                          # Disabled, too much work to get cert inside pod 
+        port: 8883                                                              # Default port. Here for visability
       ws:
         enabled: true
+        port: 8080                                                              # Default port. Here for visability
     statefulset:
       podAnnotations:
         prometheus.io/scrape: "true"
