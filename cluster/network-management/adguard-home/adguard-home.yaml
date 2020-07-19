@@ -20,7 +20,7 @@ spec:
   values:
     image:
       repository: adguard/adguardhome
-    tag: lates
+    tag: beta
     persistence:
       config:
         enabled: true
