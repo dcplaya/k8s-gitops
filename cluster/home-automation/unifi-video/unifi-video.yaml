@@ -32,7 +32,8 @@ spec:
       extraExistingClaimMounts:
         - name: videos
           existingClaim: nfs-security-pvc
-          mountPath: Unifi-Video
+          mountPath: footage
+          subPath: Unifi-Video
           readOnly: false
     service:
       type: LoadBalancer
