@@ -24,7 +24,7 @@ spec:
     persistence:
       config:
         enabled: true
-        size: 100Mi
+        size: 10Mi
         storageClass: "rook-ceph-block"
       work:
         enabled: true
