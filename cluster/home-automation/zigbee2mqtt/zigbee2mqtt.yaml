@@ -25,7 +25,7 @@ spec:
       homeassistant: true
       mqtt:
         base_topic: zigbee2mqtt
-        server: 'mqtt://vernemq.home-automation.svc'
+        server: 'mqtt://vernemq.home-automation.svc'                            # vernemq-0.vernemq-headless.home-automation.svc
       serial:
         #port: "/dev/serial/by-id/usb-Silicon_Labs_HubZ_Smart_Home_Controller_813004F4-if00-port0"
         port: /dev/ttyUSB0
