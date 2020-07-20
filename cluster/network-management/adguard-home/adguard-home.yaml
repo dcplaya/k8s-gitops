@@ -6,7 +6,7 @@ metadata:
   namespace: network-management
   annotations:
     fluxcd.io/ignore: false
-    fluxcd.io/automated: false
+    fluxcd.io/automated: true
 #    fluxcd.io/tag.chart-image: 'regexp:^(5\.[0-9][0-9]\.[0-9]+)$'
 spec:
   releaseName: adguard-home
@@ -14,9 +14,12 @@ spec:
   rollback:
     enable: false
   chart:
-    git: git@github.com:dcplaya/billimek-charts
-    path: charts/adguard-home
-    ref: adguard-home
+#    git: git@github.com:dcplaya/billimek-charts
+#    path: charts/adguard-home
+#    ref: adguard-home
+    repository: https://billimek.com/billimek-charts/
+    name: adguard-home
+    version: 1.0.0
   values:
     image:
       repository: adguard/adguardhome
