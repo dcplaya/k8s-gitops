@@ -1,0 +1,44 @@
+---
+apiVersion: helm.fluxcd.io/v1
+kind: HelmRelease
+metadata:
+  name: esphome
+  namespace: home-automation
+  annotations:
+    fluxcd.io/ignore: false
+    fluxcd.io/automated: true
+    fluxcd.io/tag.chart-image: 'semver:0'
+spec:
+  releaseName: esphome
+  helmVersion: v3
+  rollback:
+    enable: false
+  chart:
+    repository: https://billimek.com/billimek-charts/
+    name: esphome
+    version: 1.0.0
+  values:
+    image:
+      repository: esphome/esphome
+      tag: 1.14.5
+    #   pullPolicy: Always
+    service:
+      port: 6052
+      loadBalancerIP: 10.201.40.50
+    persistence:
+        enabled: true
+        # storageClass:                                                           # Use Default
+        accessMode: ReadWriteOnce
+        size: 10Gi
+    ingress:
+      enabled: true
+      annotations:
+        kubernetes.io/ingress.class: "nginx"
+    resources:
+      requests:
+        memory: 1000Mi
+        cpu: 750m
+      limits:
+        memory: 2500Mi
+  valueFileSecrets:
+  - name: "esphome-helm-values"
