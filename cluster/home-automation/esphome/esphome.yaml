@@ -27,7 +27,7 @@ spec:
       loadBalancerIP: 10.201.40.50
     persistence:
         enabled: true
-        # storageClass:                                                           # Use Default
+        storageClass:  "-"                                                      # Use Default
         accessMode: ReadWriteOnce
         size: 10Gi
     ingress:
