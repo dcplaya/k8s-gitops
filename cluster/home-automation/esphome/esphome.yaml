@@ -25,6 +25,8 @@ spec:
     service:
       port: 6052
       loadBalancerIP: 10.201.40.50
+    podAnnotations:
+      backup.velero.io/backup-volumes: config
     persistence:
         enabled: true
         storageClass:  "-"                                                      # Use Default
