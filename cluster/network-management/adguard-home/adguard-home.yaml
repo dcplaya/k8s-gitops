@@ -46,18 +46,21 @@ spec:
         metallb.universe.tf/allow-shared-ip: adguard-home-svc
     serviceTCP:
       enabled: true
+      externalTrafficPolicy: Local
       type: LoadBalancer
       loadBalancerIP: 10.201.90.20
       annotations:
         metallb.universe.tf/allow-shared-ip: adguard-home-svc
     serviceUDP:
       enabled: true
+      externalTrafficPolicy: Local
       type: LoadBalancer
       loadBalancerIP: 10.201.90.20
       annotations:
         metallb.universe.tf/allow-shared-ip: adguard-home-svc
     serviceDNSOverTLS:
       enabled: true
+      externalTrafficPolicy: Local
       type: LoadBalancer
       loadBalancerIP: 10.201.90.20
       annotations:
