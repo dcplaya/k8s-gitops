@@ -27,7 +27,8 @@ spec:
         base_topic: zigbee2mqtt
         server: 'mqtt://vernemq.home-automation.svc'
       serial:
-        port: "/dev/serial/by-id/usb-Silicon_Labs_HubZ_Smart_Home_Controller_813004F4-if00-port0"
+        #port: "/dev/serial/by-id/usb-Silicon_Labs_HubZ_Smart_Home_Controller_813004F4-if00-port0"
+        port: /dev/ttyUSB0
     persistence:
       enabled: true
       storageClass: rook-ceph-block
