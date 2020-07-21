@@ -38,7 +38,7 @@ spec:
       backup.velero.io/backup-volumes: config
     persistence:
       downloads:
-        enabled: false
+        enabled: true
         storageClass: "rook-ceph-block"
         size: 200Gi
       extraMounts:
