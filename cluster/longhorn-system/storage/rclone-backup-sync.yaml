@@ -54,4 +54,4 @@ spec:
 #          claimName: nfs-backup-pvc
       - name: rclone-sync-backup
         persistentVolumeClaim:
-          claimName: nfs-backup-pvc
+          claimName: nfs-backup-longhorn-pvc

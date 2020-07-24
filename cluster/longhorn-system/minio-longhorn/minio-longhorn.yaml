@@ -30,7 +30,7 @@ spec:
       runAsUser: 1000
       runAsGroup: 1000
     persistence:
-      existingClaim: "nfs-backup-pvc"
+      existingClaim: "nfs-backup-longhorn-pvc"
       storageClass: "backup"
       subPath: "kubernetes/longhorn/minio"
     ingress:
