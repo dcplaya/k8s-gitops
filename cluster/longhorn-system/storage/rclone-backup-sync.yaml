@@ -2,7 +2,7 @@
 kind: Deployment
 apiVersion: apps/v1
 metadata:
-  namespace: velero
+  namespace: longhorn-system
   name: rclone-sync-backup
   labels:
     app: rclone-sync-backup
