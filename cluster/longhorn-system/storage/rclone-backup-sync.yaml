@@ -1,0 +1,57 @@
+---
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  namespace: velero
+  name: rclone-sync-backup
+  labels:
+    app: rclone-sync-backup
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: rclone-sync-backup
+  template:
+    metadata:
+      labels:
+        app: rclone-sync-backup
+    spec:
+      containers:
+        - name: rclone-sync-backup
+          image: pfidr/rclone:1.52.2
+          imagePullPolicy: IfNotPresent
+          env:
+            - name: CRON
+              value: 30 1 * * *
+            - name: CRON_ABORT
+              value: 30 7 * * *
+            - name: SYNC_SRC
+              value: /mnt/kubernetes/longhorn
+            - name: SYNC_DEST
+              value: backups:/Kubernetes/Longhorn
+            - name: SYNC_OPTS
+              value: -v --ignore-errors --transfers 10 --checkers 10 --bwlimit 40M --exclude ".@__thumb/**" --exclude ".Trashes/**" --exclude ".DS_Store"
+            - name: FORCE_SYNC
+              value: "1"
+            - name: TZ
+              value: America/Los_Angeles
+          volumeMounts:
+          - mountPath: /config
+            name: rclone-sync-backup
+            subPath: kubernetes/rclone
+          - mountPath: /mnt
+            name: rclone-sync-backup
+          resources:
+            requests:
+              memory: 500Mi
+              cpu: 1000m
+            limits:
+              memory: 2000Mi
+              cpu: 10000m
+      volumes:
+#      - name: rclone-sync-config
+#        persistentVolumeClaim:
+#          claimName: nfs-backup-pvc
+      - name: rclone-sync-backup
+        persistentVolumeClaim:
+          claimName: nfs-backup-pvc

@@ -1,0 +1,55 @@
+---
+apiVersion: helm.fluxcd.io/v1
+kind: HelmRelease
+metadata:
+  name: minio
+  namespace: longhorn-system
+  annotations:
+    fluxcd.io/ignore: false
+    fluxcd.io/automated: false
+    fluxcd.io/tag.chart-image: glob:RELEASE.*
+spec:
+  releaseName: minio
+  helmVersion: v3
+  chart:
+    repository: https://kubernetes-charts.storage.googleapis.com/
+    name: minio
+    version: 5.0.27
+  values:
+    image:
+      repository: minio/minio
+      tag: RELEASE.2020-04-28T23-56-56Z
+    mcImage:
+      repository: minio/mc
+      tag: RELEASE.2020-04-25T00-43-23Z
+    helmKubectlJqImage:
+      repository: bskim45/helm-kubectl-jq
+      tag: 3.1.0
+    securityContext:
+      enabled: true
+      runAsUser: 1000
+      runAsGroup: 1000
+    persistence:
+      existingClaim: "nfs-backup-pvc"
+      storageClass: "backup"
+      subPath: "kubernetes/longhorn/minio"
+    ingress:
+      enabled: true
+      annotations:
+        kubernetes.io/ingress.class: nginx
+    tolerations:
+    - key: "arm"
+      operator: "Exists"
+    resources:
+      requests:
+        memory: 350Mi
+        cpu: 25m
+      limits:
+        memory: 1000Mi
+    securityContext:
+      enabled: false
+    metrics:
+      serviceMonitor:
+        enabled: true
+  valueFileSecrets:
+  - name: "minio-longhorn-helm-values"
