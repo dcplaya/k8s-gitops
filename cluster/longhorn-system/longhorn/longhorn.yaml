@@ -20,7 +20,7 @@ spec:
     defaultSettings:
       defaultReplicaCount: 3
       createDefaultDiskLabeledNodes: true
-      backupTarget: s3://longhorn@minio.longhorn-system:9000/backups
+      backupTarget: s3://longhorn@minio/backups
       backupTargetCredentialSecret: longhorn-aws-secret-helm-values
     ingress:
       enabled: true
