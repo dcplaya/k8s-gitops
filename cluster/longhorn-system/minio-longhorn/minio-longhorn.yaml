@@ -6,7 +6,7 @@ metadata:
   namespace: longhorn-system
   annotations:
     fluxcd.io/ignore: false
-    fluxcd.io/automated: false
+    fluxcd.io/automated: true
     fluxcd.io/tag.chart-image: glob:RELEASE.*
 spec:
   releaseName: minio
@@ -14,11 +14,11 @@ spec:
   chart:
     repository: https://kubernetes-charts.storage.googleapis.com/
     name: minio
-    version: 5.0.27
+    version: 5.0.32
   values:
     image:
       repository: minio/minio
-      tag: RELEASE.2020-04-28T23-56-56Z
+      tag: RELEASE.2020-06-14T18-32-17Z
     mcImage:
       repository: minio/mc
       tag: RELEASE.2020-04-25T00-43-23Z
