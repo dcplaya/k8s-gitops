@@ -22,7 +22,6 @@ spec:
       createDefaultDiskLabeledNodes: true
     ingress:
       enabled: true
-#      host: longhorn.storage.elcarpenter.com
       annotations:
         kubernetes.io/ingress.class: nginx
   valueFileSecrets:
