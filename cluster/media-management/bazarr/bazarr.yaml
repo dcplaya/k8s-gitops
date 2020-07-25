@@ -11,7 +11,7 @@ metadata:
 spec:
   releaseName: bazarr
   rollback:
-    enable: false
+    enable: true
   chart:
     repository: https://billimek.com/billimek-charts/
     name: bazarr
@@ -32,7 +32,7 @@ spec:
     persistence:
       config:
         enabled: true
-        storageClass: "rook-ceph-block"
+        storageClass: longhorn
         accessMode: ReadWriteOnce
         size: 5Gi
       tv:
