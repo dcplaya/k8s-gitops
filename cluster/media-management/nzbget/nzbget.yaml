@@ -12,11 +12,11 @@ spec:
   releaseName: nzbget
   helmVersion: v3
   rollback:
-    enable: true
+    enable: false
   chart:
     repository: https://billimek.com/billimek-charts/
     name: nzbget
-    version: 3.2.1
+    version: 3.3.0
 #    git: git@github.com:dcplaya/billimek-charts
 #    path: charts/nzbget
 #    ref: master
@@ -34,8 +34,8 @@ spec:
     timezone: "America/Los_Angeles"
     puid: 1000
     pgid: 1000
-    podAnnotations:
-      backup.velero.io/backup-volumes: config
+#    podAnnotations:
+#      backup.velero.io/backup-volumes: config
     persistence:
       downloads:
         enabled: true
@@ -48,8 +48,8 @@ spec:
         mountPath: mnt/unionfs
       config:
         enabled: true
-        storageClass: "rook-ceph-block"
-        size: 3Gi
+        storageClass: longhorn
+        size: 1Gi
     tolerations:
     resources:
       requests:

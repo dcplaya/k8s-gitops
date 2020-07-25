@@ -85,3 +85,4 @@ Installs [frigate](https://github.com/blakeblackshear/frigate/): Realtime object
 | unifi-video    	| 10.201.40.20 	|       	|
 | zwave2mqtt     	| 10.201.40.30 	|       	|
 | zigbee2mqtt    	| 10.201.40.40 	|       	|
+| esphome       	| 10.201.40.50 	|       	|
