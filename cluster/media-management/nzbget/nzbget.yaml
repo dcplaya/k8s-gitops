@@ -12,7 +12,7 @@ spec:
   releaseName: nzbget
   helmVersion: v3
   rollback:
-    enable: true
+    enable: false
   chart:
     repository: https://billimek.com/billimek-charts/
     name: nzbget
@@ -34,8 +34,8 @@ spec:
     timezone: "America/Los_Angeles"
     puid: 1000
     pgid: 1000
-    podAnnotations:
-      backup.velero.io/backup-volumes: config
+#    podAnnotations:
+#      backup.velero.io/backup-volumes: config
     persistence:
       downloads:
         enabled: true
