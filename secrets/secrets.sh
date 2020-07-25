@@ -145,6 +145,16 @@ kubeseal --format=yaml --cert="${PUB_CERT}" \
   >> "${GENERATED_SECRETS}"
 echo "---" >> "${GENERATED_SECRETS}"
 
+# NginX Basic Auth - longhorn-system namespace
+kubectl create secret generic nginx-basic-auth \
+  --from-literal=auth="${NGINX_BASIC_AUTH}" \
+  --namespace longhorn-system --dry-run=client -o json \
+  | \
+kubeseal --format=yaml --cert="${PUB_CERT}" \
+  >> "${GENERATED_SECRETS}"
+echo "---" >> "${GENERATED_SECRETS}"
+
+
 
 
 # Cloudflare API Key - cert-manager namespace
