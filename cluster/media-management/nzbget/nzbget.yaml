@@ -48,8 +48,8 @@ spec:
         mountPath: mnt/unionfs
       config:
         enabled: true
-        storageClass: "rook-ceph-block"
-        size: 3Gi
+        storageClass: "longhorn"
+        size: 50Mi
     tolerations:
     resources:
       requests:
