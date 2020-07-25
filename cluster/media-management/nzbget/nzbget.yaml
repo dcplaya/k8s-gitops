@@ -16,7 +16,7 @@ spec:
   chart:
     repository: https://billimek.com/billimek-charts/
     name: nzbget
-    version: 3.2.1
+    version: 3.3.0
 #    git: git@github.com:dcplaya/billimek-charts
 #    path: charts/nzbget
 #    ref: master
