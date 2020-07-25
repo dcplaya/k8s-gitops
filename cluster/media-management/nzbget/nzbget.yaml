@@ -48,7 +48,7 @@ spec:
         mountPath: mnt/unionfs
       config:
         enabled: true
-        storageClass: "longhorn"
+        storageClass: longhorn
         size: 50Mi
     tolerations:
     resources:
