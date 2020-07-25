@@ -11,7 +11,7 @@ spec:
   releaseName: longhorn
   helmVersion: v3
   chart:
-    git: git@github.com:longhorn/longhorn
+    git: git@github.com:longhorn/longhor
     ref: master
     path: chart
   values:
