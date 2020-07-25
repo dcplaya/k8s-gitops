@@ -12,7 +12,7 @@ spec:
   releaseName: sonarr
   helmVersion: v3
   rollback:
-    enable: false
+    enable: true
   chart:
     repository: https://billimek.com/billimek-charts/
     name: sonarr
