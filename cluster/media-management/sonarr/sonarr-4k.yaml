@@ -33,7 +33,7 @@ spec:
     persistence:
       config:
         enabled: true
-        storageClass: "rook-ceph-block"
+        storageClass: longhorn
         size: 12Gi
       downloads:
         enabled: false
