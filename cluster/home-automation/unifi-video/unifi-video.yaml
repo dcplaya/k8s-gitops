@@ -26,7 +26,7 @@ spec:
       config:
         enabled: true
         size: 5Gi
-        storageClass: rook-ceph-block
+        storageClass: longhorn
       video:
         enabled: false
       extraExistingClaimMounts:
