@@ -39,7 +39,7 @@ spec:
     persistence:
       downloads:
         enabled: true
-        storageClass: "rook-ceph-block"
+        storageClass: longhorn
         size: 200Gi
       extraMounts:
       - name: "media"

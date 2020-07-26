@@ -28,11 +28,11 @@ spec:
       config:
         enabled: true
         size: 10Mi
-        storageClass: "rook-ceph-block"
+        storageClass: longhorn
       work:
         enabled: true
         size: 50Gi
-        storageClass: "rook-ceph-block"
+        storageClass: longhorn
     timezone: "America/Los_Angeles"
     replicas: 0
     ingress:
