@@ -29,6 +29,7 @@ spec:
     - key: "arm"
       operator: "Exists"
     flows: "flows.json"
+    enableProjects: true
     ingress:
       enabled: true
       annotations:
@@ -36,7 +37,6 @@ spec:
     podAnnotations:
       backup.velero.io/backup-volumes: data
     timezone: "America/Los_Angeles"
-    enableProjects: true
     resources:
       requests:
         memory: 350Mi
