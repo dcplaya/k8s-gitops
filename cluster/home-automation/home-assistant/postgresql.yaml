@@ -6,7 +6,7 @@ metadata:
   namespace: home-automation
   annotations:
     fluxcd.io/ignore: false
-    fluxcd.io/automated: false
+    fluxcd.io/automated: true
     fluxcd.io/tag.chart-image: semver:~12
 spec:
   releaseName: hass-postgresql
@@ -23,8 +23,8 @@ spec:
     securityContext:
       fsGroup: 1000
       runAsUser: 1000
-    podAnnotations:
-      backup.velero.io/backup-volumes: data
+#    podAnnotations:
+#      backup.velero.io/backup-volumes: data
     persistence:
       enabled: true
       storageClass: longhorn
