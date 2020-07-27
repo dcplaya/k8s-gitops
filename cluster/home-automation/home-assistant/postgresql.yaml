@@ -14,7 +14,7 @@ spec:
   chart:
     repository: https://charts.bitnami.com/bitnami
     name: postgresql
-    version: 8.10.14
+    version: latest
   values:
     image:
       repository: postgres
@@ -23,8 +23,6 @@ spec:
     securityContext:
       fsGroup: 1000
       runAsUser: 1000
-#    podAnnotations:
-#      backup.velero.io/backup-volumes: data
     persistence:
       enabled: true
       storageClass: longhorn
