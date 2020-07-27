@@ -14,11 +14,11 @@ spec:
   chart:
     repository: https://charts.bitnami.com/bitnami
     name: postgresql
-    version: 11.8.0
+    version: 9.1.1
   values:
     image:
       repository: postgres
-      tag: 12.2
+      tag: latest
     postgresqlDataDir: "/data/pgdata"
     securityContext:
       fsGroup: 1000
