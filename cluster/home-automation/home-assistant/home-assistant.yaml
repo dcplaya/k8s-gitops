@@ -22,6 +22,9 @@ spec:
     image:
       repository: homeassistant/home-assistant
       tag: 0.113.0.dev20200716
+    usePodSecurityContext: true
+      runAsUser: 1000
+      fsgroup: 1000
     persistence:
       enabled: true
       size: 10Gi
@@ -30,6 +33,41 @@ spec:
       enabled: true
       annotations:
         kubernetes.io/ingress.class: "nginx"
+    hostMounts:
+    - name: zha
+      hostPath: /dev/serial/by-id/usb-Silicon_Labs_HubZ_Smart_Home_Controller_6120245D-if01-port0
+    affinity:
+      nodeAffinity:
+        requiredDuringSchedulingIgnoredDuringExecution:
+          nodeSelectorTerms:
+          - matchExpressions:
+            - {key: "feature.node.kubernetes.io/custom-zigbee", operator: In, values: ["true"]}
+    probes:
+      liveness:
+        enabled: false
+      readiness:
+        enabled: false
+#    podAnnotations:
+#      backup.velero.io/backup-volumes: config
+    vscode:
+      enabled: true
+      image:
+        repository: codercom/code-server
+        tag: 3.4.1
+      ingress:
+        enabled: true
+        annotations:
+          kubernetes.io/ingress.class: "nginx"
+    resources:
+      limits:
+        memory: 2500Mi
+      requests:
+        cpu: 35m
+        memory: 2000Mi
+    monitoring:
+      enabled: false
+  valueFileSecrets:
+  - name: "home-assistant-helm-values"
 #    socat:
 #      enabled: true
 #      image:
@@ -41,15 +79,6 @@ spec:
 #        ip: ser2sock-zigbee.home-automation.svc
 #        port: 10000
 # Mount devices or folders from the host machine. Can be used for USB device mounting.
-    hostMounts:
-    - name: zha
-      hostPath: /dev/serial/by-id/usb-Silicon_Labs_HubZ_Smart_Home_Controller_6120245D-if01-port0
-    affinity:
-      nodeAffinity:
-        requiredDuringSchedulingIgnoredDuringExecution:
-          nodeSelectorTerms:
-          - matchExpressions:
-            - {key: "feature.node.kubernetes.io/custom-zigbee", operator: In, values: ["true"]}
 #    cmdOverride:
 #      enabled: true
 #      shellArgs: "zha start && zwave start && python -m homeassistant --config /config"
@@ -75,29 +104,3 @@ spec:
 #    - name: zwave                                                               # name of extraVolumes associated with it
 #      mountPath: /usr/bin/zwave
 #      subPath: zwave
-    probes:
-      liveness:
-        enabled: false
-      readiness:
-        enabled: false
-    podAnnotations:
-      backup.velero.io/backup-volumes: config
-    vscode:
-      enabled: true
-      image:
-        repository: codercom/code-server
-        tag: 3.4.1
-      ingress:
-        enabled: true
-        annotations:
-          kubernetes.io/ingress.class: "nginx"
-    resources:
-      limits:
-        memory: 2500Mi
-      requests:
-        cpu: 35m
-        memory: 2000Mi
-    monitoring:
-      enabled: false
-  valueFileSecrets:
-  - name: "home-assistant-helm-values"

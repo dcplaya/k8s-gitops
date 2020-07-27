@@ -5,7 +5,7 @@ metadata:
   name: hass-postgresql
   namespace: home-automation
   annotations:
-    fluxcd.io/ignore: true
+    fluxcd.io/ignore: false
     fluxcd.io/automated: false
     fluxcd.io/tag.chart-image: semver:~12
 spec:
@@ -27,7 +27,7 @@ spec:
       backup.velero.io/backup-volumes: data
     persistence:
       enabled: true
-      storageClass: "rook-ceph-block"
+      storageClass: longhorn
       mountPath: "/data/"
       size: 50Gi
     metrics:
