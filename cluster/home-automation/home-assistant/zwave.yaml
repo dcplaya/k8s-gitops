@@ -4,7 +4,7 @@ metadata:
   name: zwave
   namespace: home-automation
   annotations:
-    fluxcd.io/ignore: false
+    fluxcd.io/ignore: true
 data:
   zwave: |
     #!/bin/bash
