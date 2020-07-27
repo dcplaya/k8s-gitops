@@ -14,7 +14,7 @@ spec:
   chart:
     repository: https://charts.bitnami.com/bitnami
     name: postgresql
-    version: latest
+    version: 11.8.0
   values:
     image:
       repository: postgres
