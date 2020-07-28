@@ -14,9 +14,12 @@ spec:
   rollback:
     enable: false
   chart:
-    repository: https://billimek.com/billimek-charts/
-    name: esphome
-    version: 1.0.0
+#    repository: https://billimek.com/billimek-charts/
+#    name: esphome
+#    version: 1.0.0
+    git: git@github.com:dcplaya/billimek-charts
+    path: charts/esphome
+    ref: master
   values:
     image:
       repository: esphome/esphome
