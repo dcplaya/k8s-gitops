@@ -23,8 +23,8 @@ spec:
       tag: 1.14.5
     #   pullPolicy: Always
     extraEnv:
-    - name: "ESPHOME_DASHBOARD_USE_PING"
-      value: "true"
+#    - name: "ESPHOME_DASHBOARD_USE_PING"
+#      value: "true"
     - name: "TZ"
       value: "America/Los_Angeles"
     - name: "PUID"
