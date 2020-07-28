@@ -28,6 +28,10 @@ spec:
     usePodSecurityContext: true
     runAsUser: 1000
     fsgroup: 1000
+    extraEnv:
+      TZ: "America/Los_Angeles"
+      PUID: "1000"
+      PGID: "1000"
     persistence:
       enabled: true
       size: 10Gi
