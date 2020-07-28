@@ -49,7 +49,7 @@ spec:
       data:
         enabled: true
         storageClass: "media"
-#        subPath: "/mnt/unionfs/downloads/torrents"                             # PVC mounts to the correct location
+        subPath: "rtorrent"                              # PVC mounts to the correct location
         existingClaim: nfs-torrent-pvc
     resources:
       requests:
