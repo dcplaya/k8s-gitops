@@ -24,7 +24,7 @@ spec:
     #   pullPolicy: Always
     extraEnv:
     - name: "ESPHOME_DASHBOARD_USE_PING"
-      valiue: "true"
+      value: "true"
     - name: "TZ"
       value: "America/Los_Angeles"
     - name: "PUID"
@@ -34,11 +34,9 @@ spec:
     service:
       port: 6052
       loadBalancerIP: 10.201.40.50
-    podAnnotations:
-      backup.velero.io/backup-volumes: config
     persistence:
         enabled: true
-        storageClass:  "-"                                                      # Use Default
+        storageClass:  longhorn                                                 # Use Default
         accessMode: ReadWriteOnce
         size: 10Gi
     ingress:
