@@ -24,8 +24,8 @@ spec:
     image:
       repository: esphome/esphome
       tag: 1.14.5
-#    extraEnv:
-#      ESPHOME_DASHBOARD_USE_PING: "true"
+    extraEnv:
+      ESPHOME_DASHBOARD_USE_PING: true
 #      TZ: "America/Los_Angeles"
 #    usePodSecurityContext: true
 #    runAsUser: 1000
