@@ -25,8 +25,8 @@ spec:
 #      ESPHOME_DASHBOARD_USE_PING: "true"
 #      TZ: "America/Los_Angeles"
     usePodSecurityContext: true
-    runAsUser: 1000
-    fsGroup: 1000
+      runAsUser: 1000
+      fsGroup: 1000
     service:
       port: 6052
       loadBalancerIP: 10.201.40.50
