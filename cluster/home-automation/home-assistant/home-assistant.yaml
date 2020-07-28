@@ -15,9 +15,12 @@ spec:
   rollback:
     enable: false
   chart:
-    git: git@github.com:dcplaya/billimek-charts
-    path: charts/home-assistant
-    ref: HA-Sidecar
+    repository: https://billimek.com/billimek-charts/
+    name: home-assistant
+    version: 1.0.1
+#    git: git@github.com:dcplaya/billimek-charts
+#    path: charts/home-assistant
+#    ref: HA-Sidecar
   values:
     image:
       repository: homeassistant/home-assistant
