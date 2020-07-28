@@ -25,11 +25,10 @@ spec:
       repository: esphome/esphome
       tag: 1.14.5
     extraEnv:
-      ESPHOME_DASHBOARD_USE_PING: true
-#      TZ: "America/Los_Angeles"
-#    usePodSecurityContext: true
-#    runAsUser: 1000
-#    fsGroup: 1000
+      ESPHOME_DASHBOARD_USE_PING: "true"
+      TZ: "America/Los_Angeles"
+      PUID: "1000"
+      PGID: "1000"
     service:
       port: 6052
       loadBalancerIP: 10.201.40.50
