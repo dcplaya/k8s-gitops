@@ -29,6 +29,7 @@ spec:
     #     tag: latest
     uid: 1000
     gid: 1000
+    timezone: "America/Los_Angeles"
     guiService:
       type: ClusterIP
       port: 3000
