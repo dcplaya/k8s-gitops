@@ -41,13 +41,13 @@ spec:
       enabled: false
       type: LoadBalancer
       loadBalancerIP: 10.201.90.11
-      annotations:
+#      annotations:
 #        metallb.universe.tf/allow-shared-ip: unifi
       ingress:
         enabled: true
       annotations:
         kubernetes.io/ingress.class: "nginx"
-        nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
+#        nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
     controllerService:
       type: LoadBalancer
       loadBalancerIP: 10.201.90.10
@@ -63,8 +63,6 @@ spec:
       loadBalancerIP: 10.201.90.10
       annotations:
         metallb.universe.tf/allow-shared-ip: unifi
-    podAnnotations:
-      backup.velero.io/backup-volumes: unifi-data
     resources:
       requests:
         memory: 500Mi
