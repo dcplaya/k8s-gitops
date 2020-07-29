@@ -42,7 +42,7 @@ spec:
       type: LoadBalancer
       loadBalancerIP: 10.201.90.11
       annotations:
-        metallb.universe.tf/allow-shared-ip: unifi
+#        metallb.universe.tf/allow-shared-ip: unifi
       ingress:
         enabled: true
       annotations:
