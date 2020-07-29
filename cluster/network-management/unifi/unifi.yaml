@@ -32,13 +32,19 @@ spec:
       annotations:
         kubernetes.io/ingress.class: "nginx"
         nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
+    unifiedService:
+      enabled: false
+      type: LoadBalancer
+      loadBalancerIP: 10.201.90.10
+      annotations:
+        metallb.universe.tf/allow-shared-ip: unifi
     guiService:
       type: LoadBalancer
       loadBalancerIP: 10.201.90.10
       annotations:
         metallb.universe.tf/allow-shared-ip: unifi
     captivePortalService:
-      enabled: false
+      enabled: true
       type: LoadBalancer
       loadBalancerIP: 10.201.90.11
 #      annotations:
