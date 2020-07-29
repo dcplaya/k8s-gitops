@@ -40,7 +40,7 @@ spec:
     captivePortalService:
       enabled: false
       type: LoadBalancer
-      loadBalancerIP: 10.201.90.10
+      loadBalancerIP: 10.201.90.11
       annotations:
         metallb.universe.tf/allow-shared-ip: unifi
       ingress:
