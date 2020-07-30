@@ -23,7 +23,7 @@ spec:
   values:
     image:
       repository: esphome/esphome
-      tag: 1.14.5
+      tag: aea2e9a
     extraEnv:
       ESPHOME_DASHBOARD_USE_PING: "true"
       TZ: "America/Los_Angeles"
@@ -34,7 +34,7 @@ spec:
       loadBalancerIP: 10.201.40.50
     persistence:
       enabled: true
-      storageClass:  longhorn                                                   # Use Default
+      storageClass: longhorn                                                    # Use Default
       accessMode: ReadWriteOnce
       size: 10Gi
     ingress:

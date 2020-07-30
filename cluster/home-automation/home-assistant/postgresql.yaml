@@ -18,7 +18,7 @@ spec:
   values:
     image:
       repository: postgres
-      tag: latest
+      tag: '12.3'
     postgresqlDataDir: "/data/pgdata"
     securityContext:
       fsGroup: 1000
