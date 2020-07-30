@@ -12,7 +12,7 @@ spec:
   releaseName: unifi-video
   helmVersion: v3
   rollback:
-    enable: false
+    enable: true
   chart:
     git: git@github.com:dcplaya/billimek-charts
     path: charts/unifi-video
