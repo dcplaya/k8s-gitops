@@ -65,9 +65,6 @@ spec:
       loadBalancerIP: 10.201.90.20
       annotations:
         metallb.universe.tf/allow-shared-ip: adguard-home-svc
-    podAnnotations:
-      backup.velero.io/backup-volumes: config
-      backup.velero.io/backup-volumes: work
     resources:
       requests:
         memory: 500Mi
