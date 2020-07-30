@@ -28,13 +28,15 @@ spec:
         size: 5Gi
         storageClass: longhorn
       video:
-        enabled: false
-      extraExistingClaimMounts:
-        - name: videos
-          existingClaim: nfs-security-pvc
-          mountPath: footage
-          subPath: Unifi-Video
-          readOnly: false
+        enabled: true
+        size: 30Gi
+        storageClass: longhorn
+#      extraExistingClaimMounts:
+#        - name: videos
+#          existingClaim: nfs-security-pvc
+#          mountPath: footage
+#          subPath: Unifi-Video
+#          readOnly: false
     service:
       type: LoadBalancer
       loadBalancerIP: 10.201.40.20
