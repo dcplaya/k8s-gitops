@@ -37,11 +37,15 @@ spec:
 #          mountPath: footage
 #          subPath: Unifi-Video
 #          readOnly: false
-    service:
+    unifiedService:
+      enabled: true
       type: LoadBalancer
       loadBalancerIP: 10.201.40.20
-      annotations:
-        metallb.universe.tf/allow-shared-ip: unifi-video-svc
+#    service:
+#      type: LoadBalancer
+#      loadBalancerIP: 10.201.40.20
+#      annotations:
+#        metallb.universe.tf/allow-shared-ip: unifi-video-svc
     timezone: "America/Los_Angeles"
     puid: 1000
     guid: 1000
