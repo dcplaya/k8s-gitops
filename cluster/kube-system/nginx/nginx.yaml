@@ -16,7 +16,10 @@ spec:
 #    repository: https://kubernetes-charts.storage.googleapis.com/
 #    name: nginx-ingress
 #    version: 1.41.2
-    repository: https://github.com/kubernetes/ingress-nginx
+#    git: git@github.com:helm/charts.git
+#    path: charts/stable/nginx-ingress
+#    ref: master
+#    repository: https://github.com/kubernetes/ingress-nginx
     name: nginx-ingress
     version: 1.41.2
   values:
