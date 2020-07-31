@@ -13,9 +13,12 @@ spec:
   rollback:
     enable: true
   chart:
-    repository: https://kubernetes-charts.storage.googleapis.com/
+#    repository: https://kubernetes-charts.storage.googleapis.com/
+#    name: nginx-ingress
+#    version: 1.41.2
+    repository: https://github.com/kubernetes/ingress-nginx
     name: nginx-ingress
-    version: 1.40.2
+    version: 1.41.2
   values:
     controller:
       # image:
