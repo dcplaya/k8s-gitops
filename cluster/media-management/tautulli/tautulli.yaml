@@ -19,7 +19,7 @@ spec:
   values:
     image:
       repository: linuxserver/tautulli
-      tag: amd64-develop
+      tag: arm64v8-bbb6e465-ls12
     ingress:
       enabled: true
       annotations:

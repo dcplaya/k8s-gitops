@@ -24,7 +24,7 @@ spec:
   values:
     image:
       repository: homeassistant/home-assistant
-      tag: dev
+      tag: 0.114.0.dev20200730
     usePodSecurityContext: true
     runAsUser: 1000
     fsgroup: 1000
@@ -48,7 +48,8 @@ spec:
         requiredDuringSchedulingIgnoredDuringExecution:
           nodeSelectorTerms:
           - matchExpressions:
-            - {key: "feature.node.kubernetes.io/custom-zigbee", operator: In, values: ["true"]}
+            - {key: "feature.node.kubernetes.io/custom-zigbee", operator: In, values: [
+                "true"]}
     probes:
       liveness:
         enabled: false
