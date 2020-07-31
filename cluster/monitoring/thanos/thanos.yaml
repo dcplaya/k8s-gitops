@@ -35,7 +35,7 @@ spec:
       type: S3
       config:
         bucket: "thanos"
-        endpoint: "minio-longhorn.longhorn-system.svc:9000"
+        endpoint: "minio.longhorn-system.svc:9000"
         region: ""
         insecure: true
         signature_version2: false
