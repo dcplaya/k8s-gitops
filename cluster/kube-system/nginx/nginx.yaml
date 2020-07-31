@@ -78,7 +78,7 @@ spec:
         limits:
           memory: 600Mi
     tcp:
-      7446: "home-automation/unifi-video:7446"
+      7446: "home-automation/unifi-video:7445"
     defaultBackend:
       enabled: true
       image:
