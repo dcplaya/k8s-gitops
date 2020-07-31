@@ -19,7 +19,7 @@ spec:
 #    git: git@github.com:helm/charts.git
 #    path: charts/stable/nginx-ingress
 #    ref: master
-#    repository: https://github.com/kubernetes/ingress-nginx
+    repository: https://hub.helm.sh/charts/stable
     name: nginx-ingress
     version: 1.41.2
   values:
