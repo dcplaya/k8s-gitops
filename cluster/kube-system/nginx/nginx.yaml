@@ -13,13 +13,10 @@ spec:
   rollback:
     enable: true
   chart:
-#    repository: https://kubernetes-charts.storage.googleapis.com/
-#    name: nginx-ingress
-#    version: 1.41.2
 #    git: git@github.com:helm/charts.git
 #    path: charts/stable/nginx-ingress
 #    ref: master
-    repository: https://hub.helm.sh/charts/stable
+    repository: https://kubernetes-charts.storage.googleapis.com/
     name: nginx-ingress
     version: 1.41.2
   values:
