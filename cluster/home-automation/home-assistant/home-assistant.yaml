@@ -43,7 +43,7 @@ spec:
     hostMounts:
     - name: zha
       hostPath: "/dev/serial/by-id/usb-Silicon_Labs_HubZ_Smart_Home_Controller_6120245D-if01-port0"
-      mountPath: "/dev/zigbee"
+      mountPath: "/dev/"
       subPath: "zigbee"
     affinity:
       nodeAffinity:
