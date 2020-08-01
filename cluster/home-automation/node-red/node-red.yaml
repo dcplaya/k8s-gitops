@@ -20,7 +20,7 @@ spec:
   values:
     image:
       repository: nodered/node-red
-      tag: 1.1.2-12-minimal-arm64v8
+      tag: latest
     persistence:
       enabled: true
       storageClass: longhorn
