@@ -5,34 +5,102 @@ metadata:
   name: prometheus-operator
   namespace: monitoring
   annotations:
-    fluxcd.io/ignore: true
-    fluxcd.io/automated: true
+    fluxcd.io/ignore: "false"
+    fluxcd.io/automated: "false"
+    fluxcd.io/tag.grafana: semver:~7
 spec:
   releaseName: prometheus-operator
+  rollback:
+    enable: true
   chart:
     repository: https://kubernetes-charts.storage.googleapis.com/
     name: prometheus-operator
-    version: 8.14.0
+    version: 9.3.0
   values:
     defaultRules:
       rules:
         kubeApiserverAvailability: false
         kubeApiserver: false
+    server:
+      resources:
+        requests:
+          memory: 1500Mi
+          cpu: 25m
+        limits:
+          memory: 2000Mi
     prometheusOperator:
-      createCustomResource: false
+      createCustomResource: true
+      prometheusConfigReloaderImage:
+        repository: quay.io/coreos/prometheus-config-reloader
+        tag: v0.39.0
+      configmapReloadImage:
+        repository: jimmidyson/configmap-reload
+        tag: v0.3.0
     alertmanager:
-      ingress:
-        enabled: true
-        annotations:
-          kubernetes.io/ingress.class: "nginx"
       alertmanagerSpec:
         storage:
           volumeClaimTemplate:
             spec:
-              storageClassName: rook-ceph-block
+              storageClassName: longhorn
               resources:
                 requests:
                   storage: 10Gi
+        tolerations:
+        - key: "arm"
+          operator: "Exists"
+        podMetadata:
+      ingress:
+        enabled: true
+        annotations:
+          kubernetes.io/ingress.class: "nginx"
+      config:
+        route:
+          # group_by: ['alertname', 'job']
+          # group_wait: 30s
+          # group_interval: 5m
+          # repeat_interval: 6h
+          receiver: 'slack-notifications'
+          # routes:
+          #   - match:
+          #       alertname: Watchdog
+          #     receiver: 'null'
+        receivers:
+          - name: 'null'
+          - name: 'slack-notifications'
+            slack_configs:
+              - channel: '#notifications'
+                icon_url: https://avatars3.githubusercontent.com/u/3380462
+                username: 'Alertmanager'
+                send_resolved: true
+                title: |-
+                  [{{ .Status | toUpper }}{{ if eq .Status "firing" }}:{{ .Alerts.Firing | len }}{{ end }}] {{ .CommonLabels.alertname }} for {{ .CommonLabels.job }}
+                  {{- if gt (len .CommonLabels) (len .GroupLabels) -}}
+                    {{" "}}(
+                    {{- with .CommonLabels.Remove .GroupLabels.Names }}
+                      {{- range $index, $label := .SortedPairs -}}
+                        {{ if $index }}, {{ end }}
+                        {{- $label.Name }}="{{ $label.Value -}}"
+                      {{- end }}
+                    {{- end -}}
+                    )
+                  {{- end }}
+                text: >-
+                  {{ range .Alerts -}}
+                    *Alert:* {{ .Annotations.title }}{{ if .Labels.severity }} - `{{ .Labels.severity }}`{{ end }}
+
+                  *Message:* {{ .Annotations.message }}
+
+                  *Details:*
+                    {{ range .Labels.SortedPairs }} • *{{ .Name }}:* `{{ .Value }}`
+                    {{ end }}
+                  {{ end }}
+        inhibit_rules:
+        - source_match:
+            severity: 'critical'
+          target_match:
+            severity: 'warning'
+          # Apply inhibition if the alertname is the same.
+          equal: ['alertname', 'namespace']
     nodeExporter:
       serviceMonitor:
         relabelings:
@@ -50,38 +118,34 @@ spec:
           - node
           targetLabel: instance
     grafana:
+      # image:
+      #   repository: grafana/grafana
+      #   tag: 7.0.4
+      tolerations:
+      - key: "arm"
+        operator: "Exists"
       deploymentStrategy:
         type: Recreate
       persistence:
         enabled: true
-        storageClassName: "rook-ceph-block"
+        storageClassName: longhorn
         size: 10Gi
         accessModes:
         - ReadWriteOnce
-      extraContainers: |
-        - name: renderer
-          image: grafana/grafana-image-renderer:latest
       env:
         GF_EXPLORE_ENABLED: true
+        GF_DISABLE_SANITIZE_HTML: true
         GF_PANELS_DISABLE_SANITIZE_HTML: true
-        GF_RENDERING_SERVER_URL: http://localhost:8081/render
-        GF_RENDERING_CALLBACK_URL: http://localhost:3000/
-        GF_LOG_FILTERS: rendering:debug
+#        VAR_BLOCKY_URL: "http://blocky.default.svc.cluster.local:4000"
       ingress:
         enabled: true
         annotations:
           kubernetes.io/ingress.class: "nginx"
-      sidecar:
-        dashboards:
-          provider:
-            disableDelete: false
-            allowUiUpdates: true
       plugins:
       - natel-discrete-panel
       - pr0ps-trackmap-panel
       - grafana-piechart-panel
-      - vonage-status-panel
-      - grafana-worldmap-panel
+      - https://github.com/panodata/grafana-map-panel/releases/download/0.9.0/grafana-map-panel-0.9.0.zip;grafana-worldmap-panel-ng
       dashboardProviders:
         dashboardproviders.yaml:
           apiVersion: 1
@@ -91,49 +155,86 @@ spec:
             folder: ''
             type: file
             disableDeletion: false
-            allowUiUpdates: true
             editable: true
             options:
               path: /var/lib/grafana/dashboards/default
+#          - name: 'teslamate'
+#            orgId: 1
+#            folder: Teslamate
+#            # folderUid: Nr4ofiDZk
+#            type: file
+#            disableDeletion: false
+#            editable: true
+#            # updateIntervalSeconds: -1
+#            allowUiUpdates: true
+#            options:
+#              path: /var/lib/grafana/dashboards/teslamate
       dashboards:
         default:
-          ceph-cluster:
-            # Ref: https://grafana.com/grafana/dashboards/2842
-            gnetId: 2842
-            revision: 11
-            datasource: Prometheus
-          ceph-osd:
-            # Ref: https://grafana.com/grafana/dashboards/5336
-            gnetId: 5336
-            revision: 3
-            datasource: Prometheus
-          ceph-pools:
-            # Ref: https://grafana.com/grafana/dashboards/5342
-            gnetId: 5342
-            revision: 3
-            datasource: Prometheus
-          velero:
-            # Ref: https://grafana.com/grafana/dashboards/11055
-            gnetId: 11055
-            revision: 2
-            datasource: Prometheus
           nginx-dashboard:
             url: https://raw.githubusercontent.com/kubernetes/ingress-nginx/master/deploy/grafana/dashboards/nginx.json
             datasource: Prometheus
-          blocky:
-            url: https://raw.githubusercontent.com/0xERR0R/blocky/master/docs/blocky-grafana.json
+          vernemq:
+            url: https://raw.githubusercontent.com/vernemq/vernemq/master/metrics_scripts/grafana/VerneMQ%20Node%20Metrics.json
             datasource: Prometheus
-          apc-ups:
-            url: https://raw.githubusercontent.com/onedr0p/k3s-gitops/master/integrations/dashboards/apc-ups.json
+#          blocky:
+#            url: https://raw.githubusercontent.com/0xERR0R/blocky/master/docs/blocky-grafana.json
+#            datasource: Prometheus
+          uptimerobot:
+            url: https://raw.githubusercontent.com/lekpamartin/uptimerobot_exporter/master/dashboards/grafana.json
             datasource: Prometheus
-          cyberpower-pdu:
-            url: https://raw.githubusercontent.com/onedr0p/k3s-gitops/master/integrations/dashboards/cyberpower-pdu.json
+          1-node-exporter:
+            url: https://grafana.com/api/dashboards/11074/revisions/4/download
             datasource: Prometheus
+          # cable-modem-stats:
+          #   url: https://raw.githubusercontent.com/billimek/k8s-gitops/master/monitoring/prometheus-operator/grafana-dashboards/cable_modem_stats.json
+          #   datasource: influxdb
+          # comcast-sucks:
+          #   url: https://raw.githubusercontent.com/billimek/k8s-gitops/master/monitoring/prometheus-operator/grafana-dashboards/comcast_sucks.json
+          #   datasource: influxdb
+          # home-assistant:
+          #   url: https://raw.githubusercontent.com/billimek/k8s-gitops/master/monitoring/prometheus-operator/grafana-dashboards/home_assistant.json
+          #   datasource: influxdb
+          # ups:
+          #   url: https://raw.githubusercontent.com/billimek/k8s-gitops/master/monitoring/prometheus-operator/grafana-dashboards/ups.json
+          #   datasource: influxdb
+          # netdata:
+          #   url: https://raw.githubusercontent.com/billimek/k8s-gitops/master/monitoring/prometheus-operator/grafana-dashboards/netdata.json
+          #   datasource: Prometheus
+      sidecar:
+        datasources:
+          enabled: true
+          defaultDatasourceEnabled: false
       additionalDataSources:
+      - name: Prometheus
+        type: prometheus
+        access: proxy
+        url: http://thanos-query-http:10902/
+        isDefault: true
       - name: loki
         type: loki
         access: proxy
-        url: http://loki.logging.svc.cluster.local:3100
+        url: http://loki.logs.svc.cluster.local:3100
+      - name: influxdb
+        type: influxdb
+        access: proxy
+        url: http://influxdb:8086
+        database: telegraf
+      - name: home_assistant
+        type: influxdb
+        access: proxy
+        url: http://influxdb:8086
+        database: home_assistant
+      - name: speedtests
+        type: influxdb
+        access: proxy
+        url: http://influxdb:8086
+        database: speedtests
+      - name: uptimerobot
+        type: influxdb
+        access: proxy
+        url: http://influxdb:8086
+        database: uptimerobot
       grafana.ini:
         paths:
           data: /var/lib/grafana/data
@@ -148,20 +249,27 @@ spec:
           url: https://grafana.net
     kubeEtcd:
       enabled: false
-    # Does not work right in k3s
     kubeControllerManager:
       enabled: false
-    # Does not work right in k3s
     kubeScheduler:
       enabled: false
-    kubeProxy:
-      enabled: false
+    prometheus-node-exporter:
+      tolerations:
+      - key: "arm"
+        operator: "Exists"
+      - key: "armhf"
+        operator: "Exists"
     prometheus:
       ingress:
         enabled: true
         annotations:
           kubernetes.io/ingress.class: "nginx"
       prometheusSpec:
+        image:
+          repository: quay.io/prometheus/prometheus
+          tag: v2.20.0
+        replicas: 2
+        replicaExternalLabelName: "replica"
         ruleSelector: {}
         ruleNamespaceSelector: {}
         ruleSelectorNilUsesHelmValues: false
@@ -171,25 +279,27 @@ spec:
         podMonitorSelector: {}
         podMonitorNamespaceSelector: {}
         podMonitorSelectorNilUsesHelmValues: false
-        retention: 60d
+        retention: 6h
         enableAdminAPI: true
-        walCompression: true
         storageSpec:
           volumeClaimTemplate:
             spec:
-              storageClassName: rook-ceph-block
+              storageClassName: longhorn
               resources:
                 requests:
-                  storage: 100Gi
-        additionalScrapeConfigs:
-        #- job_name: 'node-exporter'
-        #  static_configs:
-        #  - targets:
-        #    - 192.168.1.170:9100
-        #- job_name: 'minio'
-        #  metrics_path: /minio/prometheus/metrics
-        #  static_configs:
-        #  - targets:
-        #    - 192.168.1.170:9000
-  valueFileSecrets:
-  - name: "prometheus-operator-helm-values"
+                  storage: 10Gi
+        # tolerations:
+        # - key: "arm"
+        #   operator: "Exists"
+        podMetadata:
+          annotations:
+            backup.velero.io/backup-volumes: prometheus-prometheus-operator-prometheus-db
+        thanos:
+          image: quay.io/thanos/thanos:v0.13.0
+          version: v0.13.0
+          objectStorageConfig:
+            name: thanos
+            key: object-store.yaml
+  valuesFrom:
+  - secretKeyRef:
+      name: prometheus-operator-helm-values
