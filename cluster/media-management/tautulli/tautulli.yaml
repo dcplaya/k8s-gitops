@@ -19,7 +19,7 @@ spec:
   values:
     image:
       repository: linuxserver/tautulli
-      tag: arm64v8-873194b4-ls13
+      tag: arm64v8-91a18e1a-ls13
     ingress:
       enabled: true
       annotations:
