@@ -6,7 +6,7 @@ metadata:
   namespace: media-management
   annotations:
     fluxcd.io/ignore: false
-    fluxcd.io/automated: true
+    fluxcd.io/automated: false
 #    fluxcd.io/tag.chart-image: "regexp:amd64*"
 spec:
   releaseName: tautulli
@@ -19,7 +19,7 @@ spec:
   values:
     image:
       repository: linuxserver/tautulli
-      tag: arm64v8-873194b4-ls12
+      tag: latest
     ingress:
       enabled: true
       annotations:
