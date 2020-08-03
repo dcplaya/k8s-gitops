@@ -15,12 +15,12 @@ spec:
   rollback:
     enable: false
   chart:
-#    repository: https://billimek.com/billimek-charts/
-#    name: home-assistant
-#    version: 1.0.4
-    git: git@github.com:dcplaya/billimek-charts
-    path: charts/home-assistant
-    ref: home-assistant
+    repository: https://billimek.com/billimek-charts/
+    name: home-assistant
+    version: 1.0.4
+#    git: git@github.com:dcplaya/billimek-charts
+#    path: charts/home-assistant
+#    ref: home-assistant
   values:
     image:
       repository: homeassistant/home-assistant
@@ -43,8 +43,6 @@ spec:
     hostMounts:
     - name: zha
       hostPath: "/dev/zigbee"
-#      mountPath: "/dev"
-#      subPath: "zigbee"
     affinity:
       nodeAffinity:
         requiredDuringSchedulingIgnoredDuringExecution:
