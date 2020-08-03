@@ -23,7 +23,7 @@ spec:
   values:
     image:
       repository: linuxserver/nzbget
-      tag: arm64v8-testing
+      tag: arm64v8-v21.1-r2311-ls5
     service:
       type: LoadBalancer
       loadBalancerIP: 10.201.70.10
