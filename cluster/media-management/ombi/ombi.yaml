@@ -15,7 +15,7 @@ spec:
   chart:
     repository: https://billimek.com/billimek-charts/
     name: ombi
-    version: 2.2.0
+    version: 2.2.2
   values:
     image:
       repository: linuxserver/ombi
@@ -27,8 +27,6 @@ spec:
     timezone: "America/Los_Angeles"
     puid: 1000
     pgid: 1000
-#    podAnnotations:
-#      backup.velero.io/backup-volumes: config
     persistence:
       config:
         enabled: true

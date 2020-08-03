@@ -15,7 +15,7 @@ spec:
   chart:
     repository: https://billimek.com/billimek-charts/
     name: tautulli
-    version: 2.3.0
+    version: 2.3.1
   values:
     image:
       repository: linuxserver/tautulli
@@ -27,8 +27,6 @@ spec:
     timezone: "America/Los_Angeles"
     puid: 1000
     pgid: 1000
-#    podAnnotations:
-#      backup.velero.io/backup-volumes: config
     persistence:
       config:
         enabled: true
