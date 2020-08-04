@@ -18,7 +18,7 @@ spec:
   values:
     image:
       repository: minio/minio
-      tag: RELEASE.2020-08-04T23-10-51Z-arm
+      tag: RELEASE.2020-08-04T23-10-51Z-arm64
     mcImage:
       repository: minio/mc
       tag: RELEASE.2020-04-25T00-43-23Z
