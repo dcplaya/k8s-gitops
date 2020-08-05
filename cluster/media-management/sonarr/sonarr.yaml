@@ -23,7 +23,8 @@ spec:
       tag: latest
     ingress:
       enabled: true
-      labels: {}
+      labels:
+        app.kubernetes.io/catagory: media
       annotations:
         kubernetes.io/ingress.class: "nginx"
     timezone: "America/Los_Angeles"
