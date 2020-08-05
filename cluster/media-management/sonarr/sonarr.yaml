@@ -34,7 +34,7 @@ spec:
       config:
         enabled: true
         storageClass: longhorn
-        size: 12Gi
+        size: 25Gi
       media:
         enabled: false
       extraExistingClaimMounts:
