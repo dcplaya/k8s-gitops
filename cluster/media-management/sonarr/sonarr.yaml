@@ -24,7 +24,7 @@ spec:
     ingress:
       enabled: true
       labels:
-        app.kubernetes.io/catagory: media
+        app.kubernetes.io/catagory: "media"
       annotations:
         kubernetes.io/ingress.class: "nginx"
     timezone: "America/Los_Angeles"
@@ -38,7 +38,7 @@ spec:
       media:
         enabled: false
       extraExistingClaimMounts:
-        - name: media
+        - name: NFSmedia
           existingClaim: nfs-media-pvc
           mountPath: "/mnt/unionfs"
           readOnly: false
