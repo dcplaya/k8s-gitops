@@ -39,15 +39,15 @@ spec:
         enabled: false
         storageClass: longhorn
         size: 200Gi
-      extraMounts:
-      - name: "media"
-        storageClass: media
-        claimName: nfs-media-pvc
-        mountPath: mnt/unionfs
       config:
         enabled: true
         storageClass: longhorn
         size: 1Gi
+      extraMounts:
+      - name: "nfs-media"
+        storageClass: media
+        claimName: nfs-media-pvc
+        mountPath: mnt/unionfs
     tolerations:
     resources:
       requests:
