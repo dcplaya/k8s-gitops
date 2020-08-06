@@ -35,4 +35,4 @@ spec:
   storageClassName: media
   resources:
     requests:
-      storage: 1Mi
+      storage: 2Mi
