@@ -41,7 +41,7 @@ spec:
         size: 200Gi
       extraMounts:
       - name: "media"
-#        storageClass: media
+        storageClass: media
         claimName: nfs-media-pvc
         mountPath: mnt/unionfs
       config:
