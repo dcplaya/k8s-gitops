@@ -59,11 +59,11 @@ spec:
     # Probes configuration
     probes:
       liveness:
-        initialDelaySeconds: 60
+        initialDelaySeconds: 600
         failureThreshold: 30
         timeoutSeconds: 15
       readiness:
-        initialDelaySeconds: 60
+        initialDelaySeconds: 600
         failureThreshold: 30
         timeoutSeconds: 15
     resources:
