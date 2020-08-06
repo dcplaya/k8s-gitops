@@ -21,7 +21,6 @@ spec:
 #    path: charts/nzbget
 #    ref: master
   values:
-    fullnameOverride: plex-kube-plex
     image:
       repository: plexinc/pms-docker
       tag: 1.19.4.2935-79e214ead
