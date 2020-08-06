@@ -15,7 +15,7 @@ spec:
   chart:
     repository: https://billimek.com/billimek-charts/
     name: bazarr
-    version: 1.0.0
+    version: 2.0.1
   values:
     image:
       repository: linuxserver/bazarr
@@ -27,17 +27,13 @@ spec:
     timezone: "America/Los_Angeles"
     puid: 1000
     pgid: 1000
-    podAnnotations:
-      backup.velero.io/backup-volumes: config
     persistence:
       config:
         enabled: true
         storageClass: longhorn
         accessMode: ReadWriteOnce
         size: 5Gi
-      tv:
-        enabled: false
-      movies:
+      media:
         enabled: false
       extraExistingClaimMounts:
       - name: media

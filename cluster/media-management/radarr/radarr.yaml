@@ -16,7 +16,7 @@ spec:
   chart:
     repository: https://billimek.com/billimek-charts/
     name: radarr
-    version: 3.2.0
+    version: 4.1.2
   values:
     image:
       repository: linuxserver/radarr
@@ -26,8 +26,8 @@ spec:
       annotations:
         kubernetes.io/ingress.class: "nginx"
     timezone: "America/Los_Angeles"
-    uid: 1000
-    gid: 1000
+    puid: 1000
+    pgid: 1000
     podAnnotations:
       backup.velero.io/backup-volumes: config
     persistence:
@@ -35,9 +35,7 @@ spec:
         enabled: true
         storageClass: longhorn
         size: 12Gi
-      downloads:
-        enabled: false
-      movies:
+      media:
         enabled: false
       extraExistingClaimMounts:
         - name: media
@@ -50,8 +48,5 @@ spec:
         cpu: 25m
       limits:
         memory: 500Mi
-    tolerations:
-    - key: "arm"
-      operator: "Exists"
   valueFileSecrets:
   - name: "radarr-helm-values"

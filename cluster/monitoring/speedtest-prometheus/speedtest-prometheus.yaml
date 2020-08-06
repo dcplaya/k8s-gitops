@@ -16,9 +16,6 @@ spec:
     name: speedtest-prometheus
     version: 1.0.1
   values:
-    tolerations:
-    - key: "arm"
-      operator: "Exists"
     serviceMonitor:
       enabled: true
       interval: "60m"

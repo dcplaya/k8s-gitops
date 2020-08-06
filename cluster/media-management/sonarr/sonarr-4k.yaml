@@ -6,7 +6,7 @@ metadata:
   namespace: media-management
   annotations:
     fluxcd.io/ignore: false
-    fluxcd.io/automated: true
+    fluxcd.io/automated: false
     fluxcd.io/tag.chart-image: semver:3.0
 spec:
   releaseName: sonarr-4k
@@ -16,31 +16,29 @@ spec:
   chart:
     repository: https://billimek.com/billimek-charts/
     name: sonarr
-    version: 3.2.0
+    version: 4.1.2
   values:
     image:
       repository: linuxserver/sonarr
-      tag: 3.0.3.731-ls186
+      tag: 3.0.3.905-ls35
     ingress:
       enabled: true
+      labels:
+        app.kubernetes.io/catagory: "media"
       annotations:
         kubernetes.io/ingress.class: "nginx"
     timezone: "America/Los_Angeles"
     uid: 1000
     gid: 1000
-    podAnnotations:
-      backup.velero.io/backup-volumes: config
     persistence:
       config:
         enabled: true
         storageClass: longhorn
         size: 12Gi
-      downloads:
-        enabled: false
-      tv:
+      media:
         enabled: false
       extraExistingClaimMounts:
-        - name: media
+        - name: nfs-media
           existingClaim: nfs-media-pvc
           mountPath: "/mnt/unionfs"
           readOnly: false
