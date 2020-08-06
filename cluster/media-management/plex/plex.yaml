@@ -56,6 +56,16 @@ spec:
         storageClass: longhorn
         accessMode: ReadWriteOnce
         size: 275Gi
+    # Probes configuration
+    probes:
+      liveness:
+        initialDelaySeconds: 60
+        failureThreshold: 30
+        timeoutSeconds: 15
+      readiness:
+        initialDelaySeconds: 60
+        failureThreshold: 30
+        timeoutSeconds: 15
     resources:
       limits:
         gpu.intel.com/i915: 1
