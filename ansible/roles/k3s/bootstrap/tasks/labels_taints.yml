@@ -5,12 +5,6 @@
   environment:
     KUBECONFIG: "{{ REPO_ROOT }}/kubeconfig"
 
-- name: Apply ceph annotations
-  command: kubectl label --overwrite node {{ item }} node-role.kubernetes.io/ceph=true
-  loop: "{{ groups['ceph'] }}"
-  environment:
-    KUBECONFIG: "{{ REPO_ROOT }}/kubeconfig"
-
 - name: Apply nfs annotations
   command: kubectl label --overwrite node {{ item }} node-role.kubernetes.io/nfs=true
   loop: "{{ groups['nfs'] }}"
