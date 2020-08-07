@@ -46,7 +46,7 @@ Note: Must `sudo chmod a+w /usr/local/bin` for some reason still. Fails on downl
    ```
    ansible-vault encrypt ~/k8s-gitops/ansible/group_vars/vault/encrypted-vault.yml
    ```
-   Node: I am not sure what the recovery/root token are for yet.
+   Note: I am not sure what the recovery/root token are for yet.
 
 6. ## To enable SSH key prompt only once (Seems to not survive a reboot?)
    ```

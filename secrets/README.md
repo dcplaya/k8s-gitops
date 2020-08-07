@@ -15,6 +15,7 @@ This handles the automatic upgrade creation of secrets? Still trying to figure o
 2. Put all secrets into .secrets.env file, use the sample as an example
 
 3. Grab pub-cert
+`kubeseal --fetch-cert > pub_cert.pub`
 
 4. Run ``./secrets.sh`
     - This will create a file `zz_generated_secrets.yaml` in the cluster folder. This file is encrypted and can be uploaded to github
