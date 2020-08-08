@@ -11,7 +11,7 @@ spec:
     - ReadWriteMany
   persistentVolumeReclaimPolicy: Retain
   nfs:
-    server: 10.10.1.60
+    server: 10.10.200.60
     path: /mnt
   mountOptions:
     - tcp
