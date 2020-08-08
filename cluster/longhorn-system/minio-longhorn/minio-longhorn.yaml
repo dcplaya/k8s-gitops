@@ -19,9 +19,11 @@ spec:
     image:
       repository: minio/minio
       tag: RELEASE.2020-08-08T04-50-06Z
+      pullPolicy: Always
     mcImage:
       repository: minio/mc
       tag: RELEASE.2020-07-31T23-34-13Z
+      pullPolicy: Always
     helmKubectlJqImage:
       repository: bskim45/helm-kubectl-jq
       tag: 3.1.0
