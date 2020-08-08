@@ -42,9 +42,10 @@ spec:
         metallb.universe.tf/allow-shared-ip: plex-svc
     persistence:
       transcode:
-        enabled: false
-        emptyDir:
-          medium: "Memory"
+        enabled: true
+        storageClass: longhorn
+        accessMode: ReadWriteOnce
+        size: 30Gi
       data:
         enabled: false
       extraMounts:
