@@ -74,5 +74,7 @@ spec:
       requests:
         cpu: 35m
         memory: 1500Mi
+    plex_autoscan:
+      enabled: true
   valueFileSecrets:
   - name: "plex-test-helm-values"
