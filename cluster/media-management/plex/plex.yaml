@@ -74,5 +74,14 @@ spec:
       requests:
         cpu: 35m
         memory: 1500Mi
+    affinity:
+      nodeAffinity:
+        requiredDuringSchedulingIgnoredDuringExecution:
+          nodeSelectorTerms:
+          - matchExpressions:
+            - key: node-role.kubernetes.io/plex
+              operator: In
+              values:
+              - "true"
   valueFileSecrets:
   - name: "plex-helm-values"
