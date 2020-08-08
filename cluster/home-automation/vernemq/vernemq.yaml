@@ -16,7 +16,7 @@ spec:
   chart:
     repository: https://vernemq.github.io/docker-vernemq
     name: vernemq
-    version: 1.6.2
+    version: 1.10.4.1
   values:
     image:
       repository: vernemq/vernemq
@@ -24,11 +24,9 @@ spec:
     replicaCount: 1
     serviceMonitor:
       create: true
-    podAnnotations:
-      backup.velero.io/backup-volumes: data
     persistentVolume:
       enabled: true
-      accessModes: ReadWriteOnce
+#      accessModes: ReadWriteOnce
       size: 5Gi
       storageClass: longhorn
     service:
