@@ -11,6 +11,12 @@
   environment:
     KUBECONFIG: "{{ REPO_ROOT }}/kubeconfig"
 
+- name: Apply longhorn storage annotations
+  command: kubectl label --overwrite node {{ item }} node.longhorn.io/create-default-disk=true
+  loop: "{{ groups['longhorn_storage'] }}"
+  environment:
+    KUBECONFIG: "{{ REPO_ROOT }}/kubeconfig"
+
 - name: Apply worker annotations
   command: kubectl label --overwrite node {{ item }} node-role.kubernetes.io/worker=true
   loop: "{{ groups['nodes'] }}"
