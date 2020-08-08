@@ -18,7 +18,7 @@ spec:
   values:
     image:
       repository: minio/minio
-      tag: RELEASE.2020-08-08T04-50-06Z-ppc64le
+      tag: RELEASE.2020-08-08T04-50-06Z-s390x
     mcImage:
       repository: minio/mc
       tag: RELEASE.2020-04-25T00-43-23Z
