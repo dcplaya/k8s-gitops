@@ -24,7 +24,7 @@ spec:
               fieldRef:
                 fieldPath: spec.nodeName
         image: intel/intel-gpu-plugin:0.18.0
-        imagePullPolicy: Always
+        imagePullPolicy: IfNotPresent
         securityContext:
           readOnlyRootFilesystem: true
         volumeMounts:
