@@ -30,7 +30,7 @@ spec:
       enabled: true
       accessModes: ReadWriteOnce
       size: 5Gi
-      storageClass: rook-ceph-block
+      storageClass: longhorn
     service:
       type: LoadBalancer
       loadBalancerIP: 10.201.40.10
