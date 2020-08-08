@@ -25,7 +25,7 @@ spec:
     serviceMonitor:
       create: true
     persistentVolume:
-      enabled: true
+      enabled: false
 #      accessModes: ReadWriteOnce
       size: 5Gi
       storageClass: longhorn
