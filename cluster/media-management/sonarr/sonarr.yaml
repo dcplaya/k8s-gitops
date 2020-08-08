@@ -44,8 +44,8 @@ spec:
           readOnly: false
     resources:
       requests:
-        memory: 350Mi
-        cpu: 25m
+        memory: 450Mi
+        cpu: 250m
       limits:
         memory: 900Mi
   valueFileSecrets:
