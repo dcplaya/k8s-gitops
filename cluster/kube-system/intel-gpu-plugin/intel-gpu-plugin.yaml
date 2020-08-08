@@ -35,7 +35,7 @@ spec:
           mountPath: /sys/class/drm
           readOnly: true
         - name: kubeletsockets
-          mountPath: /var/lib/kubelet/device-plugins/gpu.intel.com-i915.sock
+          mountPath: /var/lib/kubelet/device-plugins
       volumes:
       - name: devfs
         hostPath:
@@ -45,4 +45,4 @@ spec:
           path: /sys/class/drm
       - name: kubeletsockets
         hostPath:
-          path: /var/lib/kubelet/device-plugins/gpu.intel.com-i915.sock
+          path: /var/lib/kubelet/device-plugins
