@@ -55,7 +55,7 @@ spec:
       config:
         storageClass: longhorn
         accessMode: ReadWriteOnce
-        size: 300Gi
+        size: 301Gi
     # Probes configuration
     probes:
       liveness:
