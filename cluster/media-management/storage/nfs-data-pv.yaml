@@ -33,6 +33,7 @@ spec:
   accessModes:
     - ReadWriteMany
   storageClassName: media
+  volumeName: nfs-data-pv
   resources:
     requests:
       storage: 1Mi
