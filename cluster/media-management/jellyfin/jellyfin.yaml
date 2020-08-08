@@ -11,7 +11,7 @@ metadata:
 spec:
   releaseName: jellyfin
   rollback:
-    enable: false
+    enable: true
   chart:
     git: https://github.com/brianmcarey/jellyfin-helm/
     ref: master
@@ -34,7 +34,7 @@ spec:
         enabled: true
         storageClass: longhorn
         accessMode: ReadWriteOnce
-        size: 31Gi
+        size: 30Gi
       media:
         enabled: true
         existingClaim: nfs-media-pvc
