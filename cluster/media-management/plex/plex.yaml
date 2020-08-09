@@ -55,9 +55,11 @@ spec:
         claimName: nfs-media-pvc
         mountPath: mnt/unionfs
       config:
-        storageClass: longhorn
-        accessMode: ReadWriteOnce
-        size: 300Gi
+        claimName: nfs-plex-pvc
+#        subPath: 
+#        storageClass: longhorn
+#        accessMode: ReadWriteOnce
+#        size: 300Gi
     # Probes configuration
     probes:
       liveness:
