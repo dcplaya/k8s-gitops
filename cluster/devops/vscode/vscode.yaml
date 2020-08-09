@@ -14,7 +14,7 @@ spec:
   rollback:
     enable: true
   chart:
-    git: git@github.com/paolomainardi/code-server
+    git: git@github.com:paolomainardi/code-server.git
     path: deployment/chart
     ref: master
   values:
