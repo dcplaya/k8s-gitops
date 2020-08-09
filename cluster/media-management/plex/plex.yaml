@@ -12,7 +12,7 @@ spec:
   releaseName: plex
   helmVersion: v3
   rollback:
-    enable: false
+    enable: true
   chart:
     repository: https://billimek.com/billimek-charts/
     name: plex
@@ -56,7 +56,7 @@ spec:
       config:
         storageClass: longhorn
         accessMode: ReadWriteOnce
-        size: 301Gi
+        size: 300Gi
     # Probes configuration
     probes:
       liveness:
