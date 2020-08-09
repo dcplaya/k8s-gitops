@@ -39,7 +39,7 @@ spec:
       loadBalancerIP: 10.201.70.20
 #      externalIPs:
 #      - 10.201.70.20
-      externalTrafficPolicy: Local
+#      externalTrafficPolicy: Local
       annotations:
         metallb.universe.tf/allow-shared-ip: plex-svc
     serviceUDP:
@@ -47,7 +47,7 @@ spec:
 #      externalIPs:
 #      - 10.201.70.20
       loadBalancerIP: 10.201.70.20
-      externalTrafficPolicy: Local
+#      externalTrafficPolicy: Local
       annotations:
         metallb.universe.tf/allow-shared-ip: plex-svc
     persistence:
