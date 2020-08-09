@@ -46,7 +46,7 @@ spec:
         enabled: true
         storageClass: longhorn
         accessMode: ReadWriteOnce
-        size: 30Gi
+        size: 31Gi
       data:
         enabled: false
       extraMounts:
@@ -56,7 +56,7 @@ spec:
         mountPath: mnt/unionfs
       config:
         claimName: nfs-plex-pvc
-#        subPath: 
+#        subPath:
 #        storageClass: longhorn
 #        accessMode: ReadWriteOnce
 #        size: 300Gi
