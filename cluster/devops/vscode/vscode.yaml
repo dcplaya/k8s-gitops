@@ -1,0 +1,33 @@
+---
+apiVersion: helm.fluxcd.io/v1
+kind: HelmRelease
+metadata:
+  name: vscode
+  namespace: devops
+  annotations:
+    fluxcd.io/ignore: "false"
+    fluxcd.io/automated: "true"
+    fluxcd.io/tag.chart-image: semver:~1
+spec:
+  releaseName: vscode
+  helmVersion: v3
+  rollback:
+    enable: true
+  chart:
+    git: git@github.com/paolomainardi/code-server
+    path: deployment/chart
+    ref: master
+  values:
+    image:
+      repository: codercom/code-server
+      tag: latest
+      pullPolicy: Always
+    ingress:
+      enabled: true
+    persistence:
+      enabled: true
+      accessMode: ReadWriteOnce
+      size: 10Gi
+      storageClass: longhorn
+  valueFileSecrets:
+  - name: "vscode-helm-values"
