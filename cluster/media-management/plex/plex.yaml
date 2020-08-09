@@ -80,8 +80,8 @@ spec:
         failureThreshold: 30
         timeoutSeconds: 15
     resources:
-#      limits:
-#        memory: 4900Mi
+      limits:
+        memory: 12000Mi
       requests:
         gpu.intel.com/i915: 1
         cpu: 35m
