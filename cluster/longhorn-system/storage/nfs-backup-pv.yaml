@@ -33,4 +33,4 @@ spec:
   storageClassName: backup
   resources:
     requests:
-      storage: 500Gi
+      storage: 600Gi
