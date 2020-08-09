@@ -81,7 +81,7 @@ spec:
         timeoutSeconds: 15
     resources:
       limits:
-        memory: 4900Mi
+#        memory: 4900Mi
       requests:
         gpu.intel.com/i915: 1
         cpu: 35m
