@@ -42,7 +42,7 @@ spec:
     #   app: "nvidia-gpu-plugin"
     resources:
       limits:
-        gpu.intel.com/i915: 1
+      #  gpu.intel.com/i915: 1
         # nvidia.com/gpu: 1
         memory: 4900Mi
       requests:

@@ -35,18 +35,18 @@ spec:
       - 10.42.0.0/16
 #    advertiseIp: "http://10.201.70.20:32400"
     serviceTCP:
-      type: NodePort
-#      loadBalancerIP: 10.201.70.20
-      externalIPs:
-      - 10.201.70.20
+      type: LoadBalancer
+      loadBalancerIP: 10.201.70.20
+#      externalIPs:
+#      - 10.201.70.20
       externalTrafficPolicy: Local
       annotations:
         metallb.universe.tf/allow-shared-ip: plex-svc
     serviceUDP:
-      type: NodePort
-      externalIPs:
-      - 10.201.70.20
-#      loadBalancerIP: 10.201.70.20
+      type: LoadBalancer
+#      externalIPs:
+#      - 10.201.70.20
+      loadBalancerIP: 10.201.70.20
       externalTrafficPolicy: Local
       annotations:
         metallb.universe.tf/allow-shared-ip: plex-svc
