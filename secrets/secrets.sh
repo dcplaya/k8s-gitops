@@ -154,7 +154,14 @@ kubeseal --format=yaml --cert="${PUB_CERT}" \
   >> "${GENERATED_SECRETS}"
 echo "---" >> "${GENERATED_SECRETS}"
 
-
+# NginX Basic Auth - devops namespace
+kubectl create secret generic nginx-basic-auth \
+  --from-literal=auth="${NGINX_BASIC_AUTH}" \
+  --namespace devops --dry-run=client -o json \
+  | \
+kubeseal --format=yaml --cert="${PUB_CERT}" \
+  >> "${GENERATED_SECRETS}"
+echo "---" >> "${GENERATED_SECRETS}"
 
 
 # Cloudflare API Key - cert-manager namespace
