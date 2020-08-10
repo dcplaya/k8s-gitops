@@ -31,23 +31,17 @@ spec:
         kubernetes.io/ingress.class: "nginx"
     timezone: "America/Los_Angeles"
     changeConfigDirOwnership: true
-    allowedNetworks:
-      - 10.42.0.0/16
+#    allowedNetworks:
+#      - 10.42.0.0/16
 #    advertiseIp: "http://10.201.70.20:32400"
     serviceTCP:
       type: LoadBalancer
       loadBalancerIP: 10.201.70.20
-#      externalIPs:
-#      - 10.201.70.20
-#      externalTrafficPolicy: Local
       annotations:
         metallb.universe.tf/allow-shared-ip: plex-svc
     serviceUDP:
       type: LoadBalancer
       loadBalancerIP: 10.201.70.20
-#      externalIPs:
-#      - 10.201.70.20
-#      externalTrafficPolicy: Local
       annotations:
         metallb.universe.tf/allow-shared-ip: plex-svc
     persistence:
