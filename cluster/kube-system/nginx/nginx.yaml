@@ -23,7 +23,7 @@ spec:
       # image:
       #   repository: quay.io/kubernetes-ingress-controller/nginx-ingress-controller
       #   tag: "0.25.1"
-      replicaCount: 2
+      replicaCount: 4
       config:
         ssl-protocols: "TLSv1.3 TLSv1.2"
         custom-http-errors: "404,403,500,503"
