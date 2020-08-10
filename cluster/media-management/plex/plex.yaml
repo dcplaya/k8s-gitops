@@ -72,7 +72,7 @@ spec:
         claimName: nfs-media-pvc
         mountPath: mnt/unionfs
       config:
-        claimName: nfs-plex-pvc
+        claimName: plex-config
 #        subPath:
 #        storageClass: longhorn
 #        accessMode: ReadWriteOnce
