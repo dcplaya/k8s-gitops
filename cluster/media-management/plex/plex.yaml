@@ -24,7 +24,7 @@ spec:
     image:
       repository: plexinc/pms-docker
       tag: plexpass
-#    hostNetwork: true
+    hostNetwork: true
     ingress:
       enabled: true
       annotations:
@@ -36,6 +36,7 @@ spec:
     - 10.201.0.0/16
     - 10.10.200.0/24
     - 10.10.1.1/24
+    - 127.0.0.1
 #    advertiseIp: "http://10.201.70.20:32400"
     serviceTCP:
       type: LoadBalancer
