@@ -24,7 +24,7 @@ spec:
     image:
       repository: plexinc/pms-docker
       tag: plexpass
-#    hostNetwork: true
+    hostNetwork: true
     ingress:
       enabled: true
       annotations:
@@ -38,26 +38,26 @@ spec:
 #    - 10.10.1.1/24
 #    - 127.0.0.1
 #    advertiseIp: "http://10.201.70.20:32400"
-#    serviceTCP:
-#      type: LoadBalancer
-#      loadBalancerIP: 10.201.70.20
-#      annotations:
-#        metallb.universe.tf/allow-shared-ip: plex-svc
-#    serviceUDP:
-#      type: LoadBalancer
-#      loadBalancerIP: 10.201.70.20
-#      annotations:
-#        metallb.universe.tf/allow-shared-ip: plex-svc
     serviceTCP:
-      type: NodePort
-      externalIPs:
-      - 10.201.70.20
-      externalTrafficPolicy: Local
+      type: LoadBalancer
+      loadBalancerIP: 10.201.70.20
+      annotations:
+        metallb.universe.tf/allow-shared-ip: plex-svc
     serviceUDP:
-      type: NodePort
-      externalIPs:
-      - 10.201.70.20
-      externalTrafficPolicy: Local
+      type: LoadBalancer
+      loadBalancerIP: 10.201.70.20
+      annotations:
+        metallb.universe.tf/allow-shared-ip: plex-svc
+#    serviceTCP:
+#      type: NodePort
+#      externalIPs:
+#      - 10.201.70.20
+#      externalTrafficPolicy: Local
+#    serviceUDP:
+#      type: NodePort
+#      externalIPs:
+#      - 10.201.70.20
+#      externalTrafficPolicy: Local
     persistence:
       transcode:
         enabled: false
