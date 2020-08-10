@@ -23,7 +23,7 @@ spec:
   values:
     image:
       repository: plexinc/pms-docker
-      tag: plexpass
+      tag: 1.19.5.3112-b23ab3896
     hostNetwork: true
     ingress:
       enabled: true
@@ -32,7 +32,7 @@ spec:
     timezone: "America/Los_Angeles"
     changeConfigDirOwnership: true
     allowedNetworks:
-      - 10.42.0.0/16
+    - 10.42.0.0/16
 #    advertiseIp: "http://10.201.70.20:32400"
     serviceTCP:
       type: LoadBalancer
