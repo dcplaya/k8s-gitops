@@ -4,4 +4,4 @@ kind: Namespace
 metadata:
   name: home-automation
   annotations:
-    fluxcd.io/ignore: false
+    fluxcd.io/ignore: true
