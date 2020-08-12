@@ -14,11 +14,10 @@ See [setup/README.md](setup/README.md) for more details.
 * [default](default/)
 * [flux](flux/)
 * [kube-system](kube-system/)
+* [longhorn-system](longhorn-system/)
 * [logs](logs/)
 * [monitoring](monitoring/)
-* [rook-ceph](rook-ceph/)
 * [system-upgrade](system-upgrade/)
-* [velero](velero/)
 
 ## Ansible Sets To Install
 
