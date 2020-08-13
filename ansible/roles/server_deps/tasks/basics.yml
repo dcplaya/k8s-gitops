@@ -66,6 +66,7 @@
     - nethogs
     - iperf3
     - nfs-common
+    - nfs-kernel-server
     - neofetch
     - tmux
     - net-tools
