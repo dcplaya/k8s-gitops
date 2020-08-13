@@ -5,8 +5,8 @@ metadata:
   name: zigbee2mqtt
   namespace: home-automation
   annotations:
-    fluxcd.io/ignore: true
-    fluxcd.io/automated: false
+    fluxcd.io/ignore: "true"
+    fluxcd.io/automated: "false"
 spec:
   releaseName: zigbee2mqtt
   helmVersion: v3

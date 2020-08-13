@@ -5,8 +5,8 @@ metadata:
   name: esphome
   namespace: home-automation
   annotations:
-    fluxcd.io/ignore: false
-    fluxcd.io/automated: true
+    fluxcd.io/ignore: "false"
+    fluxcd.io/automated: "true"
 #    fluxcd.io/tag.chart-image: 'semver:0'
 spec:
   releaseName: esphome

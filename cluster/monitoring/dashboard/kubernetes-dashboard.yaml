@@ -5,8 +5,8 @@ metadata:
   name: kubernetes-dashboard
   namespace: monitoring
   annotations:
-    fluxcd.io/automated: true
-    fluxcd.io/ignore: false
+    fluxcd.io/automated: "true"
+    fluxcd.io/ignore: "false"
     luxcd.io/tag.chart-image: '^'
 spec:
   releaseName: kubernetes-dashboard

@@ -4,8 +4,8 @@ metadata:
   name: nfs-server-provisioner
   namespace: kube-system
   annotations:
-    fluxcd.io/ignore: true
-    fluxcd.io/automated: true
+    fluxcd.io/ignore: "true"
+    fluxcd.io/automated: "true"
 spec:
   releaseName: nfs-server-provisioner
   chart:

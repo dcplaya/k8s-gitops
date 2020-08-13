@@ -5,8 +5,8 @@ metadata:
   name: uptimerobot
   namespace: monitoring
   annotations:
-    fluxcd.io/ignore: false
-    fluxcd.io/automated: true
+    fluxcd.io/ignore: "false"
+    fluxcd.io/automated: "true"
 spec:
   releaseName: uptimerobot
   helmVersion: v3

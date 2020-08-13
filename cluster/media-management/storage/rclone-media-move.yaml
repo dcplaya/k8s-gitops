@@ -5,8 +5,8 @@ metadata:
   namespace: media-management
   name: rclone-sync
   annotations:
-    fluxcd.io/ignore: true
-    fluxcd.io/automated: true
+    fluxcd.io/ignore: "true"
+    fluxcd.io/automated: "true"
   labels:
     app: rclone-sync
 spec:

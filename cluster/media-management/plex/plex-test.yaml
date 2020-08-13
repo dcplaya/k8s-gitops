@@ -5,8 +5,8 @@ metadata:
   name: plex-test
   namespace: media-management
   annotations:
-    fluxcd.io/ignore: true
-    fluxcd.io/automated: true
+    fluxcd.io/ignore: "true"
+    fluxcd.io/automated: "true"
     fluxcd.io/tag.chart-image: 'regexp:^(1\.[0-9]+\.[0-9]+\.[0-9]+-.*)$'
 spec:
   releaseName: plex-test

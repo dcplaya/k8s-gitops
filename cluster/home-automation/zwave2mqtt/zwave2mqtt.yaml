@@ -5,8 +5,8 @@ metadata:
   name: zwave2mqtt
   namespace: home-automation
   annotations:
-    fluxcd.io/ignore: true
-    fluxcd.io/automated: false
+    fluxcd.io/ignore: "true"
+    fluxcd.io/automated: "false"
 spec:
   releaseName: zwave2mqtt
   helmVersion: v3

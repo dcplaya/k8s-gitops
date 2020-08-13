@@ -9,8 +9,8 @@ metadata:
   name: ser2sock-zwave
   namespace: home-automation
   annotations:
-    fluxcd.io/ignore: false
-    fluxcd.io/automated: false
+    fluxcd.io/ignore: "true"
+    fluxcd.io/automated: "false"
 spec:
   releaseName: ser2sock-zwave
   helmVersion: v3

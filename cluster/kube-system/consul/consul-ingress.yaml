@@ -4,7 +4,7 @@ metadata:
   name: consul
   namespace: kube-system
   annotations:
-    fluxcd.io/ignore: true
+    fluxcd.io/ignore: "true"
   labels:
     app.kubernetes.io/name: consul
 spec:

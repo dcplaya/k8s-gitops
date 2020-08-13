@@ -5,7 +5,7 @@ metadata:
   name: botkube
   namespace: monitoring
   annotations:
-    fluxcd.io/ignore: false
+    fluxcd.io/ignore: "false"
 spec:
   releaseName: botkube
   rollback:
@@ -26,26 +26,26 @@ spec:
       resources:
         - name: pod                # Name of the resources e.g pod, deployment, ingress, etc. (Resource name must be in singular form)
           namespaces:
-            include:  
+            include:
               - all
             ignore:                 # List of namespaces to be ignored (omitempty), used only with include: all
-              - rook-ceph                    # example : include [all], ignore [x,y,z] 
+              - rook-ceph                    # example : include [all], ignore [x,y,z]
           events:                   # List of lifecycle events you want to receive, e.g create, update, delete, error OR all
             - create
             - delete
         - name: service
           namespaces:
-            include:  
+            include:
               - all
             ignore:
-              - 
+              -
           events:
             - create
             - delete
             - error
         - name: deployment
           namespaces:
-            include:  
+            include:
               - all
             ignore:
               -
@@ -56,7 +56,7 @@ spec:
             - error
         - name: statefulset
           namespaces:
-            include:  
+            include:
               - all
             ignore:
               -
@@ -67,7 +67,7 @@ spec:
             - error
         - name: ingress
           namespaces:
-            include:  
+            include:
               - all
             ignore:
               -
@@ -77,7 +77,7 @@ spec:
             - error
         - name: node
           namespaces:
-            include:  
+            include:
               - all
             ignore:
               -
@@ -87,7 +87,7 @@ spec:
             - error
         - name: namespace
           namespaces:
-            include:  
+            include:
               - all
             ignore:
               -
@@ -97,7 +97,7 @@ spec:
             - error
         - name: persistentvolume
           namespaces:
-            include:  
+            include:
               - all
             ignore:
               -
@@ -107,7 +107,7 @@ spec:
             - error
         - name: persistentvolumeclaim
           namespaces:
-            include:  
+            include:
               - all
             ignore:
               -
@@ -117,7 +117,7 @@ spec:
             - error
         - name: secret
           namespaces:
-            include:  
+            include:
               - all
             ignore:
               -
@@ -127,7 +127,7 @@ spec:
             - error
         - name: configmap
           namespaces:
-            include:  
+            include:
               - all
             ignore:
               - rook-ceph
@@ -136,7 +136,7 @@ spec:
             - error
         - name: daemonset
           namespaces:
-            include:  
+            include:
               - all
             ignore:
               -
@@ -146,7 +146,7 @@ spec:
             - error
         - name: job
           namespaces:
-            include:  
+            include:
               - all
             ignore:
               - rook-ceph
@@ -157,7 +157,7 @@ spec:
             - error
         - name: role
           namespaces:
-            include:  
+            include:
               - all
             ignore:
               -
@@ -167,7 +167,7 @@ spec:
             - error
         - name: rolebinding
           namespaces:
-            include:  
+            include:
               - all
             ignore:
               -
@@ -180,14 +180,14 @@ spec:
             include:
               - all
             ignore:
-              - 
+              -
           events:
             - create
             - delete
             - error
         - name: clusterrolebinding
           namespaces:
-            include:  
+            include:
               - all
             ignore:
               -

@@ -5,8 +5,8 @@ metadata:
   name: unms
   namespace: network-management
   annotations:
-    fluxcd.io/ignore: true
-    fluxcd.io/automated: true
+    fluxcd.io/ignore: "true"
+    fluxcd.io/automated: "true"
     fluxcd.io/tag.chart-image: semver:~0.0
 spec:
   releaseName: unms

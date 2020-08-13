@@ -5,8 +5,8 @@ metadata:
   name: speedtest-prometheus
   namespace: monitoring
   annotations:
-    fluxcd.io/ignore: false
-    fluxcd.io/automated: true
+    fluxcd.io/ignore: "false"
+    fluxcd.io/automated: "true"
 spec:
   releaseName: speedtest-prometheus
   rollback:

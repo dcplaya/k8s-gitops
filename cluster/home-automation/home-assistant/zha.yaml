@@ -4,7 +4,7 @@ metadata:
   name: zha
   namespace: home-automation
   annotations:
-    fluxcd.io/ignore: true
+    fluxcd.io/ignore: "true"
 data:
   zha: |
     #!/bin/bash
