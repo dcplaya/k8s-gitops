@@ -4,6 +4,7 @@ metadata:
   name: keycloak
   namespace: kube-system
   annotations:
+    fluxcd.io/ignore: "true"
     fluxcd.io/automated: "false"
 spec:
   releaseName: keycloak

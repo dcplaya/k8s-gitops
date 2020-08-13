@@ -23,6 +23,7 @@ See [setup/README.md](setup/README.md) for more details.
 
 Note: Do not use the `--check` option in Ansible, it will fail on the K3S install
 Note: Must `sudo chmod a+w /usr/local/bin` for some reason still. Fails on downloading k3s binary if I dont do this
+      This is only needed if `BECOME_ALL` is set to false
 
 1. Install ansible
    ```

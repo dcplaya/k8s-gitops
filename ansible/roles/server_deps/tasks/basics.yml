@@ -66,9 +66,11 @@
     - nethogs
     - iperf3
     - nfs-common
+    - nfs-kernel-server
     - neofetch
     - tmux
     - net-tools
+    - mergerfs
   register: apt_install_common
   retries: 5
   until: apt_install_common is success
