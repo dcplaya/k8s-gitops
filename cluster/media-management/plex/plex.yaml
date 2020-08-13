@@ -40,12 +40,12 @@ spec:
 #    advertiseIp: "http://10.201.70.20:32400"
     serviceTCP:
       type: LoadBalancer
-      loadBalancerIP: 10.201.70.25
+      loadBalancerIP: 10.201.70.20
       annotations:
         metallb.universe.tf/allow-shared-ip: plex-svc
     serviceUDP:
       type: LoadBalancer
-      loadBalancerIP: 10.201.70.25
+      loadBalancerIP: 10.201.70.20
       annotations:
         metallb.universe.tf/allow-shared-ip: plex-svc
 #    serviceTCP:
