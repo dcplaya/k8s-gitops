@@ -4,7 +4,7 @@ apiVersion: apps/v1
 metadata:
   namespace: longhorn-system
   annotations:
-    fluxcd.io/ignore: "true"
+    fluxcd.io/ignore: "false"
   name: rclone-sync-backup
   labels:
     app: rclone-sync-backup
