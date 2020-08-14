@@ -4,7 +4,7 @@ metadata:
   name: descheduler
   namespace: kube-system
   annotations:
-    fluxcd.io/ignore: "true"
+    fluxcd.io/ignore: "false"
 spec:
   releaseName: descheduler
   rollback:
@@ -34,4 +34,14 @@ spec:
         RemovePodsViolatingInterPodAntiAffinity:
           enabled: false
         LowNodeUtilization:
-          enabled: false
+          enabled: true
+          params:
+            nodeResourceUtilizationThresholds:
+              thresholds:
+                cpu : 20
+                memory: 20
+                pods: 20
+              targetThresholds:
+                cpu : 50
+                memory: 50
+                pods: 50
