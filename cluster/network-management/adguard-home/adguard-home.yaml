@@ -19,14 +19,14 @@ spec:
 #    ref: adguard-home
     repository: https://billimek.com/billimek-charts/
     name: adguard-home
-    version: 1.0.0
+    version: 1.2.0
   values:
     image:
       repository: adguard/adguardhome
       tag: edge
     persistence:
       config:
-        enabled: true
+        enabled: false
         size: 10Mi
         storageClass: longhorn
       work:
