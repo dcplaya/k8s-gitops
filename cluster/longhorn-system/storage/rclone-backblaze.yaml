@@ -32,7 +32,7 @@ spec:
               - "rclone"
               - "-v"
               - "--config"
-              - "/data/rclone.conf"
+              - "/config/rclone.conf"
               - "sync"
               - "--ignore-errors"
               - "--fast-list"
@@ -46,13 +46,13 @@ spec:
               - "minio:longhorn"
               - "backblaze-longhorn-crypt:/"
             volumeMounts:
-              - mountPath: /kubernetes
-                name: rclone
-                subPath: rclone
+              - mountPath: /config
+                name: rclone-sync-backup
+                subPath: kubernetes/rclone
                 readOnly: false
           restartPolicy: Never
           volumes:
           # Location of rclone.conf
-          - name: rclone
+          - name: rclone-sync-backup
             persistentVolumeClaim:
               claimName: nfs-backup-longhorn-pvc
