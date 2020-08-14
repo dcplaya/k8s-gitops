@@ -13,7 +13,7 @@ metadata:
     fluxcd.io/automated: "false"
 spec:
   # Run once a day, every day, starting at 6PM
-  schedule: "0 18 * * *"
+  schedule: "0 17 * * *"
   failedJobsHistoryLimit: 1
   successfulJobsHistoryLimit: 1
   concurrencyPolicy: Forbid
