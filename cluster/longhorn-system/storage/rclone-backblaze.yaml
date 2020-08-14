@@ -13,7 +13,7 @@ metadata:
     fluxcd.io/automated: "false"
 spec:
   # Run once a day, every day, starting at 6PM
-  schedule: "0 17 * * *"
+  schedule: "0 18 * * *"
   failedJobsHistoryLimit: 1
   successfulJobsHistoryLimit: 1
   concurrencyPolicy: Forbid
@@ -30,7 +30,7 @@ spec:
                 value: "America/Los_Angeles"
             command:
               - "rclone"
-              - "-v"
+              - "-vv"
               - "--config"
               - "/config/rclone.conf"
               - "sync"
@@ -38,11 +38,11 @@ spec:
               - "--fast-list"
               - "--b2-hard-delete"
               - "--transfers"
-              - "24"
+              - "100"
               - "--checkers"
-              - "24"
+              - "100"
               - "--bwlimit"
-              - "25M"
+              - "250M"
               - "minio:longhorn"
               - "backblaze-longhorn-crypt:/"
             volumeMounts:
