@@ -55,4 +55,4 @@ spec:
           # Location of rclone.conf
           - name: rclone-sync-backup
             persistentVolumeClaim:
-            claimName: nfs-backup-longhorn-pvc
+              claimName: nfs-backup-longhorn-pvc
