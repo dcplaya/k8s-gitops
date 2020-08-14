@@ -53,6 +53,6 @@ spec:
           restartPolicy: Never
           volumes:
           # Location of rclone.conf
-          - name: rclone-sync-backup
+          - name: rclone
             persistentVolumeClaim:
               claimName: nfs-backup-longhorn-pvc
