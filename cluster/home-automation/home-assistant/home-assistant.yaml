@@ -17,7 +17,7 @@ spec:
   chart:
     repository: https://billimek.com/billimek-charts/
     name: home-assistant
-    version: 1.0.4
+    version: 1.2.0
 #    git: git@github.com:dcplaya/billimek-charts
 #    path: charts/home-assistant
 #    ref: home-assistant
@@ -36,6 +36,14 @@ spec:
       enabled: true
       size: 10Gi
       storageClass: longhorn
+    postgresql:
+      enabled: true
+      persistence:
+        enabled: true
+        storageClass: "longhorn"
+        size: 50Gi
+    esphome:
+      enabled: false
     ingress:
       enabled: true
       annotations:
@@ -50,11 +58,6 @@ spec:
           - matchExpressions:
             - {key: "feature.node.kubernetes.io/custom-zigbee", operator: In, values: [
                 "true"]}
-    probes:
-      liveness:
-        enabled: false
-      readiness:
-        enabled: false
     vscode:
       enabled: true
       image:
