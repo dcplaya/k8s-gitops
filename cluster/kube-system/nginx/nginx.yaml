@@ -29,6 +29,7 @@ spec:
         custom-http-errors: "404,403,500,503"
         enable-modsecurity: "true"
         enable-owasp-modsecurity-crs: "true"
+        proxy-body-size: "0"
         # use-proxy-protocol: "false"
         # proxy-body-size: "50m"
         # use-forwarded-headers: "true"
