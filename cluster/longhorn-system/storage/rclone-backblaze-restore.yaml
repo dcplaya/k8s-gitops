@@ -1,0 +1,59 @@
+---
+#
+# Cronjob to back up my longhorn backups to the cloud
+# Thanks @onedr0p!
+#
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  namespace: longhorn-system
+  name: rclone-restore-longhorn
+  annotations:
+    fluxcd.io/ignored: "false"
+    fluxcd.io/automated: "false"
+spec:
+  # Run once a day, every day, starting at 6PM
+  schedule: "0 18 * * *"
+  failedJobsHistoryLimit: 1
+  successfulJobsHistoryLimit: 1
+  concurrencyPolicy: Forbid
+  suspend: true
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+          - name: rclone
+            image: rclone/rclone:1.52.3
+            imagePullPolicy: IfNotPresent
+            env:
+              - name: TZ
+                value: "America/Los_Angeles"
+            command:
+              - "rclone"
+              - "-vv"
+              - "--config"
+              - "/config/rclone.conf"
+              - "sync"
+              - "--ignore-errors"
+              - "--fast-list"
+              - "--b2-hard-delete"
+              - "--transfers"
+              - "50"
+              - "--checkers"
+              - "50"
+              - "--bwlimit"
+              - "250M"
+              - "backblaze-longhorn-crypt:/"
+              - "minio:longhorn"
+            volumeMounts:
+              - mountPath: /config
+                name: rclone-sync-backup
+                subPath: kubernetes/rclone
+                readOnly: false
+          restartPolicy: Never
+          volumes:
+          # Location of rclone.conf
+          - name: rclone-sync-backup
+            persistentVolumeClaim:
+              claimName: nfs-backup-longhorn-pvc
