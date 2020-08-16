@@ -24,7 +24,7 @@ spec:
   values:
     image:
       repository: homeassistant/home-assistant
-      tag: 0.115.0.dev20200815
+      tag: 0.115.0.dev20200816
     usePodSecurityContext: true
     runAsUser: 1000
     fsgroup: 1000
