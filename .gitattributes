@@ -1,4 +1,4 @@
 # Auto detect text files and perform LF normalization
 * text=auto
-secrets/manifest-templates/rclone-config.txt filter=git-crypt diff=git-crypt
-secrets/test_gpg filter=git-crypt diff=git-crypt
+secrets/.secrets.env filter=git-crypt diff=git-crypt
+secrets/manifest-templates/encrypted/* filter=git-crypt diff=git-crypt
