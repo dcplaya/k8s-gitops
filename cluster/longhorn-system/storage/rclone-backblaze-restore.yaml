@@ -17,6 +17,7 @@ spec:
   failedJobsHistoryLimit: 1
   successfulJobsHistoryLimit: 1
   concurrencyPolicy: Forbid
+  suspend: true
   jobTemplate:
     spec:
       template:
@@ -51,7 +52,6 @@ spec:
                 subPath: kubernetes/rclone
                 readOnly: false
           restartPolicy: Never
-          suspend: true
           volumes:
           # Location of rclone.conf
           - name: rclone-sync-backup
