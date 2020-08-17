@@ -19,7 +19,7 @@ spec:
   values:
     image:
       repository: linuxserver/ombi
-      tag: v4.0.449-ls8
+      tag: v4.0.450-ls9
     ingress:
       enabled: true
       annotations:
