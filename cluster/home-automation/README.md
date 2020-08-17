@@ -78,7 +78,7 @@ Installs [frigate](https://github.com/blakeblackshear/frigate/): Realtime object
 |     Service    	| IP Address   	| Notes 	|
 |:--------------:	|--------------	|-------	|
 | frigate        	| N/A          	|       	|
-| home-assistant 	| N/A          	|       	|
+| home-assistant 	| 10.201.40.60 	|       	|
 | node-red       	| N/A          	|       	|
 | ser2sock       	| N/A          	|       	|
 | vernemq        	| 10.201.40.10 	|       	|
