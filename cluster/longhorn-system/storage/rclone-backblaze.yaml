@@ -30,7 +30,7 @@ spec:
                 value: "America/Los_Angeles"
             command:
               - "rclone"
-              - "-vv"
+              - "-vvv"
               - "--config"
               - "/config/rclone.conf"
               - "sync"
@@ -40,7 +40,7 @@ spec:
               - "--transfers"
               - "100"
               - "--checkers"
-              - "100"
+              - "50"
               - "--bwlimit"
               - "250M"
               - "minio:longhorn"
