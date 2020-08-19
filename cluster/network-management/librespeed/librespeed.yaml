@@ -31,7 +31,7 @@ spec:
     timezone: America/Los_Angeles
     puid: "1000"
     pgid: "1000"
-    telemtry: "true"
+    telemetry: "true"
     tolerations:
     - key: "arm"
       operator: "Exists"
