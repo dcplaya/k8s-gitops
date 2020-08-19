@@ -2,34 +2,38 @@
 apiVersion: helm.fluxcd.io/v1
 kind: HelmRelease
 metadata:
-  name: node-red
-  namespace: home-automation
+  name: librespeed
+  namespace: network-management
   annotations:
     fluxcd.io/ignore: "false"
     fluxcd.io/automated: "false"
 #    fluxcd.io/tag.chart-image: 'regexp:^(1\.[0-9]+\.[0-9])$'
 spec:
-  releaseName: node-red
+  releaseName: librespeed
   helmVersion: v3
   rollback:
     enable: true
   chart:
-    repository: https://billimek.com/billimek-charts/
-    name: node-red
-    version: 2.0.1
+#    repository: https://billimek.com/billimek-charts/
+#    name: node-red
+#    version: 2.0.1
+    git: git@github.com:dcplaya/billimek-charts
+    path: charts/librespeed
+    ref: librespeed
   values:
     image:
-      repository: nodered/node-red
+      repository: linuxserver/librespeed
       tag: latest
     persistence:
       enabled: true
       storageClass: longhorn
-      size: 5Gi
+      size: 1Gi
+    timezone: America/Los_Angeles
+    puid: "1000"
+    pgid: "1000"
     tolerations:
     - key: "arm"
       operator: "Exists"
-    flows: "flows.json"
-    enableProjects: true
     ingress:
       enabled: true
       annotations:
@@ -42,4 +46,4 @@ spec:
       limits:
         memory: 500Mi
   valueFileSecrets:
-  - name: "node-red-helm-values"
+  - name: "librespeed-helm-values"
