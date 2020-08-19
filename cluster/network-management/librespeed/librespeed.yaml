@@ -32,6 +32,8 @@ spec:
     puid: "1000"
     pgid: "1000"
     telemetry: "true"
+    title: "Ludicrous Speedtest"
+    email: "fake@fake.com"
     tolerations:
     - key: "arm"
       operator: "Exists"
