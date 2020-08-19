@@ -22,7 +22,7 @@ spec:
     ref: librespeed
   values:
     image:
-      repository: linuxserver/librespeed
+      repository: adolfintel/speedtest
       tag: latest
     persistence:
       enabled: true
