@@ -13,7 +13,7 @@ spec:
     - ReadWriteMany
   persistentVolumeReclaimPolicy: Retain
   nfs:
-    server: 10.10.200.60
+    server: 10.10.210.20
     path: /mnt/unionfs
   mountOptions:
     - tcp
