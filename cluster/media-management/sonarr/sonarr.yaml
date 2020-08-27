@@ -48,5 +48,17 @@ spec:
         cpu: 250m
       limits:
         memory: 2500Mi
+    affinity:
+      podAntiAffinity:
+        preferredDuringSchedulingIgnoredDuringExecution:
+        - weight: 100
+          podAffinityTerm:
+            labelSelector:
+              matchExpressions:
+              - key: app.kubernetes.io/name
+                operator: In
+                values:
+                - plex
+            topologyKey: "kubernetes.io/hostname"
   valueFileSecrets:
   - name: "sonarr-helm-values"

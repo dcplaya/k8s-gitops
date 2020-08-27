@@ -57,13 +57,15 @@ spec:
         memory: 6000Mi
     affinity:
       podAntiAffinity:
-        requiredDuringSchedulingIgnoredDuringExecution:
-        - labelSelector:
-            matchExpressions:
-            - key: app.kubernetes.io/name
-              operator: In
-              values:
-              - plex
-          topologyKey: "kubernetes.io/hostname"
+        preferredDuringSchedulingIgnoredDuringExecution:
+        - weight: 100
+          podAffinityTerm:
+            labelSelector:
+              matchExpressions:
+              - key: app.kubernetes.io/name
+                operator: In
+                values:
+                - plex
+            topologyKey: "kubernetes.io/hostname"
   valueFileSecrets:
   - name: "nzbget-helm-values"
