@@ -29,6 +29,8 @@ kind: PersistentVolumeClaim
 metadata:
   name: nfs-security-pvc
   namespace: home-automation
+  annotations:
+    fluxcd.io/ignore: "true"
 spec:
   accessModes:
     - ReadWriteMany
