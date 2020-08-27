@@ -79,9 +79,10 @@ spec:
         memory: 1500Mi
     affinity:
       nodeAffinity:
-        requiredDuringSchedulingIgnoredDuringExecution:
-          nodeSelectorTerms:
-          - matchExpressions:
+        preferredDuringSchedulingIgnoredDuringExecution:
+        - weight: 100
+          preference:
+            matchExpressions:
             - key: node-role.kubernetes.io/plex
               operator: In
               values:
