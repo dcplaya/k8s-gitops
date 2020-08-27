@@ -16,9 +16,9 @@ spec:
     path: chart
   values:
     persistence:
-      defaultClassReplicaCount: 2
+      defaultClassReplicaCount: 3
     defaultSettings:
-      defaultReplicaCount: 2
+      defaultReplicaCount: 3
       createDefaultDiskLabeledNodes: true
       backupTarget: s3://longhorn@minio/backups
       backupTargetCredentialSecret: aws-secret
