@@ -24,7 +24,7 @@ spec:
     image:
       repository: plexinc/pms-docker
       tag: plexpass
-    hostNetwork: true
+    hostNetwork: false
     ingress:
       enabled: true
       annotations:
