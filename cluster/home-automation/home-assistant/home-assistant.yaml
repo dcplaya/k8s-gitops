@@ -13,7 +13,7 @@ spec:
   releaseName: home-assistant
   helmVersion: v3
   rollback:
-    enable: false
+    enable: true
   chart:
     repository: https://billimek.com/billimek-charts/
     name: home-assistant
