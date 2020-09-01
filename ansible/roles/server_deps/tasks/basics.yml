@@ -73,6 +73,7 @@
     - mergerfs
     - git-crypt
     - python3-pip
+    - ifenslave
   register: apt_install_common
   retries: 5
   until: apt_install_common is success
