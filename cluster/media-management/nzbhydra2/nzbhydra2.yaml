@@ -19,7 +19,7 @@ spec:
   values:
     image:
       repository: linuxserver/nzbhydra2
-      tag: amd64-v2.27.1-ls14
+      tag: amd64-dev
     timezone: "America/Los_Angeles"
     puid: 1000
     pgid: 1000
