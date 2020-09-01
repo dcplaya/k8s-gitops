@@ -15,9 +15,9 @@ spec:
   rollback:
     enable: true
   chart:
-    repository: https://billimek.com/billimek-charts/
+    repository: https://k8s-at-home.com/charts/
     name: home-assistant
-    version: 1.2.0
+    version: 2.0.0
 #    git: git@github.com:dcplaya/billimek-charts
 #    path: charts/home-assistant
 #    ref: home-assistant

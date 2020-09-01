@@ -14,9 +14,9 @@ spec:
   rollback:
     enable: false
   chart:
-    repository: https://billimek.com/billimek-charts/
+    repository: https://k8s-at-home.com/charts/
     name: frigate
-    version: 3.0.0
+    version: 4.0.0
   values:
     image:
       repository: blakeblackshear/frigate
@@ -27,7 +27,7 @@ spec:
     config: |
       web_port: 5000
       mqtt:
-        host: vernemq.default.svc
+        host: vernemq.home-automation.svc
         topic_prefix: frigate
       objects:
         track:
