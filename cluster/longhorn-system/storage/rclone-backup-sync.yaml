@@ -40,8 +40,8 @@ spec:
           volumeMounts:
           - mountPath: /config
             name: rclone-sync-backup
-            subPath: kubernetes/rclone
-          - mountPath: /mnt
+            subPath: rclone
+          - mountPath: /mnt/kubernetes
             name: rclone-sync-backup
           resources:
             requests:

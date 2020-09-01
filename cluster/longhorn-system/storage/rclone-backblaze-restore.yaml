@@ -49,7 +49,7 @@ spec:
             volumeMounts:
               - mountPath: /config
                 name: rclone-sync-backup
-                subPath: kubernetes/rclone
+                subPath: rclone
                 readOnly: false
           restartPolicy: Never
           volumes:
