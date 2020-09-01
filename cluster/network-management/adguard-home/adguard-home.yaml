@@ -17,9 +17,9 @@ spec:
 #    git: git@github.com:dcplaya/billimek-charts
 #    path: charts/adguard-home
 #    ref: adguard-home
-    repository: https://billimek.com/billimek-charts/
+    repository: https://k8s-at-home.com/charts/
     name: adguard-home
-    version: 1.2.0
+    version: 2.0.0
   values:
     image:
       repository: adguard/adguardhome

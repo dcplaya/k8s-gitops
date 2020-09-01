@@ -14,12 +14,12 @@ spec:
   rollback:
     enable: true
   chart:
-#    repository: https://billimek.com/billimek-charts/
-#    name: node-red
-#    version: 2.0.1
-    git: git@github.com:dcplaya/billimek-charts
-    path: charts/librespeed
-    ref: librespeed
+    repository: https://k8s-at-home.com/charts/
+    name: librespeed
+    version: 2.0.0
+#    git: git@github.com:dcplaya/billimek-charts
+#    path: charts/librespeed
+#    ref: librespeed
   values:
     image:
       repository: adolfintel/speedtest
