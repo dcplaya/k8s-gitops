@@ -18,10 +18,9 @@ spec:
     spec:
       volumes:
       - name: nfs-gdrive
-        hostPath:
-        # directory location on host
-        path: /mnt/disks/google
-        type: Directory
+        persistentVolumeClaim:
+          claimName: nfs-server-gdrive-pvc
+          namespace: kube-system
 #      - name: nfs-media
 #        persistentVolumeClaim:
 #          claimName: nfs-media-pvc
@@ -29,7 +28,7 @@ spec:
       restartPolicy: Always
       containers:
       - name: nfs-server
-        image: itsthenetwork/nfs-server-alpine
+        image: itsthenetwork/nfs-server-alpine:latest
         env:
         - name: gdrive
           value: /mnt/disks/google
