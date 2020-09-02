@@ -34,7 +34,7 @@ spec:
     persistence:
       existingClaim: "nfs-backup-longhorn-pvc"
       storageClass: "backup"
-      subPath: "kubernetes/longhorn/minio"
+      subPath: "longhorn/minio"
     ingress:
       enabled: true
       annotations:

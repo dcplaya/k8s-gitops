@@ -1,0 +1,124 @@
+---
+apiVersion: helm.fluxcd.io/v1
+kind: HelmRelease
+metadata:
+  name: node-feature-discovery
+  namespace: kube-system
+  annotations:
+    fluxcd.io/automated: "true"
+    fluxcd.io/tag.chart-image: semver:~v0
+spec:
+  releaseName: node-feature-discovery
+  helmVersion: v3
+  chart:
+    repository: https://k8s-at-home.com/charts/
+    name: node-feature-discovery
+    version: 2.0.0
+  values:
+    image:
+      repository: quay.io/kubernetes_incubator/node-feature-discovery
+      tag: v0.6.0
+    sources:
+      # - cpu
+    - custom
+      # - iommu
+      # - kernel
+      # - local
+      # - memory
+      # - network
+    - pci
+      # - storage
+      # - system
+    - usb
+
+    # node-feature-discovery configuration - see https://github.com/kubernetes-sigs/node-feature-discovery/blob/master/nfd-worker.conf.example for example
+    config: |
+      sources:
+        cpu:
+          cpuid:
+            attributeBlacklist:
+              - "BMI1"
+              - "BMI2"
+              - "CLMUL"
+              - "CMOV"
+              - "CX16"
+              - "ERMS"
+              - "F16C"
+              - "HTT"
+              - "LZCNT"
+              - "MMX"
+              - "MMXEXT"
+              - "NX"
+              - "POPCNT"
+              - "RDRAND"
+              - "RDSEED"
+              - "RDTSCP"
+              - "SGX"
+              - "SSE"
+              - "SSE2"
+              - "SSE3"
+              - "SSE4.1"
+              - "SSE4.2"
+              - "SSSE3"
+            attributeWhitelist:
+        usb:
+          deviceClassWhitelist:
+            - "02"
+            - "0e"
+            - "ef"
+            - "fe"
+            - "ff"
+          deviceLabelFields:
+            - "class"
+            - "vendor"
+            - "device"
+        custom:
+          - name: "alarmdecoder"
+            matchOn:
+              - usbId:
+                  class: ["ff"]
+                  vendor: ["0403"]
+                  device: ["6015"]
+          - name: "zwave"
+            matchOn:
+              - usbId:
+                  vendor: ["10c4"]
+                  device: ["8a2a"]
+              - usbId:
+                  class: ["ff"]
+                  vendor: ["10c4"]
+                  device: ["8a2a"]
+          - name: "zigbee"
+            matchOn:
+              - usbId:
+                  vendor: ["10c4"]
+                  device: ["8a2a"]
+              - usbId:
+                  class: ["ff"]
+                  vendor: ["10c4"]
+                  device: ["8a2a"]
+          - name: "coral-tpu"
+            matchOn:
+              - usbId:
+                  vendor: ["1a6e", "18d1"]
+          - name: "intel-gpu"
+            matchOn:
+              - pciId:
+                  class: ["0300"]
+                  vendor: ["8086"]
+              - pciId:
+                  class: ["5916"]
+                  vendor: ["8086"]
+    master:
+      replicaCount: 1
+      tolerations:
+      - key: "node-role.kubernetes.io/master"
+        operator: "Equal"
+        value: ""
+        effect: "NoSchedule"
+      - key: arm
+        operator: Exists
+    worker:
+      tolerations:
+      - key: arm
+        operator: Exists
