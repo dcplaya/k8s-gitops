@@ -1,3 +1,4 @@
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -27,18 +28,18 @@ spec:
       restartPolicy: Always
       containers:
       - name: nfs-server
-        image: itsthenetwork/nfs-server-alpine:latest
+        image: itsthenetwork/nfs-server-alpine:12
         env:
         - name: gdrive
           value: /mnt/disks/google
         ports:
-          - name: nfs-2049
-            containerPort: 2049
+        - name: nfs-2049
+          containerPort: 2049
         securityContext:
           privileged: true
         volumeMounts:
-          - mountPath: /mnt/disks/google
-            name: nfs-gdrive
+        - mountPath: /mnt/disks/google
+          name: nfs-gdrive
 #          - mountPath: /mnt/tank/media
 #            name: nfs-media
 ## Make this a podAffinity based on rclone_mount pods
