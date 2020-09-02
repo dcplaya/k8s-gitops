@@ -20,7 +20,6 @@ spec:
       - name: nfs-gdrive
         persistentVolumeClaim:
           claimName: nfs-server-gdrive-pvc
-          namespace: kube-system
 #      - name: nfs-media
 #        persistentVolumeClaim:
 #          claimName: nfs-media-pvc
