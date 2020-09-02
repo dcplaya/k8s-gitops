@@ -70,5 +70,5 @@ spec:
               operator: In
               values:
               - "true"
-#  valueFileSecrets:
-#  - name: "rclone-helm-values"
+  valueFileSecrets:
+  - name: "rclone-helm-values"
