@@ -8,6 +8,6 @@ spec:
     - name: nfs-2049
       port: 2049
   selector:
-    role: nfs-serve
+    role: nfs-server
   type: LoadBalancer
   loadBalancerIP: 10.201.50.200
