@@ -5,7 +5,7 @@ metadata:
   namespace: kube-system
 spec:
   ports:
-    - name: nfs
+    - name: nfs-2049
       port: 2049
   selector:
     role: nfs-server
