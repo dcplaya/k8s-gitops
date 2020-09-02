@@ -5,7 +5,7 @@ metadata:
   name: kube-rclone-google
   namespace: media-management
   annotations:
-    fluxcd.io/ignore: "true"
+    fluxcd.io/ignore: "false"
     fluxcd.io/automated: "true"
     fluxcd.io/tag.chart-image: 'regexp:^(v4.[0-9]+\.[0-9]+-ls.*)$'
 spec:
@@ -13,17 +13,20 @@ spec:
   rollback:
     enable: true
   chart:
-    repository: https://charts.simplyzee.dev/
-    name: kube-rclone
-    version: 0.1.0
+#    repository: https://charts.simplyzee.dev/
+#    name: kube-rclone
+#    version: 0.1.0
+    git: git@github.com:zee-ahmed/kube-rclone
+    path: kube-rclone
+    ref: master
   Values:
     images:
       initContainer:
         repository: busybox
         tag: latest
       container:
-        repository: quay.io/chaosaffe/rclone
-        tag: v1.47.0
+        repository: quay.io/simplyzee/kube-rclone
+        tag: v1.52.3
     rclone:
       #  remote to mount from rclone config
       remote: "google:"
