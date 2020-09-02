@@ -17,9 +17,11 @@ spec:
         role: nfs-server
     spec:
       volumes:
-      - name: nfs-vol
-        persistentVolumeClaim:
-          claimName: data-nfs-server-pvc
+      - name: nfs-gdrive
+        hostPath:
+        # directory location on host
+        path: /mnt/disks/google
+        type: Directory
 #      - name: nfs-media
 #        persistentVolumeClaim:
 #          claimName: nfs-media-pvc
@@ -38,7 +40,7 @@ spec:
           privileged: true
         volumeMounts:
           - mountPath: /mnt/disks/google
-            name: gdrive
+            name: nfs-gdrive
 #          - mountPath: /mnt/tank/media
 #            name: nfs-media
 ## Make this a podAffinity based on rclone_mount pods
