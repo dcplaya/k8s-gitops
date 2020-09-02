@@ -8,6 +8,7 @@ spec:
   storageClassName: gdrive
   accessModes:
     - ReadWriteMany
+  persistentVolumeReclaimPolicy: Retain
   hostPath:
     path: /mnt/disks/google
   claimRef:
