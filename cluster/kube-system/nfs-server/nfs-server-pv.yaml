@@ -12,7 +12,7 @@ spec:
     path: /mnt/disks/google
   claimRef:
     namespace: kube-system
-    name: data-nfs-server-pvc
+    name: nfs-server-gdrive-pvc
 ---
 kind: PersistentVolumeClaim
 apiVersion: v1
