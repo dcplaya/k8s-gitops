@@ -71,4 +71,4 @@ spec:
               values:
               - "true"
   valueFileSecrets:
-  - name: "rclone-helm-values"
+  - name: "kube-rclone-google-helm-values"
