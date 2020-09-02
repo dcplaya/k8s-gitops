@@ -38,7 +38,7 @@ spec:
           privileged: true
         volumeMounts:
           - mountPath: /mnt/disks/google
-            name: nfs-gdrive
+            name: gdrive
 #          - mountPath: /mnt/tank/media
 #            name: nfs-media
 ## Make this a podAffinity based on rclone_mount pods
