@@ -32,6 +32,8 @@ spec:
         env:
         - name: SHARED_DIRECTORY
           value: /mnt/disks/google
+        - name: SYNC
+          value: true
         ports:
         - name: nfs-2049
           containerPort: 2049
