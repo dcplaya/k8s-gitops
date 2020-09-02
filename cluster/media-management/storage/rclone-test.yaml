@@ -19,7 +19,7 @@ spec:
     git: git@github.com:zee-ahmed/kube-rclone
     path: kube-rclone
     ref: master
-  Values:
+  values:
     images:
       initContainer:
         repository: busybox
