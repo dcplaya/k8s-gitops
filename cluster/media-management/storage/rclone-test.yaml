@@ -16,7 +16,7 @@ spec:
 #    repository: https://charts.simplyzee.dev/
 #    name: kube-rclone
 #    version: 0.1.0
-    git: git@github.com:zee-ahmed/kube-rclone
+    git: git@github.com:dcplaya/kube-rclone
     path: kube-rclone
     ref: master
   values:
