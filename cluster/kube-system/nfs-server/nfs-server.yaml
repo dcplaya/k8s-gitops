@@ -5,7 +5,7 @@ metadata:
   namespace: kube-system
   annotations:
     fluxcd.io/automated: "true"
-    fluxcd.io/ignore: "true"
+    fluxcd.io/ignore: "false"
 spec:
   replicas: 1
   selector:
@@ -29,16 +29,16 @@ spec:
       - name: nfs-server
         image: itsthenetwork/nfs-server-alpine
         env:
-        - name: SHARED_DIRECTORY
-          value: /mnt/tank
+        - name: gdrive
+          value: /mnt/disks/google
         ports:
           - name: nfs-2049
             containerPort: 2049
         securityContext:
           privileged: true
         volumeMounts:
-          - mountPath: /mnt/tank
-            name: nfs-vol
+          - mountPath: /mnt/disks/google
+            name: nfs-gdrive
 #          - mountPath: /mnt/tank/media
 #            name: nfs-media
       nodeSelector:
