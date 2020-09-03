@@ -4,6 +4,7 @@ metadata:
   name: gdrive
 provisioner: kubernetes.io/no-provisioner
 volumeBindingMode: WaitForFirstConsumer
+reclaimPolicy: retain
 ---
 apiVersion: v1
 kind: PersistentVolume
