@@ -9,9 +9,8 @@ spec:
       port: 2049
       targetPort: 2049
       protocol: TCP
-#  selector:
-#    role: nfs-server
-#  type: NodePort
+  selector:
+    role: nfs-server
   type: LoadBalancer
   loadBalancerIP: 10.201.50.200
 
