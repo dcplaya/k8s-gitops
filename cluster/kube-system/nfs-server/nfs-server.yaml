@@ -28,7 +28,7 @@ spec:
       restartPolicy: Always
       containers:
       - name: nfs-server
-        image: erichough/nfs-server:latest
+        image: erichough/nfs-server:2.2.1
         env:
         - name: NFS_EXPORT_0
           value: "/mnt/disks/google   *(rw,sync,fsid=1,no_subtree_check,all_squash,anonuid=1000,anongid=1000)"
