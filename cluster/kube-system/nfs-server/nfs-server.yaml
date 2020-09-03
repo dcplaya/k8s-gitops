@@ -17,9 +17,9 @@ spec:
       labels:
         role: nfs-server
     spec:
-      securityContext:
-        privileged: true
-#      hostNetwork: true
+#      securityContext:
+#        privileged: true
+      hostNetwork: true
       volumes:
       - name: nfs-gdrive
         persistentVolumeClaim:
