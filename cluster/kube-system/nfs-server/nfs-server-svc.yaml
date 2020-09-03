@@ -3,20 +3,17 @@ kind: Service
 metadata:
   name: nfs-server-gdrive
   namespace: kube-system
-  labels:
-    app.kubernetes.io/name: ingress-nginx
-    app.kubernetes.io/part-of: ingress-nginx
 spec:
   ports:
     - name: nfs-2049
       port: 2049
       targetPort: 2049
       protocol: TCP
-  selector:
-    role: nfs-server
-  type: NodePort
-#  type: LoadBalancer
-#  loadBalancerIP: 10.201.50.200
+#  selector:
+#    role: nfs-server
+#  type: NodePort
+  type: LoadBalancer
+  loadBalancerIP: 10.201.50.200
 
 ---
 apiVersion: v1

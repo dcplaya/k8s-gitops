@@ -9,13 +9,13 @@ metadata:
     fluxcd.io/ignore: "false"
 spec:
   replicas: 1
-  selector:
-    matchLabels:
-      role: nfs-server
-  template:
-    metadata:
-      labels:
-        role: nfs-server
+#  selector:
+#    matchLabels:
+#      role: nfs-server
+#  template:
+#    metadata:
+#      labels:
+#        role: nfs-server
     spec:
       volumes:
       - name: nfs-gdrive
