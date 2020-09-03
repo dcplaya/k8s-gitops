@@ -1,0 +1,61 @@
+---
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  namespace: media-management
+  name: mergerfs-media
+  annotations:
+    fluxcd.io/ignore: "false"
+    fluxcd.io/automated: "true"
+  labels:
+    app: mergerfs-media
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mergerfs-media
+  template:
+    metadata:
+      labels:
+        app: mergerfs-media
+    spec:
+      containers:
+        - name: mergerfs-media
+          image: hotio/mergerfs:latest
+          imagePullPolicy: IfNotPresent
+#          env:
+#            - name: CRON
+#              value: 30 1 * * *
+          args:
+            - "-o allow_other"
+            - "-o auto_unmount"
+            - "-o async_read=false"
+            - "-o use_ino"
+            - "-o statfs_ignore=nc"
+            - "-o cache.files=off"
+            - "-o dropcacheonclose=true"
+            - "-o category.create=mfs"
+            ## Keeping as an example for now
+#            - "/mnt/pool/media:/mnt/disks/google=NC"
+            - "/mnt/disks/google=NC"
+            - "/mnt/mergerfs"
+          volumeMounts:
+          - mountPath: /mnt/disks/google
+            name: rclone-mount-google
+#            subPath: rclone-sync
+          - mountPath: /mnt/mergerfs
+            name: mergerfs-media
+          resources:
+            requests:
+              memory: 500Mi
+              cpu: 1000m
+            limits:
+              memory: 2000Mi
+              cpu: 10000m
+      volumes:
+      - name: rclone-mount-google
+        persistentVolumeClaim:
+          claimName: rclone-mount-google-pvc
+      - name: mergerfs-media
+        persistentVolumeClaim:
+          claimName: mergerfs-media-pvc
