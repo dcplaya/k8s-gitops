@@ -14,8 +14,9 @@ spec:
       protocol: TCP
   selector:
     role: nfs-server
-  type: LoadBalancer
-  loadBalancerIP: 10.201.50.200
+  type: NodePort
+#  type: LoadBalancer
+#  loadBalancerIP: 10.201.50.200
 
 ---
 apiVersion: v1
