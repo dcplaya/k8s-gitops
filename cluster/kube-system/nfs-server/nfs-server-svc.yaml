@@ -21,6 +21,20 @@ spec:
       port: 32767
       targetPort: 32767
       protocol: TCP
+  selector:
+    role: nfs-server
+  type: LoadBalancer
+  loadBalancerIP: 10.201.50.200
+  annotations:
+    metallb.universe.tf/allow-shared-ip: nfs-svc
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: nfs-server-gdrive-udp
+  namespace: kube-system
+spec:
+  ports:
     - name: nfs-111
       port: 111
       targetPort: 111
@@ -41,7 +55,8 @@ spec:
     role: nfs-server
   type: LoadBalancer
   loadBalancerIP: 10.201.50.200
-
+  annotations:
+    metallb.universe.tf/allow-shared-ip: nfs-svc
 ---
 apiVersion: v1
 kind: ConfigMap
