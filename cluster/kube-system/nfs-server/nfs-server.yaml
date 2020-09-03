@@ -8,7 +8,7 @@ metadata:
     fluxcd.io/automated: "true"
     fluxcd.io/ignore: "false"
 spec:
-  replicas: 3
+  replicas: 1
   selector:
     matchLabels:
       role: nfs-server
@@ -28,10 +28,10 @@ spec:
       restartPolicy: Always
       containers:
       - name: nfs-server
-        image: itsthenetwork/nfs-server-alpine:12
+        image: erichough/nfs-server:latest
         env:
-        - name: SHARED_DIRECTORY
-          value: /mnt/disks/google
+        - name: NFS_EXPORT_0
+          value: '/mnt/disks/google   *(rw,sync,fsid=1,no_subtree_check,all_squash,anonuid=1000,anongid=1000)'
         - name: SYNC
           value: true
         ports:
