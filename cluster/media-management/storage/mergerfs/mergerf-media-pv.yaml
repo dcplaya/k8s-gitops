@@ -33,6 +33,6 @@ spec:
   storageClassName: mergerfs
   resources:
     requests:
-      storage: 2Mi
+      storage: 1Mi
   accessModes:
     - ReadWriteMany
