@@ -32,8 +32,7 @@ spec:
         image: erichough/nfs-server:2.2.1
         env:
         - name: NFS_EXPORT_0
-          value: '/mnt/disks/google *(rw,no_subtree_check)'
-#          value: "/mnt/disks/google   *(rw,sync,fsid=1,no_subtree_check,all_squash,anonuid=1000,anongid=1000)"
+          value: "/mnt/disks/google   *(rw,sync,fsid=1,no_subtree_check,all_squash,anonuid=1000,anongid=1000)"
         - name: NFS_LOG_LEVEL
           value: DEBUG
         ports:
