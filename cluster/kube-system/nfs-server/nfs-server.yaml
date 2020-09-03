@@ -31,9 +31,7 @@ spec:
         image: erichough/nfs-server:latest
         env:
         - name: NFS_EXPORT_0
-          value: '/mnt/disks/google   *(rw,sync,fsid=1,no_subtree_check,all_squash,anonuid=1000,anongid=1000)'
-        - name: SYNC
-          value: true
+          value: "/mnt/disks/google   *(rw,sync,fsid=1,no_subtree_check,all_squash,anonuid=1000,anongid=1000)"
         ports:
         - name: nfs-2049
           containerPort: 2049
