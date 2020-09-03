@@ -12,10 +12,10 @@ spec:
 #  selector:
 #    matchLabels:
 #      role: nfs-server
-#  template:
-#    metadata:
-#      labels:
-#        role: nfs-server
+  template:
+    metadata:
+      labels:
+        role: nfs-server
     spec:
       volumes:
       - name: nfs-gdrive
