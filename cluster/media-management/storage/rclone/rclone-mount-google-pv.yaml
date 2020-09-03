@@ -7,7 +7,7 @@ spec:
     storage: 1000Ti
   storageClassName: gdrive
   accessModes:
-    - ReadWriteMany
+    - ReadWriteOnce
   persistentVolumeReclaimPolicy: Retain
   hostPath:
     path: /mnt/disks/google
@@ -27,4 +27,4 @@ spec:
     requests:
       storage: 1Mi
   accessModes:
-    - ReadWriteMany
+    - ReadWriteOnce

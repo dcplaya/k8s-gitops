@@ -7,7 +7,7 @@ spec:
     storage: 1000Ti
   storageClassName: mergerfs
   accessModes:
-    - ReadWriteMany
+    - ReadWriteOnce
   persistentVolumeReclaimPolicy: Retain
   hostPath:
     path: /mnt/mergerfs
@@ -27,4 +27,4 @@ spec:
     requests:
       storage: 2Mi
   accessModes:
-    - ReadWriteMany
+    - ReadWriteOnce
