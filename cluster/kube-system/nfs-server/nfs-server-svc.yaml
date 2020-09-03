@@ -9,6 +9,18 @@ spec:
       port: 2049
       targetPort: 2049
       protocol: TCP
+    - name: nfs-111
+      port: 111
+      targetPort: 111
+      protocol: TCP
+    - name: nfs-32765
+      port: 32765
+      targetPort: 32765
+      protocol: TCP
+    - name: nfs-32767
+      port: 32767
+      targetPort: 32767
+      protocol: TCP
   selector:
     role: nfs-server
   type: LoadBalancer
@@ -21,4 +33,7 @@ metadata:
   name: nfs-server
   namespace: kube-system
 data:
+  111: "kube-system/nfs-server-gdrive:111"
   2049: "kube-system/nfs-server-gdrive:2049"
+  32765: "kube-system/nfs-server-gdrive:32765"
+  32767: "kube-system/nfs-server-gdrive:32767"

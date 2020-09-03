@@ -35,6 +35,12 @@ spec:
         ports:
         - name: nfs-2049
           containerPort: 2049
+        - name: nfs-111
+          containerPort: 111
+        - name: nfs-32765
+          containerPort: 32765
+        - name: nfs-32767
+          containerPort: 32767
         securityContext:
           privileged: true
         volumeMounts:
