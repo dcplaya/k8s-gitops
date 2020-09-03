@@ -51,11 +51,8 @@ spec:
         enabled: false
       extraMounts:
       - name: media
-        hostPath:
-          path: /mnt/disks/google
-          type: Directory
-#        storageClass: media
-#        claimName: nfs-media-pvc
+        storageClass: media
+        claimName: nfs-media-pvc
         mountPath: mnt/unionfs
       config:
 #        claimName: nfs-plex-pvc
