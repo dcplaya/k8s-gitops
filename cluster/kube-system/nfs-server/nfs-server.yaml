@@ -33,10 +33,10 @@ spec:
         - name: NFS_EXPORT_0
           value: "/mnt/disks/google   *(rw,sync,fsid=1,no_subtree_check,all_squash,anonuid=1000,anongid=1000)"
         ports:
-        - name: nfs-2049
-          containerPort: 2049
         - name: nfs-111
           containerPort: 111
+        - name: nfs-2049
+          containerPort: 2049
         - name: nfs-32765
           containerPort: 32765
         - name: nfs-32767

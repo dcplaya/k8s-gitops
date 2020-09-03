@@ -5,13 +5,13 @@ metadata:
   namespace: kube-system
 spec:
   ports:
-    - name: nfs-2049
-      port: 2049
-      targetPort: 2049
-      protocol: TCP
     - name: nfs-111
       port: 111
       targetPort: 111
+      protocol: TCP
+    - name: nfs-2049
+      port: 2049
+      targetPort: 2049
       protocol: TCP
     - name: nfs-32765
       port: 32765
@@ -21,6 +21,22 @@ spec:
       port: 32767
       targetPort: 32767
       protocol: TCP
+    - name: nfs-111
+      port: 111
+      targetPort: 111
+      protocol: UDP
+    - name: nfs-2049
+      port: 2049
+      targetPort: 2049
+      protocol: UDP
+    - name: nfs-32765
+      port: 32765
+      targetPort: 32765
+      protocol: UDP
+    - name: nfs-32767
+      port: 32767
+      targetPort: 32767
+      protocol: UDP
   selector:
     role: nfs-server
   type: LoadBalancer
