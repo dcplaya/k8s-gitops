@@ -25,6 +25,6 @@ spec:
   storageClassName: gdrive
   resources:
     requests:
-      storage: 2Mi
+      storage: 1Mi
   accessModes:
     - ReadWriteMany
