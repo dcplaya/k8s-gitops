@@ -17,8 +17,6 @@ spec:
       labels:
         role: nfs-server
     spec:
-      securityContext:
-        privileged: true
       hostNetwork: true
       volumes:
       - name: nfs-gdrive
@@ -46,6 +44,8 @@ spec:
           containerPort: 32765
         - name: nfs-32767
           containerPort: 32767
+        securityContext:
+          privileged: true
         volumeMounts:
         - mountPath: /mnt/disks/google
           name: nfs-gdrive
