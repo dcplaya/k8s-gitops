@@ -19,8 +19,8 @@ spec:
     - hard
     - noatime
     - nodiratime
-    - rsize=32768
-    - wsize=32768
+    - rsize=8192
+    - wsize=8192
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
