@@ -3,6 +3,8 @@ kind: Service
 metadata:
   name: nfs-server-gdrive
   namespace: kube-system
+  annotations:
+    metallb.universe.tf/allow-shared-ip: nfs-svc
 spec:
   ports:
     - name: nfs-111
@@ -25,14 +27,14 @@ spec:
     role: nfs-server
   type: LoadBalancer
   loadBalancerIP: 10.201.50.200
-  annotations:
-    metallb.universe.tf/allow-shared-ip: nfs-svc
 ---
 apiVersion: v1
 kind: Service
 metadata:
   name: nfs-server-gdrive-udp
   namespace: kube-system
+  annotations:
+    metallb.universe.tf/allow-shared-ip: nfs-svc
 spec:
   ports:
     - name: nfs-111
@@ -55,8 +57,6 @@ spec:
     role: nfs-server
   type: LoadBalancer
   loadBalancerIP: 10.201.50.200
-  annotations:
-    metallb.universe.tf/allow-shared-ip: nfs-svc
 ---
 apiVersion: v1
 kind: ConfigMap
