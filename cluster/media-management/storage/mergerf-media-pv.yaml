@@ -11,6 +11,7 @@ spec:
   persistentVolumeReclaimPolicy: Retain
   hostPath:
     path: /mnt/mergerfs
+    type: DirectoryOrCreate
   claimRef:
     namespace: media-management
     name: mergerfs-media

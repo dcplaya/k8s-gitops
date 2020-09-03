@@ -11,6 +11,7 @@ spec:
   persistentVolumeReclaimPolicy: Retain
   hostPath:
     path: /mnt/disks/google
+    type: DirectoryOrCreate
   claimRef:
     namespace: media-management
     name: rclone-mount-google
