@@ -8,7 +8,7 @@ metadata:
 spec:
   storageClassName: media
   capacity:
-    storage: 5Ti
+    storage: 1.8Ti
   accessModes:
     - ReadWriteMany
   persistentVolumeReclaimPolicy: Retain
