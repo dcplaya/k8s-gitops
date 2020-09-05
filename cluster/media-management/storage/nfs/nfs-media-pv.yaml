@@ -13,8 +13,8 @@ spec:
     - ReadWriteMany
   persistentVolumeReclaimPolicy: Retain
   nfs:
-    server: 10.10.200.60
-    path: /mnt/unionfs
+    server: 10.10.200.210
+    path: '/volume1/Plex Media/mergerFS'
   mountOptions:
     - tcp
     - intr
