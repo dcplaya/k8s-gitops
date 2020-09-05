@@ -52,7 +52,7 @@ spec:
       extraMounts:
       - name: media
         storageClass: media
-        claimName: nfs-gdrive-mount-pvc
+        claimName: nfs-media-pvc
         mountPath: mnt/unionfs
       config:
 #        claimName: nfs-plex-pvc
