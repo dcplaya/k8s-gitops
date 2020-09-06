@@ -8,13 +8,13 @@ metadata:
 spec:
   storageClassName: media
   capacity:
-    storage: 1.8Ti
+    storage: 5Ti
   accessModes:
     - ReadWriteMany
   persistentVolumeReclaimPolicy: Retain
   nfs:
-    server: 10.10.200.210
-    path: '/volume1/Plex Media/mergerFS'
+    server: 10.10.200.51
+    path: /mnt/mergerfs
   mountOptions:
     - tcp
     - intr
