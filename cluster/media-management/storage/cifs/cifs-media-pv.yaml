@@ -2,6 +2,8 @@ apiVersion: v1
 kind: PersistentVolume
 metadata:
   name: cifs-media-pv
+  annotations:
+    fluxcd.io/ignore: "true"
 spec:
   capacity:
     storage: 1.5Ti
@@ -24,6 +26,8 @@ apiVersion: v1
 metadata:
   name: cifs-media-pvc
   namespace: media-management
+  annotations:
+    fluxcd.io/ignore: "true"
 spec:
   accessModes:
     - ReadWriteMany
