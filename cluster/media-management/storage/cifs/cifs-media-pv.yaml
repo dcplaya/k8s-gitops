@@ -5,6 +5,7 @@ metadata:
 spec:
   capacity:
     storage: 1.5Ti
+  storageClassName: media
   accessModes:
     - ReadWriteMany
   persistentVolumeReclaimPolicy: Retain
@@ -21,9 +22,11 @@ kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
   name: cifs-media-pvc
+  namespace: media-management
 spec:
   accessModes:
-  - ReadWriteMany
+    - ReadWriteMany
+  storageClassName: media
   resources:
     requests:
       storage: 1Mi
