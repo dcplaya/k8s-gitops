@@ -21,7 +21,7 @@ spec:
     spec:
       containers:
         - name: cloudplow-uploader
-          image: sabrsorensen/alpine-cloudplow:v0.4.0
+          image: sabrsorensen/alpine-cloudplow:7f5fb50
           imagePullPolicy: IfNotPresent
           env:
             - name: PUID
