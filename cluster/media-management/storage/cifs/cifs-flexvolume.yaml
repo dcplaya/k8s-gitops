@@ -18,7 +18,7 @@ spec:
       - key: com.docker.ucp.manager
         effect: NoSchedule
       containers:
-        - image: nelvadas/cifs-flexvol-installer:1.0.1
+        - image: juliohm/kubernetes-cifs-volumedriver-installer:2.2
           name: cifs-flex-installer
           securityContext:
             privileged: true
