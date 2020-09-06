@@ -27,7 +27,7 @@ spec:
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: nfs-media-pvc
+  name: nfs-nas-media-pvc
   namespace: media-management
 spec:
   accessModes:
