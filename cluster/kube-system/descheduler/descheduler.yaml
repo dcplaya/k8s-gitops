@@ -31,11 +31,17 @@ spec:
           params:
             nodeAffinityType:
             - requiredDuringSchedulingIgnoredDuringExecution
+            namespaces:
+              exclude:
+              - "longhorn-system"
         RemovePodsViolatingInterPodAntiAffinity:
           enabled: true
         LowNodeUtilization:
           enabled: true
           params:
+            namespaces:
+              exclude:
+              - "longhorn-system"
             nodeResourceUtilizationThresholds:
               thresholds:
                 cpu : 20

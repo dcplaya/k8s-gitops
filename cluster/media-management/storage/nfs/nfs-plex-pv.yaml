@@ -4,7 +4,7 @@ kind: PersistentVolume
 metadata:
   name: nfs-plex-pv
   annotations:
-    fluxcd.io/ignore: "false"
+    fluxcd.io/ignore: "true"
 spec:
   storageClassName: media
   capacity:
@@ -29,6 +29,8 @@ kind: PersistentVolumeClaim
 metadata:
   name: nfs-plex-pvc
   namespace: media-management
+  annotations:
+    fluxcd.io/ignore: "true"
 spec:
   accessModes:
     - ReadWriteMany

@@ -21,14 +21,16 @@ spec:
     - hard
     - noatime
     - nodiratime
-    - rsize=8192
-    - wsize=8192
+    - rsize=32768
+    - wsize=32768
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: nfs-data-pvc
   namespace: media-management
+  annotations:
+    fluxcd.io/ignore: "true"
 spec:
   accessModes:
     - ReadWriteMany
