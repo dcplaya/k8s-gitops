@@ -52,7 +52,7 @@ spec:
       extraMounts:
       - name: media
         storageClass: media
-        claimName: cifs-media-pvc
+        claimName: nfs-media-pvc
         mountPath: mnt/unionfs
       config:
 #        claimName: nfs-plex-pvc
