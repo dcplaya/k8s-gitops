@@ -2,19 +2,19 @@
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: nfs-gdrive-mount-pv
+  name: nfs-nas-media-pv
   annotations:
-    fluxcd.io/ignore: "true"
+    fluxcd.io/ignore: "false"
 spec:
   storageClassName: media
   capacity:
-    storage: 1000Ti
+    storage: 1Ti
   accessModes:
     - ReadWriteMany
   persistentVolumeReclaimPolicy: Retain
   nfs:
-    server: 10.201.50.200
-    path: /mnt/disks/google
+    server: 10.10.200.201
+    path: /volume1/Media
   mountOptions:
     - tcp
     - intr
@@ -27,15 +27,13 @@ spec:
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: nfs-gdrive-mount-pvc
+  name: nfs-media-pvc
   namespace: media-management
-  annotations:
-    fluxcd.io/ignore: "true"
 spec:
   accessModes:
     - ReadWriteMany
   storageClassName: media
-  volumeName: nfs-gdrive-mount-pv
+  volumeName: nfs-nas-media-pv
   resources:
     requests:
       storage: 1Mi
