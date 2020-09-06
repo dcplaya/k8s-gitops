@@ -60,6 +60,7 @@ spec:
         storageClass: longhorn
         accessMode: ReadWriteOnce
         size: 300Gi
+        skipUninstall: true
     # Probes configuration
     probes:
       liveness:
