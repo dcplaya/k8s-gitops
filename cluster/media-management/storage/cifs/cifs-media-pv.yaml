@@ -10,12 +10,13 @@ spec:
     - ReadWriteMany
   persistentVolumeReclaimPolicy: Retain
   flexVolume:
-    driver: "fstab/cifs"
+    driver: juliohm/cifs
+    options:
+      opts: sec=ntlm,uid=1000
+      server: 10.10.200.210
+      share: /Media/mergerFS
     secretRef:
       name: cifs-secret-test
-    options:
-      source: "//10.10.200.210/Media/mergerFS"
-      mountOptions: "vers=3.0,dir_mode=0777,file_mode=0777"
 
 ---
 kind: PersistentVolumeClaim
