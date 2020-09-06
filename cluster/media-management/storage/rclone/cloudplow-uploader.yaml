@@ -1,0 +1,54 @@
+---
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  namespace: media-management
+  name: cloudplow-uploader
+  annotations:
+    fluxcd.io/ignore: "false"
+    fluxcd.io/automated: "true"
+  labels:
+    app: cloudplow-uploader
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: cloudplow-uploader
+  template:
+    metadata:
+      labels:
+        app: cloudplow-uploader
+    spec:
+      containers:
+        - name: cloudplow-uploader
+          image: sabrsorensen/alpine-cloudplow:latest
+          imagePullPolicy: IfNotPresent
+          env:
+            - name: PUID
+              value: 1000
+            - name: GUID
+              value: 1000
+            - name: CLOUDPLOW_CONFIG
+              value: /media/config/cloudplow/config.json
+            - name: CLOUDPLOW_LOGFILE
+              value: /media/config/cloudplow/cloudplow.log
+            - name: CLOUDPLOW_LOGLEVEL
+              value: INFO
+            - name: CLOUDPLOW_CACHEFILE
+              value: /media/config/cloudplow/cache.db
+            - name: TZ
+              value: America/New_York
+          volumeMounts:
+          - mountPath: /media
+            name: media-pvc
+          resources:
+            requests:
+              memory: 500Mi
+              cpu: 1000m
+            limits:
+              memory: 2000Mi
+              cpu: 1000m
+      volumes:
+      - name: media-pvc
+        persistentVolumeClaim:
+          claimName: nfs-nas-media-pvc
