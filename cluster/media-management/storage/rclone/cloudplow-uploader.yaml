@@ -25,19 +25,19 @@ spec:
           imagePullPolicy: IfNotPresent
           env:
             - name: PUID
-              value: 1000
+              value: "1000"
             - name: GUID
-              value: 1000
+              value: "1000"
             - name: CLOUDPLOW_CONFIG
-              value: /media/config/cloudplow/config.json
+              value: "/media/config/cloudplow/config.json"
             - name: CLOUDPLOW_LOGFILE
-              value: /media/config/cloudplow/cloudplow.log
+              value: "/media/config/cloudplow/cloudplow.log"
             - name: CLOUDPLOW_LOGLEVEL
-              value: INFO
+              value: "INFO"
             - name: CLOUDPLOW_CACHEFILE
-              value: /media/config/cloudplow/cache.db
+              value: "/media/config/cloudplow/cache.db"
             - name: TZ
-              value: America/New_York
+              value: "America/New_York"
           volumeMounts:
           - mountPath: /media
             name: media-pvc
