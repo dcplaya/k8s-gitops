@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: cifs-flex-ds
+spec:
+  selector:
+    matchLabels:
+      app: cifs-flex-deploy
+  template:
+    metadata:
+      name: cifs-flex-deploy
+      labels:
+        app: cifs-flex-deploy
+    spec:
+      tolerations:
+      - key: node-role.kubernetes.io/master
+        effect: NoSchedule
+      - key: com.docker.ucp.manager
+        effect: NoSchedule
+      containers:
+        - image: nelvadas/cifs-flexvol-installer:1.0.1
+          name: cifs-flex-installer
+          securityContext:
+            privileged: true
+          volumeMounts:
+            - mountPath: /flexmnt
+              name: flexvolume-mount
+      volumes:
+        - name: flexvolume-mount
+          hostPath:
+            path: /usr/libexec/kubernetes/kubelet-plugins/volume/exec/
