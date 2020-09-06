@@ -20,6 +20,7 @@ spec:
         app: cloudplow-uploader
     spec:
       containers:
+<<<<<<< HEAD
         - name: cloudplow-uploader
           image: sabrsorensen/alpine-cloudplow:v0.4.0
           imagePullPolicy: IfNotPresent
@@ -48,6 +49,36 @@ spec:
             limits:
               memory: 2000Mi
               cpu: 1000m
+=======
+      - name: cloudplow-uploader
+        image: sabrsorensen/alpine-cloudplow:arm-v7
+        imagePullPolicy: IfNotPresent
+        env:
+        - name: PUID
+          value: "1000"
+        - name: GUID
+          value: "1000"
+        - name: CLOUDPLOW_CONFIG
+          value: "/media/config/cloudplow/config.json"
+        - name: CLOUDPLOW_LOGFILE
+          value: "/media/config/cloudplow/cloudplow.log"
+        - name: CLOUDPLOW_LOGLEVEL
+          value: "INFO"
+        - name: CLOUDPLOW_CACHEFILE
+          value: "/media/config/cloudplow/cache.db"
+        - name: TZ
+          value: "America/New_York"
+        volumeMounts:
+        - mountPath: /media
+          name: media-pvc
+        resources:
+          requests:
+            memory: 500Mi
+            cpu: 1000m
+          limits:
+            memory: 2000Mi
+            cpu: 1000m
+>>>>>>> 074865cba78d7e9fa2a005b676afee0653c2b234
       volumes:
       - name: media-pvc
         persistentVolumeClaim:
