@@ -43,10 +43,11 @@ spec:
         enabled: true
         storageClass: longhorn
         size: 1Gi
+        skipUninstall: true
       extraMounts:
       - name: "nfs-media"
         storageClass: media
-        claimName: nfs-media-pvc
+        claimName: nfs-nas-merged-media-pvc
         mountPath: mnt/unionfs
     tolerations:
     resources:

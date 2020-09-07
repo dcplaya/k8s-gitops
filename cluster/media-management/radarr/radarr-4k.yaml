@@ -33,6 +33,7 @@ spec:
         enabled: true
         storageClass: longhorn
         size: 12Gi
+        skipUninstall: true
       media:
         enabled: false
       extraExistingClaimMounts:
