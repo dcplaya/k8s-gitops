@@ -35,6 +35,7 @@ spec:
         storageClass: longhorn
         accessMode: ReadWriteOnce
         size: 10Gi
+        skipUninstall: true
     resources:
       requests:
         memory: 500Mi

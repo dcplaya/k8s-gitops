@@ -38,6 +38,7 @@ spec:
         storageClass: longhorn
         accessMode: ReadWriteOnce
         size: 30Gi
+        skipUninstall: true
       media:
         enabled: true
         existingClaim: nfs-media-pvc

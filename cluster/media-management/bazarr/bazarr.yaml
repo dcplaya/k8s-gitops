@@ -33,6 +33,7 @@ spec:
         storageClass: longhorn
         accessMode: ReadWriteOnce
         size: 5Gi
+        skipUninstall: true
       media:
         enabled: false
       extraExistingClaimMounts:

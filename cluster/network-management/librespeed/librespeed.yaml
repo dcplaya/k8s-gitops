@@ -28,6 +28,7 @@ spec:
       enabled: true
       storageClass: longhorn
       size: 1Gi
+      skipUninstall: true
     timezone: America/Los_Angeles
     puid: "1000"
     pgid: "1000"

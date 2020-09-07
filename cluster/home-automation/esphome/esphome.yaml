@@ -37,6 +37,7 @@ spec:
       storageClass: longhorn                                                    # Use Default
       accessMode: ReadWriteOnce
       size: 10Gi
+      skipUninstall: true
     ingress:
       enabled: true
       annotations:

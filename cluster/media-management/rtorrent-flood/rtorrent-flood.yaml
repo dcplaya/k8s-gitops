@@ -46,6 +46,7 @@ spec:
         enabled: true
         size: 1Gi
         storageClass: longhorn
+        skipUninstall: true
       data:
         enabled: true
         storageClass: "media"

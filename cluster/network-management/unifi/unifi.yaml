@@ -24,6 +24,7 @@ spec:
     persistence:
       enabled: true
       size: 20Gi
+      skipUninstall: true
       storageClass: longhorn
     timezone: "America/Los_Angeles"
     runAsRoot: false

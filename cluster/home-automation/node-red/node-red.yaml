@@ -25,6 +25,7 @@ spec:
       enabled: true
       storageClass: longhorn
       size: 5Gi
+      skipUninstall: true
     tolerations:
     - key: "arm"
       operator: "Exists"

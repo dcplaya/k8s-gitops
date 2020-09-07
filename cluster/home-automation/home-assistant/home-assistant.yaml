@@ -35,12 +35,14 @@ spec:
     persistence:
       enabled: true
       size: 10Gi
+      skipUninstall: true
       storageClass: longhorn
     postgresql:
       enabled: true
       persistence:
         enabled: true
         storageClass: "longhorn"
+        skipUninstall: true
         size: 50Gi
     esphome:
       enabled: false

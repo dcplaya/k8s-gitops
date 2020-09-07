@@ -30,6 +30,7 @@ spec:
     persistence:
       enabled: true
       size: 10Gi
+      skipUninstall: true
       storageClass: rook-ceph-block
     timezone: "America/Los_Angeles"
     ingress:
