@@ -16,7 +16,6 @@ spec:
     repository: https://k8s-at-home.com/charts/
     name: ombi
     version: 4.0.0
-<<<<<<< HEAD
   ombi:
     image:
       repository: linuxserver/ombi
@@ -33,14 +32,6 @@ spec:
     persistence:
       type: statefulset
       config:
-=======
-  values:
-    ombi:
-      image:
-        repository: linuxserver/ombi
-        tag: arm32v7-v4-preview
-      ingress:
->>>>>>> 1d70ae757e0ae8ca030d9d8cbf8a3b04ba73d618
         enabled: true
         storageClass: longhorn
         accessMode: ReadWriteOnce
