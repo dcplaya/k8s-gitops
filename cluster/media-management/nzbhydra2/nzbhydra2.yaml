@@ -19,7 +19,7 @@ spec:
   values:
     image:
       repository: linuxserver/nzbhydra2
-      tag: amd64-v2.28.1-ls15
+      tag: amd64-dev
     ingress:
       enabled: true
       labels:
