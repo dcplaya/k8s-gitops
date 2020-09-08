@@ -15,8 +15,8 @@ spec:
   chart:
     repository: https://k8s-at-home.com/charts/
     name: ombi
-    version: 3.0.1
-  values:
+    version: 4.0.0
+  ombi:
     image:
       repository: linuxserver/ombi
       tag: v4.0.471-ls10
@@ -24,16 +24,21 @@ spec:
       enabled: true
       annotations:
         kubernetes.io/ingress.class: "nginx"
-    timezone: "America/Los_Angeles"
-    puid: 1000
-    pgid: 1000
+    env:
+      TZ: "America/Los_Angeles"
+    securityContext:
+      runAsUser: 1000
+      fsGroup: 1000
     persistence:
+      type: statefulset
       config:
         enabled: true
         storageClass: longhorn
         accessMode: ReadWriteOnce
         size: 5Gi
         skipUninstall: true
+      media:
+        enabled: false
     resources:
       requests:
         memory: 350Mi
