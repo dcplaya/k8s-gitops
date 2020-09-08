@@ -24,4 +24,4 @@ spec:
       server: "10.10.200.60"
       path: "/mnt/kubernetes"
     storageClass:
-      defaultClass: true
+      defaultClass: false
