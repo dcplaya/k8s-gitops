@@ -14,7 +14,7 @@ spec:
   persistentVolumeReclaimPolicy: Retain
   nfs:
     server: 10.10.200.210
-    path: /volume1/Media/mergerFS
+    path: /mnt/Merged-Media
   mountOptions:
     - tcp
     - intr
