@@ -20,7 +20,7 @@ spec:
     ombi:
       image:
         repository: linuxserver/ombi
-        tag: v4.0.471-ls10
+        tag: arm32v7-v4-preview
       ingress:
         enabled: true
         annotations:
