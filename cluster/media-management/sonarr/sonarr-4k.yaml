@@ -42,11 +42,11 @@ spec:
           enabled: false
       additionalVolumes:
         - name: nfs-media
-          mountPath: "/mnt/unionfs"
-          # subPath:
+          existingClaim: nfs-nas-merged-media-pvc
       additionalVolumeMounts:
         - name: nfs-media
-          existingClaim: nfs-nas-merged-media-pvc
+          mountPath: "/mnt/unionfs"
+          # subPath:
       resources:
         requests:
           memory: 350Mi
