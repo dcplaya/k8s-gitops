@@ -25,14 +25,13 @@ spec:
       ## Ingress is located in the helm-template (secrets) file now
       env:
         TZ: "America/Los_Angeles"
-#      securityContext:
-#        runAsUser: 1000
-#        fsGroup: 1000
+        PUID: 1000
+        PGID: 1000
       persistence:
         type: statefulset
         config:
           enabled: true
-          existingClaim: conifg-ombi
+          existingClaim: config-ombi
         media:
           enabled: false
       resources:
