@@ -6,7 +6,7 @@ metadata:
   namespace: media-management
   annotations:
     fluxcd.io/ignore: "false"
-    fluxcd.io/automated: "true"
+    fluxcd.io/automated: "false"
     fluxcd.io/tag.chart-image: 'regexp:^amd64-(v4.[0-9]+\.[0-9]+-ls.*)$'
 spec:
   releaseName: ombi
@@ -22,7 +22,7 @@ spec:
         - name: fuckoff
       image:
         repository: linuxserver/ombi
-        tag: arm32v7-v4-preview
+        tag: v4.0.471-ls10
       ## Ingress is located in the helm-template (secrets) file now
       env:
         TZ: "America/Los_Angeles"
