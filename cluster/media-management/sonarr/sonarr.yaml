@@ -40,13 +40,13 @@ spec:
           existingClaim: config-sonarr
         media:
           enabled: false
-        additionalVolumes:
-          - name: nfs-media
-            mountPath: "/mnt/unionfs"
-            # subPath:
-        additionalVolumeMounts:
-          - name: nfs-media
-            existingClaim: nfs-nas-merged-media-pvc
+      additionalVolumes:
+        - name: nfs-media
+          mountPath: "/mnt/unionfs"
+          # subPath:
+      additionalVolumeMounts:
+        - name: nfs-media
+          existingClaim: nfs-nas-merged-media-pvc
       resources:
         requests:
           memory: 450Mi
