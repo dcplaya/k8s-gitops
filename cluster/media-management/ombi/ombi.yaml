@@ -22,7 +22,7 @@ spec:
         - name: fuckoff
       image:
         repository: linuxserver/ombi
-        tag: v4.0.471-ls10
+        tag: arm32v7-v4-preview
       ## Ingress is located in the helm-template (secrets) file now
       env:
         TZ: "America/Los_Angeles"
