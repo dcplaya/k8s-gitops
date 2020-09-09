@@ -22,8 +22,7 @@ spec:
       repository: codercom/code-server
       tag: latest
       pullPolicy: Always
-    ingress:
-      enabled: true
+    ## Ingress is located in template file now
     persistence:
       enabled: true
       accessMode: ReadWriteOnce
