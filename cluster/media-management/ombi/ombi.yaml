@@ -64,5 +64,5 @@ spec:
 #                  values:
 #                  - plex
 #              topologyKey: "kubernetes.io/hostname"
-valueFileSecrets:
-- name: "ombi-helm-values"
+  valueFileSecrets:
+  - name: "ombi-helm-values"
