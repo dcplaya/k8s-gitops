@@ -17,46 +17,42 @@ spec:
     repository: https://k8s-at-home.com/charts/
     name: sonarr
     version: 6.0.0
-  sonarr-4k:
-    image:
-      repository: linuxserver/sonarr
-      tag: 3.0.3.905-ls35
-    ingress:
-      enabled: true
-      labels:
-        app.kubernetes.io/catagory: "media"
-      annotations:
-        kubernetes.io/ingress.class: "nginx"
-    env:
-      TZ: "America/Los_Angeles"
-    securityContext:
-      runAsUser: 1000
-      fsGroup: 1000
-    persistence:
-      type: statefulset
-      config:
+  values:
+    sonarr-4k:
+      image:
+        organization: linuxserver
+        repository: sonarr
+        tag: 3.0.3.905-ls35
+      ingress:
         enabled: true
-        storageClass: longhorn
-        size: 12Gi
-        skipUninstall: true
-      media:
-        enabled: false
-      additionalVolumes:
-        - name: nfs-media
-          mountPath: "/mnt/unionfs"
-          # subPath:
-      additionalVolumeMounts:
-        - name: nfs-media
-          existingClaim: nfs-nas-merged-media-pvc
-    resources:
-      requests:
-        memory: 350Mi
-        cpu: 25m
-      limits:
-        memory: 500Mi
-    tolerations:
-    - key: "arm"
-      operator: "Exists"
+        labels:
+          app.kubernetes.io/catagory: "media"
+        annotations:
+          kubernetes.io/ingress.class: "nginx"
+      env:
+        TZ: "America/Los_Angeles"
+        PUID: "1000"
+        PGID: "1000"
+      persistence:
+        type: statefulset
+        config:
+          enabled: true
+          existingClaim: config-sonarr-4k
+        media:
+          enabled: false
+        additionalVolumes:
+          - name: nfs-media
+            mountPath: "/mnt/unionfs"
+            # subPath:
+        additionalVolumeMounts:
+          - name: nfs-media
+            existingClaim: nfs-nas-merged-media-pvc
+      resources:
+        requests:
+          memory: 350Mi
+          cpu: 25m
+        limits:
+          memory: 500Mi
     affinity:
       podAntiAffinity:
         preferredDuringSchedulingIgnoredDuringExecution:
