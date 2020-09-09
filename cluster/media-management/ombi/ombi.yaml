@@ -45,15 +45,15 @@ spec:
         limits:
           memory: 2000Mi
           cpu: 1000m
-      affinity:
-        nodeAffinity:
-          requiredDuringSchedulingIgnoredDuringExecution:
-            nodeSelectorTerms:
-            - matchExpressions:
-              - key: node-role.kubernetes.io/worker
-                operator: In
-                values:
-                - "true"
+#      affinity:
+#        nodeAffinity:
+#          requiredDuringSchedulingIgnoredDuringExecution:
+#            nodeSelectorTerms:
+#            - matchExpressions:
+#              - key: node-role.kubernetes.io/worker
+#                operator: In
+#                values:
+#                - "true"
 #        podAntiAffinity:
 #          preferredDuringSchedulingIgnoredDuringExecution:
 #          - weight: 100
