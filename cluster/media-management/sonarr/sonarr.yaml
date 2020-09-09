@@ -43,7 +43,7 @@ spec:
       additionalVolumes:
         - name: nfs-media
           persistentVolumeClaim:
-            existingClaim: nfs-nas-merged-media-pvc
+            claimName: nfs-nas-merged-media-pvc
       additionalVolumeMounts:
         - name: nfs-media
           mountPath: "/mnt/unionfs"
