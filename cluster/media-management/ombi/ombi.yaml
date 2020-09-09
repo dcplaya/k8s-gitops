@@ -22,7 +22,10 @@ spec:
         organization: linuxserver
         repository: ombi
         tag: v4.0.471-ls10
-      ## Ingress is located in the helm-template (secrets) file now
+      ingress:
+        enabled: true
+        annotations:
+          kubernetes.io/ingress.class: "nginx"
       env:
         TZ: "America/Los_Angeles"
         PUID: "1000"
