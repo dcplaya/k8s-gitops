@@ -32,10 +32,7 @@ spec:
         type: statefulset
         config:
           enabled: true
-          storageClass: longhorn
-          accessMode: ReadWriteOnce
-          size: 5Gi
-          skipUninstall: true
+          existingClaim: conifg-ombi
         media:
           enabled: false
       resources:
@@ -65,5 +62,5 @@ spec:
 #                  values:
 #                  - plex
 #              topologyKey: "kubernetes.io/hostname"
-#    valueFileSecrets:
-#    - name: "ombi-helm-values"
+    valueFileSecrets:
+    - name: "ombi-helm-values"
