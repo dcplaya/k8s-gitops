@@ -23,11 +23,11 @@ spec:
         repository: ombi
         tag: v4.0.471-ls10
       ## Ingress is located in the helm-template (secrets) file now
-      env:
-        TZ: "America/Los_Angeles"
-      securityContext:
-        runAsUser: 1000
-        fsGroup: 1000
+#      env:
+#        TZ: "America/Los_Angeles"
+#      securityContext:
+#        runAsUser: 1000
+#        fsGroup: 1000
       persistence:
         type: statefulset
         config:
@@ -38,32 +38,32 @@ spec:
           skipUninstall: true
         media:
           enabled: false
-      resources:
-        requests:
-          memory: 350Mi
-          cpu: 25m
-        limits:
-          memory: 2000Mi
-          cpu: 1000m
-      affinity:
-        nodeAffinity:
-          requiredDuringSchedulingIgnoredDuringExecution:
-            nodeSelectorTerms:
-            - matchExpressions:
-              - key: node-role.kubernetes.io/worker
-                operator: In
-                values:
-                - "true"
-        podAntiAffinity:
-          preferredDuringSchedulingIgnoredDuringExecution:
-          - weight: 100
-            podAffinityTerm:
-              labelSelector:
-                matchExpressions:
-                - key: app.kubernetes.io/name
-                  operator: In
-                  values:
-                  - plex
-              topologyKey: "kubernetes.io/hostname"
+#      resources:
+#        requests:
+#          memory: 350Mi
+#          cpu: 25m
+#        limits:
+#          memory: 2000Mi
+#          cpu: 1000m
+#      affinity:
+#        nodeAffinity:
+#          requiredDuringSchedulingIgnoredDuringExecution:
+#            nodeSelectorTerms:
+#            - matchExpressions:
+#              - key: node-role.kubernetes.io/worker
+#                operator: In
+#                values:
+#                - "true"
+#        podAntiAffinity:
+#          preferredDuringSchedulingIgnoredDuringExecution:
+#          - weight: 100
+#            podAffinityTerm:
+#              labelSelector:
+#                matchExpressions:
+#                - key: app.kubernetes.io/name
+#                  operator: In
+#                  values:
+#                  - plex
+#              topologyKey: "kubernetes.io/hostname"
 #    valueFileSecrets:
 #    - name: "ombi-helm-values"
