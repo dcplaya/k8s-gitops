@@ -23,8 +23,8 @@ spec:
         repository: ombi
         tag: v4.0.471-ls10
       ## Ingress is located in the helm-template (secrets) file now
-      env:
-        TZ: "America/Los_Angeles"
+#      env:
+#        TZ: "America/Los_Angeles"
 #      securityContext:
 #        runAsUser: 1000
 #        fsGroup: 1000
@@ -65,5 +65,5 @@ spec:
                   values:
                   - plex
               topologyKey: "kubernetes.io/hostname"
-#    valueFileSecrets:
-#    - name: "ombi-helm-values"
+    valueFileSecrets:
+    - name: "ombi-helm-values"
