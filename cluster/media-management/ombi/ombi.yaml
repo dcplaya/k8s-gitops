@@ -38,13 +38,13 @@ spec:
           skipUninstall: true
         media:
           enabled: false
-#      resources:
-#        requests:
-#          memory: 350Mi
-#          cpu: 25m
-#        limits:
-#          memory: 2000Mi
-#          cpu: 1000m
+      resources:
+        requests:
+          memory: 350Mi
+          cpu: 25m
+        limits:
+          memory: 2000Mi
+          cpu: 1000m
 #      affinity:
 #        nodeAffinity:
 #          requiredDuringSchedulingIgnoredDuringExecution:
