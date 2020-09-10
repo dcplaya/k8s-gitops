@@ -19,6 +19,7 @@ data:
           namespaces:
             exclude:
             - "longhorn-system"
+            - "kubesystem"
       "RemovePodsViolatingInterPodAntiAffinity":
         enabled: true
       "LowNodeUtilization":
