@@ -1,0 +1,70 @@
+---
+apiVersion: helm.fluxcd.io/v1
+kind: HelmRelease
+metadata:
+  name: radarr
+  namespace: media-management
+  annotations:
+    fluxcd.io/ignore: "false"
+    fluxcd.io/automated: "true"
+    fluxcd.io/tag.chart-image: semver:3.0
+spec:
+  releaseName: radarr
+  helmVersion: v3
+  rollback:
+    enable: true
+  chart:
+    repository: https://k8s-at-home.com/charts/
+    name: radarr
+    version: 6.0.0
+  values:
+    radarr:
+      image:
+        organization: linuxserver
+        repository: radarr
+        tag: 3.0.0.2719-ls1
+      ingress:
+        enabled: true
+        labels:
+          app.kubernetes.io/catagory: "media"
+        annotations:
+          kubernetes.io/ingress.class: "nginx"
+      env:
+        TZ: "America/Los_Angeles"
+        PUID: "1000"
+        PGID: "100"
+      persistence:
+        type: statefulset
+        config:
+          enabled: true
+          existingClaim: config-radarr
+        media:
+          enabled: false
+      additionalVolumes:
+        - name: nfs-media
+          persistentVolumeClaim:
+            claimName: nfs-nas-merged-media-pvc
+      additionalVolumeMounts:
+        - name: nfs-media
+          mountPath: "/mnt/unionfs"
+          # subPath:
+      resources:
+        requests:
+          memory: 350Mi
+          cpu: 25m
+        limits:
+          memory: 1000Mi
+    affinity:
+      podAntiAffinity:
+        preferredDuringSchedulingIgnoredDuringExecution:
+        - weight: 100
+          podAffinityTerm:
+            labelSelector:
+              matchExpressions:
+              - key: app.kubernetes.io/name
+                operator: In
+                values:
+                - plex
+            topologyKey: "kubernetes.io/hostname"
+  valueFileSecrets:
+  - name: "radarr-helm-values"
