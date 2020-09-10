@@ -66,5 +66,5 @@ spec:
                 values:
                 - plex
             topologyKey: "kubernetes.io/hostname"
-    valueFileSecrets:
-    - name: "radarr-helm-values"
+  valueFileSecrets:
+  - name: "radarr-helm-values"
