@@ -28,5 +28,11 @@ spec:
       accessMode: ReadWriteOnce
       size: 10Gi
       storageClass: longhorn
+    resources:
+      requests:
+        memory: 250Mi
+        cpu: 250m
+      limits:
+        memory: 500Mi
   valueFileSecrets:
   - name: "vscode-helm-values"
