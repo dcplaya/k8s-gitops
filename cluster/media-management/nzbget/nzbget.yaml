@@ -33,7 +33,7 @@ spec:
         kubernetes.io/ingress.class: "nginx"
     timezone: "America/Los_Angeles"
     puid: 1000
-    pgid: 1000
+    pgid: 100
     persistence:
       downloads:
         enabled: false
