@@ -50,7 +50,7 @@ spec:
           # subPath:
       resources:
         requests:
-          memory: 350Mi
+          memory: 351Mi
           cpu: 25m
         limits:
           memory: 500Mi
