@@ -16,37 +16,44 @@ spec:
   chart:
     repository: https://k8s-at-home.com/charts/
     name: radarr
-    version: 5.0.1
+    version: 6.0.0
   values:
-    image:
-      repository: linuxserver/radarr
-      tag: 3.0.0.2719-ls1
-    ingress:
-      enabled: true
-      annotations:
-        kubernetes.io/ingress.class: "nginx"
-    timezone: "America/Los_Angeles"
-    puid: 1000
-    pgid: 1000
-    persistence:
-      config:
+    radarr:
+      image:
+        organization: linuxserver
+        repository: radarr
+        tag: 3.0.0.2719-ls1
+      ingress:
         enabled: true
-        storageClass: longhorn
-        size: 12Gi
-        skipUninstall: true
-      media:
-        enabled: false
-      extraExistingClaimMounts:
+        labels:
+          app.kubernetes.io/catagory: "media"
+        annotations:
+          kubernetes.io/ingress.class: "nginx"
+      env:
+        TZ: "America/Los_Angeles"
+        PUID: "1000"
+        PGID: "1000"
+      persistence:
+        type: statefulset
+        config:
+          enabled: true
+          existingClaim: config-radarr
+        media:
+          enabled: false
+      additionalVolumes:
         - name: nfs-media
-          existingClaim: nfs-nas-media-pvc
+          persistentVolumeClaim:
+            claimName: nfs-nas-merged-media-pvc
+      additionalVolumeMounts:
+        - name: nfs-media
           mountPath: "/mnt/unionfs"
-          readOnly: false
-    resources:
-      requests:
-        memory: 350Mi
-        cpu: 25m
-      limits:
-        memory: 1000Mi
+          # subPath:
+      resources:
+        requests:
+          memory: 350Mi
+          cpu: 25m
+        limits:
+          memory: 1000Mi
     affinity:
       podAntiAffinity:
         preferredDuringSchedulingIgnoredDuringExecution:
