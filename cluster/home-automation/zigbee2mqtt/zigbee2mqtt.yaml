@@ -31,23 +31,21 @@ spec:
         port: /dev/ttyUSB0
     persistence:
       enabled: true
-      storageClass: rook-ceph-block
+      storageClass: longhorn
       size: 100Mi
-    service:
-      port: 8091
-      loadBalancerIP: 10.201.40.30
+    assistant:
+      ingress:
+        enabled: true
+        annotations:
+          kubernetes.io/ingress.class: "nginx"
+      service:
+        port: 8091
+        loadBalancerIP: 10.201.40.30
     affinity:
       nodeAffinity:
         requiredDuringSchedulingIgnoredDuringExecution:
           nodeSelectorTerms:
           - matchExpressions:
             - {key: "feature.node.kubernetes.io/custom-zigbee", operator: In, values: ["true"]}
-    tolerations:
-    - key: "arm"
-      operator: "Exists"
-    ingress:
-      enabled: true
-      annotations:
-        kubernetes.io/ingress.class: "nginx"
 #  valueFileSecrets:
 #  - name: "zigbee2mqtt-helm-values"
