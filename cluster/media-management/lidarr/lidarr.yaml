@@ -2,27 +2,27 @@
 apiVersion: helm.fluxcd.io/v1
 kind: HelmRelease
 metadata:
-  name: radarr
+  name: lidarr
   namespace: media-management
   annotations:
     fluxcd.io/ignore: "false"
     fluxcd.io/automated: "true"
     fluxcd.io/tag.chart-image: semver:3.0
 spec:
-  releaseName: radarr
+  releaseName: lidarr
   helmVersion: v3
   rollback:
     enable: true
   chart:
     repository: https://k8s-at-home.com/charts/
-    name: radarr
+    name: lidarr
     version: 6.0.0
   values:
-    radarr:
+    lidarr:
       image:
         organization: linuxserver
-        repository: radarr
-        tag: 3.0.0.2719-ls1
+        repository: lidarr
+        tag: latest
       ingress:
         enabled: true
         labels:
@@ -37,7 +37,7 @@ spec:
         type: statefulset
         config:
           enabled: true
-          existingClaim: config-radarr
+          existingClaim: config-lidarr
         media:
           enabled: false
       additionalVolumes:
@@ -67,4 +67,4 @@ spec:
                 - plex
             topologyKey: "kubernetes.io/hostname"
   valueFileSecrets:
-  - name: "radarr-helm-values"
+  - name: "lidarr-helm-values"
