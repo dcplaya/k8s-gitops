@@ -13,18 +13,18 @@ spec:
   rollback:
     enable: true
   chart:
-    repository: https://k8s-at-home.com/charts/
-    name: autoscan
-    version: 1.0.0
+    # repository: https://k8s-at-home.com/charts/
+    # name: autoscan
+    # version: 1.0.0
+    git: git@github.com:dcplaya/charts
+    path: charts/autoscan
+    ref: autoscan
   values:
     autoscan:
       image:
-        # organization: cloudb0x
-        # repository: autoscan
-        # tag: v0.4.0
-        git: git@github.com:dcplaya/charts
-        path: charts/autoscan
-        ref: autoscan
+        organization: cloudb0x
+        repository: autoscan
+        tag: v0.4.0
       ingress:
         enabled: false
         annotations:
