@@ -22,7 +22,7 @@ spec:
       image:
         organization: linuxserver
         repository: tautulli
-        tag: develop
+        tag: amd64-develop
       ingress:
         enabled: true
         labels:
