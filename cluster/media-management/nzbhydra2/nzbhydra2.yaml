@@ -32,10 +32,7 @@ spec:
     persistence:
       config:
         enabled: true
-        storageClass: longhorn
-        accessMode: ReadWriteOnce
-        size: 10Gi
-        skipUninstall: true
+        existingClaim: config-nzbhydra2
     resources:
       requests:
         memory: 500Mi
