@@ -7,7 +7,7 @@ metadata:
   annotations:
     fluxcd.io/ignore: "false"
     fluxcd.io/automated: "true"
-    fluxcd.io/tag.chart-image: "regexp:amd64*"
+    fluxcd.io/tag.chart-image: regexp:^(v2\.[0-9]+\.[0-9]+-ls[0-9]+)$
 spec:
   releaseName: nzbhydra2
   rollback:
@@ -19,7 +19,7 @@ spec:
   values:
     image:
       repository: linuxserver/nzbhydra2
-      tag: amd64-latest
+      tag: v2.28.1-ls16
     ingress:
       enabled: true
       labels:
@@ -32,10 +32,7 @@ spec:
     persistence:
       config:
         enabled: true
-        storageClass: longhorn
-        accessMode: ReadWriteOnce
-        size: 10Gi
-        skipUninstall: true
+        existingClaim: config-nzbhydra2
     resources:
       requests:
         memory: 500Mi
