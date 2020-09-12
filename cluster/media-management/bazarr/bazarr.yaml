@@ -7,7 +7,7 @@ metadata:
   annotations:
     fluxcd.io/ignore: "false"
     fluxcd.io/automated: "true"
-    fluxcd.io/tag.chart-image: semver:0.8
+    fluxcd.io/tag.chart-image: semver:0.9
 spec:
   releaseName: bazarr
   rollback:
@@ -19,7 +19,7 @@ spec:
   values:
     image:
       repository: linuxserver/bazarr
-      tag: v0.8.4.3-ls74
+      tag: v0.9.0.2-ls89
     ingress:
       enabled: true
       annotations:
@@ -30,10 +30,7 @@ spec:
     persistence:
       config:
         enabled: true
-        storageClass: longhorn
-        accessMode: ReadWriteOnce
-        size: 5Gi
-        skipUninstall: true
+        existingClaim: config-bazarr
       media:
         enabled: false
       extraExistingClaimMounts:
@@ -46,7 +43,7 @@ spec:
         memory: 350Mi
         cpu: 25m
       limits:
-        memory: 4000Mi
+        memory: 400Mi
     affinity:
       podAntiAffinity:
         preferredDuringSchedulingIgnoredDuringExecution:
