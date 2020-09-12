@@ -14,13 +14,13 @@ spec:
   rollback:
     enable: true
   chart:
-    git: git@github.com:paolomainardi/code-server.git
-    path: deployment/chart
-    ref: master
+    git: git@github.com:Matthew-Beckett/code-server.git
+    path: charts/code-server
+    ref: feature/helm3
   values:
     image:
       repository: codercom/code-server
-      tag: latest
+      tag: 3.5.0
       pullPolicy: Always
     ## Ingress is located in template file now
     extraArgs:
