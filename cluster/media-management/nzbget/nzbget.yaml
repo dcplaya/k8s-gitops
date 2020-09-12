@@ -17,9 +17,6 @@ spec:
     repository: https://k8s-at-home.com/charts/
     name: nzbget
     version: 4.0.1
-#    git: git@github.com:dcplaya/billimek-charts
-#    path: charts/nzbget
-#    ref: master
   values:
     image:
       repository: linuxserver/nzbget
@@ -41,9 +38,7 @@ spec:
         size: 200Gi
       config:
         enabled: true
-        storageClass: longhorn
-        size: 1Gi
-        skipUninstall: true
+        existingClaim: config-nzbget
       extraMounts:
       - name: "nfs-media"
         storageClass: media
