@@ -40,7 +40,7 @@ spec:
         readOnly: false
     resources:
       requests:
-        memory: 350Mi
+        memory: 100Mi
         cpu: 25m
       limits:
         memory: 400Mi
