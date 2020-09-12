@@ -23,6 +23,8 @@ spec:
       tag: latest
       pullPolicy: Always
     ## Ingress is located in template file now
+    extraArgs:
+    - "--allow-http"
     persistence:
       enabled: true
       accessMode: ReadWriteOnce
