@@ -14,7 +14,7 @@ spec:
   rollback:
     enable: true
   chart:
-    git: git@github.com:Matthew-Beckett/code-server.git
+    git: git@github.com:Matthew-Beckett/code-server
     path: charts/code-server
     ref: feature/helm3
   values:
