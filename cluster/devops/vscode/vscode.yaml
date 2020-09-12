@@ -26,8 +26,8 @@ spec:
 
     ## Optional additional arguments
     extraArgs:
-    - "--no-auth"
-    
+    - --no-auth
+
     persistence:
       enabled: true
       accessMode: ReadWriteOnce
