@@ -33,6 +33,6 @@ spec:
         memory: 250Mi
         cpu: 250m
       limits:
-        memory: 500Mi
+        memory: 501Mi
   valueFileSecrets:
   - name: "vscode-helm-values"
