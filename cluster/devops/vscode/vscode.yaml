@@ -25,8 +25,16 @@ spec:
     ## Ingress is located in template file now
 
     ## Optional additional arguments
-    extraArgs:
-      - --no-auth
+    # extraArgs:
+      # - --no-auth
+
+    ## Pod Security Context
+    ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/
+    ##
+    securityContext:
+      enabled: true
+      fsGroup: 100
+      runAsUser: 1000
 
     persistence:
       enabled: true
