@@ -37,10 +37,17 @@ spec:
       runAsUser: 1000
 
     persistence:
-      enabled: true
+      enabled: false
       accessMode: ReadWriteOnce
       size: 10Gi
       storageClass: longhorn
+    ## Additional code-server volume mounts
+    extraVolumeMounts:
+      - name: data
+        mountPath: /home/coder
+        readOnly: false
+        existingClaim: config-vscode
+
     resources:
       requests:
         memory: 251Mi
