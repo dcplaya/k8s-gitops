@@ -43,7 +43,7 @@ spec:
       storageClass: longhorn
     ## Additional code-server volume mounts
     extraVolumeMounts:
-      - name: data
+      - name: config
         mountPath: /home/coder
         readOnly: false
         existingClaim: config-vscode
