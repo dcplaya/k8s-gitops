@@ -1,0 +1,58 @@
+---
+apiVersion: helm.fluxcd.io/v1
+kind: HelmRelease
+metadata:
+  name: vscode
+  namespace: devops
+  annotations:
+    fluxcd.io/ignore: "false"
+    fluxcd.io/automated: "true"
+    fluxcd.io/tag.chart-image: semver:~1
+spec:
+  releaseName: vscode
+  helmVersion: v3
+  rollback:
+    enable: true
+  chart:
+    git: git@github.com:Matthew-Beckett/code-server
+    path: charts/code-server
+    ref: feature/helm3
+  values:
+    image:
+      repository: codercom/code-server
+      tag: 3.5.0
+      pullPolicy: Always
+    ## Ingress is located in template file now
+
+    ## Optional additional arguments
+    # extraArgs:
+      # - --no-auth
+
+    ## Pod Security Context
+    ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/
+    ##
+    securityContext:
+      enabled: true
+      fsGroup: 100
+      runAsUser: 1000
+
+    persistence:
+      enabled: false
+      accessMode: ReadWriteOnce
+      size: 10Gi
+      storageClass: longhorn
+    ## Additional code-server volume mounts
+    extraVolumeMounts:
+      - name: data
+        mountPath: /home/coder
+        readOnly: false
+        existingClaim: config-vscode
+
+    resources:
+      requests:
+        memory: 251Mi
+        cpu: 250m
+      limits:
+        memory: 500Mi
+  valueFileSecrets:
+  - name: "vscode-helm-values"
