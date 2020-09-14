@@ -24,5 +24,11 @@ spec:
     persistence:
       enabled: true
       exisitingClaim: config-statping
+    resources:
+      limits:
+        memory: 200Mi
+      requests:
+        cpu: 35m
+        memory: 10Mi
   valueFileSecrets:
   - name: "statping-helm-values"
