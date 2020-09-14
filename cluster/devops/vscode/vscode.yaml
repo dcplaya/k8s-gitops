@@ -3,7 +3,7 @@ apiVersion: helm.fluxcd.io/v1
 kind: HelmRelease
 metadata:
   name: vscode
-  namespace: media-management
+  namespace: devops
   annotations:
     fluxcd.io/ignore: "false"
     fluxcd.io/automated: "false"
