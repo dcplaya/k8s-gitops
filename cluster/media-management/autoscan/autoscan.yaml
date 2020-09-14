@@ -24,7 +24,7 @@ spec:
       image:
         organization: cloudb0x
         repository: autoscan
-        tag: 0.4.0
+        tag: v0.4.0
       ingress:
         enabled: true
         annotations:
