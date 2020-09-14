@@ -34,7 +34,6 @@ spec:
         TZ: "America/Los_Angeles"
         PUID: "1000"
         PGID: "100"
-        PASSWORD: "temp123"
       persistence:
         type: statefulset
         config:
