@@ -5,7 +5,7 @@ metadata:
   name: statping
   namespace: monitoring
   annotations:
-    fluxcd.io/ignore: "false"
+    fluxcd.io/ignore: "true"
     fluxcd.io/automated: "true"
     fluxcd.io/tag.chart-image: semver:0.90
 spec:
