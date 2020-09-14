@@ -20,7 +20,7 @@ spec:
     path: charts/code-server
     ref: vscode
   values:
-    vscode:
+    code-server:
       image:
         organization: linuxserver
         repository: code-server
