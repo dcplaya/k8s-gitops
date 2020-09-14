@@ -23,7 +23,7 @@ spec:
   values:
     image:
       repository: quay.io/amitkumardas/metac
-      tag: latest
+      tag: v0.4.0
     discoveryInterval: 10s
     cacheFlushInterval: 24h
     workerCount: 5
