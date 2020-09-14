@@ -21,7 +21,7 @@ spec:
     replicaCount: 1
     image:
       repository: pducharme/unifi-video-controller
-      tag: beta
+      tag: 3.10.13
     persistence:
       config:
         enabled: true
