@@ -24,3 +24,5 @@ spec:
     persistence:
       enabled: true
       exisitingClaim: config-statping
+  valueFileSecrets:
+  - name: "statping-helm-values"
