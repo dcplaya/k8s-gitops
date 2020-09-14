@@ -17,7 +17,7 @@ spec:
     # name: vscode
     # version: 1.0.0
     git: git@github.com:dcplaya/charts
-    path: charts/vscode
+    path: charts/code-server
     ref: vscode
   values:
     vscode:
