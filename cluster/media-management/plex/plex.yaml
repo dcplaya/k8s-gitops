@@ -79,14 +79,19 @@ spec:
         cpu: 35m
         memory: 1500Mi
     affinity:
-      nodeAffinity:
+      podAntiAffinity:
         preferredDuringSchedulingIgnoredDuringExecution:
         - weight: 100
-          preference:
-            matchExpressions:
-            - key: node-role.kubernetes.io/plex
-              operator: In
-              values:
-              - "true"
+          podAffinityTerm:
+            labelSelector:
+              matchExpressions:
+              - key: app.kubernetes.io/name
+                operator: In
+                values:
+                - nzbget
+                - sonarr
+                - radarr
+                - bazarr
+            topologyKey: "kubernetes.io/hostname"
   valueFileSecrets:
   - name: "plex-helm-values"
