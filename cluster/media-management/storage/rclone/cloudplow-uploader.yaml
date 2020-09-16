@@ -38,8 +38,8 @@ spec:
               value: "/volume1/Media/config/cloudplow/cache.db"
             - name: TZ
               value: "America/New_York"
-          volumeMounts:/volume1/Media
-          - mountPath: /mnt
+          volumeMounts:
+          - mountPath: /volume1/Media
             name: media-pvc
           resources:
             requests:
