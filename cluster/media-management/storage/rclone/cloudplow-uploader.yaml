@@ -29,17 +29,17 @@ spec:
             - name: GUID
               value: "1000"
             - name: CLOUDPLOW_CONFIG
-              value: "/media/config/cloudplow/config.json"
+              value: "/volume1/Media/config/cloudplow/config.json"
             - name: CLOUDPLOW_LOGFILE
-              value: "/media/config/cloudplow/cloudplow.log"
+              value: "/volume1/Media/config/cloudplow/cloudplow.log"
             - name: CLOUDPLOW_LOGLEVEL
               value: "INFO"
             - name: CLOUDPLOW_CACHEFILE
-              value: "/media/config/cloudplow/cache.db"
+              value: "/volume1/Media/config/cloudplow/cache.db"
             - name: TZ
               value: "America/New_York"
-          volumeMounts:
-          - mountPath: /media
+          volumeMounts:/volume1/Media
+          - mountPath: /mnt
             name: media-pvc
           resources:
             requests:
