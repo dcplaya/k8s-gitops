@@ -48,5 +48,15 @@ spec:
         cpu: 750m
       limits:
         memory: 2500Mi
+    affinity:
+      podAntiAffinity:
+        requiredDuringSchedulingIgnoredDuringExecution:
+        - labelSelector:
+            matchExpressions:
+            - key: app.kubernetes.io/name
+              operator: In
+              values:
+              - plex
+          topologyKey: "kubernetes.io/hostname"
   valueFileSecrets:
   - name: "esphome-helm-values"

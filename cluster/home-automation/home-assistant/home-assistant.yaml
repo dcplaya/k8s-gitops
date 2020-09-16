@@ -80,6 +80,16 @@ spec:
       requests:
         cpu: 35m
         memory: 2000Mi
+    affinity:
+      podAntiAffinity:
+        requiredDuringSchedulingIgnoredDuringExecution:
+        - labelSelector:
+            matchExpressions:
+            - key: app.kubernetes.io/name
+              operator: In
+              values:
+              - plex
+          topologyKey: "kubernetes.io/hostname"
     monitoring:
       enabled: false
   valueFileSecrets:
