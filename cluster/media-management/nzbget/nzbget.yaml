@@ -54,7 +54,7 @@ spec:
           mountPath: "/mnt/unionfs"
           # subPath:
         - name: downloads
-          mountPaht: /downloads
+          mountPath: /downloads
       resources:
         requests:
           memory: 1000Mi
