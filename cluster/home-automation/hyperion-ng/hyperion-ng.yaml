@@ -32,14 +32,9 @@ spec:
         annotations:
           kubernetes.io/ingress.class: "nginx"
       service:
+        port: 8090
         # type: LoadBalancer
         # loadBalancerIP: 10.201.40.70
-        additionalSpec:
-          ports:
-          - name: http
-            port: 8090
-            protocol: TCP
-            targetPort: 8090
         annotations:
           metallb.universe.tf/allow-shared-ip: hyperion-svc
       configPath: /root/.hyperion
