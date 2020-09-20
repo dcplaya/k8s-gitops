@@ -86,3 +86,4 @@ Installs [frigate](https://github.com/blakeblackshear/frigate/): Realtime object
 | zwave2mqtt     	| 10.201.40.30 	|       	|
 | zigbee2mqtt    	| 10.201.40.40 	|       	|
 | esphome       	| 10.201.40.50 	|       	|
+| hyperion.ng     | 10.201.40.60  |         |
