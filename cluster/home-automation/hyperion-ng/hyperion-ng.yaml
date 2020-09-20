@@ -33,7 +33,7 @@ spec:
           kubernetes.io/ingress.class: "nginx"
       service:
         type: LoadBalancer
-        loadBalancerIP: 10.201.40.60
+        loadBalancerIP: 10.201.40.70
       configPath: /root/.hyperion
       env:
         TZ: "America/Los_Angeles"
