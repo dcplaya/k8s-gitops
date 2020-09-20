@@ -16,41 +16,51 @@ spec:
   chart:
     repository: https://k8s-at-home.com/charts/
     name: nzbget
-    version: 4.0.1
+    version: 5.0.0
   values:
-    image:
-      repository: linuxserver/nzbget
-      tag: v21.0-ls61
-    service:
-      type: LoadBalancer
-      loadBalancerIP: 10.201.70.10
-    ingress:
-      enabled: true
-      annotations:
-        kubernetes.io/ingress.class: "nginx"
-    timezone: "America/Los_Angeles"
-    puid: 1000
-    pgid: 100
-    persistence:
-      downloads:
-        enabled: false
-        storageClass: longhorn
-        size: 200Gi
-      config:
+    nzbget:
+      image:
+        organization: linuxserver
+        repository: nzbget
+        tag: v21.0-ls61
+      ingress:
         enabled: true
-        existingClaim: config-nzbget
-      extraMounts:
-      - name: "nfs-media"
-        storageClass: media
-        claimName: nfs-nas-merged-media-pvc
-        mountPath: mnt/unionfs
-    tolerations:
-    resources:
-      requests:
-        memory: 1000Mi
-        cpu: 250m
-      limits:
-        memory: 6000Mi
+        labels:
+          app.kubernetes.io/catagory: "media"
+        annotations:
+          kubernetes.io/ingress.class: "nginx"
+      service:
+        type: LoadBalancer
+        loadBalancerIP: 10.201.70.10
+      env:
+        TZ: "America/Los_Angeles"
+        PUID: "1000"
+        PGID: "100"
+      persistence:
+        type: statefulset
+        config:
+          enabled: true
+          existingClaim: config-nzbget
+        media:
+          enabled: false
+      additionalVolumes:
+        - name: nfs-media
+          persistentVolumeClaim:
+            claimName: nfs-nas-merged-media-pvc
+        - name: downloads
+          emptyDir: {}
+      additionalVolumeMounts:
+        - name: nfs-media
+          mountPath: "/mnt/unionfs"
+          # subPath:
+        - name: downloads
+          mountPaht: /downloads
+      resources:
+        requests:
+          memory: 1000Mi
+          cpu: 250m
+        limits:
+          memory: 6000Mi
     affinity:
       podAntiAffinity:
         requiredDuringSchedulingIgnoredDuringExecution:
