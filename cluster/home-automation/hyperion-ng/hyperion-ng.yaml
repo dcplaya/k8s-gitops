@@ -34,10 +34,10 @@ spec:
       service:
         port: 8090
         type: LoadBalancer
-        loadBalancerIP: 10.201.40.70
         annotations:
           metallb.universe.tf/allow-shared-ip: hyperion
         additionalSpec:
+          loadBalancerIP: 10.201.40.70
           ports:
           - name: http
             port: 8090
