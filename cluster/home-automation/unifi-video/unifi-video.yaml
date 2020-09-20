@@ -48,7 +48,7 @@ spec:
 #        metallb.universe.tf/allow-shared-ip: unifi-video-svc
     timezone: "America/Los_Angeles"
     puid: 1000
-    guid: 1000
+    guid: 100
     ingress:
       enabled: true
       annotations:
