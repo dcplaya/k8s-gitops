@@ -24,9 +24,7 @@ spec:
       pullPolicy: Always
     persistence:
       enabled: true
-      size: 20Gi
-      skipUninstall: true
-      storageClass: longhorn
+      existingClaim: config-unifi
     timezone: "America/Los_Angeles"
     runAsRoot: false
     ingress:
