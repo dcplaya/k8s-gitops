@@ -37,6 +37,20 @@ spec:
         # loadBalancerIP: 10.201.40.70
         annotations:
           metallb.universe.tf/allow-shared-ip: hyperion-svc
+        additionalSpec:
+          ports:
+          - name: http
+            port: 8090
+            protocol: TCP
+            targetPort: 8090
+          - name: port1
+            port: 19445
+            protocol: TCP
+            targetPort: 19445
+          - name: port2
+            port: 19444
+            protocol: TCP
+            targetPort: 19444
       configPath: /root/.hyperion
       env:
         TZ: "America/Los_Angeles"
