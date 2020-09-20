@@ -20,7 +20,7 @@ spec:
   values:
     image:
       repository: jacobalberty/unifi
-      tag: latest
+      tag: stable-6
       pullPolicy: Always
     persistence:
       enabled: true
