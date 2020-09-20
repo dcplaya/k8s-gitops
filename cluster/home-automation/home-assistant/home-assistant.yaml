@@ -35,9 +35,7 @@ spec:
 #      PGID: "1000"
     persistence:
       enabled: true
-      size: 10Gi
-      skipUninstall: true
-      storageClass: longhorn
+      existingClaim: "home-assistant"
     postgresql:
       enabled: true
       persistence:
