@@ -36,7 +36,7 @@ spec:
         type: LoadBalancer
         loadBalancerIP: 10.201.40.70
         annotations:
-          metallb.universe.tf/allow-shared-ip: hyperion-svc
+          metallb.universe.tf/allow-shared-ip: hyperion
         additionalSpec:
           ports:
           - name: http
