@@ -35,10 +35,24 @@ spec:
       existingClaim: "nfs-backup-longhorn-pvc"
       storageClass: "backup"
       subPath: "longhorn/minio"
+
+    metrics:
+      serviceMonitor:
+        enabled: true
+
+    nasgateway:
+      enabled: true
+      # Number of parallel instances
+      replicas: 3
+
     ingress:
       enabled: true
       annotations:
         kubernetes.io/ingress.class: nginx
+
+    readinessProbe:
+      initialDelaySeconds: 10
+
     tolerations:
     - key: "arm"
       operator: "Exists"
