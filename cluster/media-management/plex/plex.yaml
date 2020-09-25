@@ -16,7 +16,7 @@ spec:
   chart:
     repository: https://k8s-at-home.com/charts/
     name: plex
-    version: 2.0.1
+    version: 2.0.2
 #    git: git@github.com:dcplaya/billimek-charts
 #    path: charts/nzbget
 #    ref: master
@@ -25,6 +25,11 @@ spec:
       repository: plexinc/pms-docker
       tag: 1.20.1.3252-a78fef9a9
     hostNetwork: true
+
+    ## Set the IDs for proper NAS sharing
+    plexUid: 1000
+    plexGid: 100
+
     ingress:
       enabled: true
       annotations:
@@ -41,12 +46,10 @@ spec:
       loadBalancerIP: 10.201.70.20
       annotations:
         metallb.universe.tf/allow-shared-ip: plex-svc
+
     persistence:
       transcode:
         enabled: false
-#        storageClass: longhorn
-#        accessMode: ReadWriteOnce
-#        size: 31Gi
       data:
         enabled: false
       extraMounts:
@@ -55,13 +58,13 @@ spec:
         claimName: nfs-nas-merged-media-pvc
         mountPath: mnt/unionfs
       config:
-#        claimName: nfs-plex-pvc
-#        subPath:
-        storageClass: longhorn
-        accessMode: ReadWriteOnce
-        size: 300Gi
-        skipUninstall: true
-        
+        claimName: config-plex
+        # subPath:
+        # storageClass: longhorn
+        # accessMode: ReadWriteOnce
+        # size: 300Gi
+        # skipUninstall: true
+
     # Probes configuration
     probes:
       liveness:
