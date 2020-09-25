@@ -61,6 +61,7 @@ spec:
         accessMode: ReadWriteOnce
         size: 300Gi
         skipUninstall: true
+        
     # Probes configuration
     probes:
       liveness:
@@ -78,8 +79,16 @@ spec:
       requests:
         cpu: 35m
         memory: 1500Mi
+
     affinity:
       podAntiAffinity:
+        requiredDuringSchedulingIgnoredDuringExecution:
+        - labelSelector:
+            matchExpressions:
+            - key: app.kubernetes.io/name
+              operator: In
+              values:
+              - nzbget
         preferredDuringSchedulingIgnoredDuringExecution:
         - weight: 100
           podAffinityTerm:
@@ -93,5 +102,6 @@ spec:
                 - radarr
                 - bazarr
             topologyKey: "kubernetes.io/hostname"
+
   valueFileSecrets:
   - name: "plex-helm-values"
