@@ -19,13 +19,13 @@ spec:
       repository: quay.io/kubernetes_incubator/node-feature-discovery
       tag: v0.6.0
     sources:
-      # - cpu
+    - cpu
     - custom
       # - iommu
       # - kernel
       # - local
-      # - memory
-      # - network
+    - memory
+    - network
     - pci
       # - storage
       # - system
