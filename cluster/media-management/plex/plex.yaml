@@ -80,16 +80,18 @@ spec:
         gpu.intel.com/i915: 1
         memory: 12000Mi
       requests:
-        cpu: 35m
+        ## 1000m = 1 core
+        ## Setting request high enough so this doesnt get scheduled on i3 NUCs
+        cpu: 8000m
         memory: 1500Mi
 
     affinity:
-      nodeAffinity:
-        requiredDuringSchedulingIgnoredDuringExecution:
-          nodeSelectorTerms:
-          - matchExpressions:
-            - {key: "node-role.kubernetes.io/plex=true", operator: In, values: [
-                "true"]}
+      # nodeAffinity:
+      #   requiredDuringSchedulingIgnoredDuringExecution:
+      #     nodeSelectorTerms:
+      #     - matchExpressions:
+      #       - {key: "node-role.kubernetes.io/plex=true", operator: In, values: [
+      #           "true"]}
       podAntiAffinity:
         requiredDuringSchedulingIgnoredDuringExecution:
         - labelSelector:
