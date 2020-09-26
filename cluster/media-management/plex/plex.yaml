@@ -47,6 +47,7 @@ spec:
       annotations:
         metallb.universe.tf/allow-shared-ip: plex-svc
 
+    ## Storage Info
     persistence:
       transcode:
         enabled: false
@@ -65,7 +66,7 @@ spec:
         # size: 300Gi
         # skipUninstall: true
 
-    # Probes configuration
+    ## Probes configuration
     probes:
       liveness:
         initialDelaySeconds: 60
@@ -75,6 +76,8 @@ spec:
         initialDelaySeconds: 60
         failureThreshold: 30
         timeoutSeconds: 15
+
+    ## Resource allocation    
     resources:
       limits:
         gpu.intel.com/i915: 1
@@ -84,14 +87,8 @@ spec:
         ## Setting request high enough so this doesnt get scheduled on i3 NUCs
         cpu: 8000m
         memory: 1500Mi
-
+    ## Limit where the pod can be scheduled
     affinity:
-      # nodeAffinity:
-      #   requiredDuringSchedulingIgnoredDuringExecution:
-      #     nodeSelectorTerms:
-      #     - matchExpressions:
-      #       - {key: "node-role.kubernetes.io/plex=true", operator: In, values: [
-      #           "true"]}
       podAntiAffinity:
         requiredDuringSchedulingIgnoredDuringExecution:
         - labelSelector:
@@ -114,6 +111,7 @@ spec:
                 - radarr
                 - bazarr
             topologyKey: "kubernetes.io/hostname"
-
+            
+  ## Has info I don't want shown on Github
   valueFileSecrets:
   - name: "plex-helm-values"
