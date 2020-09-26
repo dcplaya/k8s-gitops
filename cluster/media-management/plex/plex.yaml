@@ -88,7 +88,7 @@ spec:
         requiredDuringSchedulingIgnoredDuringExecution:
           nodeSelectorTerms:
           - matchExpressions:
-            - {key: "feature.node.kubernetes.io/plex", operator: In, values: [
+            - {key: "node-role.kubernetes.io/plex=true", operator: In, values: [
                 "true"]}
       podAntiAffinity:
         requiredDuringSchedulingIgnoredDuringExecution:
