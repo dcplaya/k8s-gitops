@@ -8,7 +8,7 @@ metadata:
 spec:
   storageClassName: media
   capacity:
-    storage: 1Ti
+    storage: 2Ti
   accessModes:
     - ReadWriteMany
   persistentVolumeReclaimPolicy: Retain
@@ -36,4 +36,4 @@ spec:
   volumeName: nfs-nas-merged-media-pv
   resources:
     requests:
-      storage: 1Mi
+      storage: 2Mi
