@@ -4,7 +4,7 @@ kind: PersistentVolume
 metadata:
   name: nfs-media-pv
   annotations:
-    fluxcd.io/ignore: "false"
+    fluxcd.io/ignore: "true"
 spec:
   storageClassName: media
   capacity:
