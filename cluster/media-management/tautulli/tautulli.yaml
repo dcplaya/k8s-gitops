@@ -16,13 +16,14 @@ spec:
   chart:
     repository: https://k8s-at-home.com/charts/
     name: tautulli
-    version: 4.0.0
+    version: 4.0.2
   values:
     tautulli:
       image:
         organization: linuxserver
         repository: tautulli
         tag: amd64-develop
+        pullPolicy: Always
       ingress:
         enabled: true
         labels:
