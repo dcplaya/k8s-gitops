@@ -3,3 +3,21 @@
   become: true
   shell: "sgdisk -z {{ item }}"
   loop: "{{ ceph.disks }}"
+
+---
+- name: "multipath: create config directory"
+  file:
+    path: "/etc/multipath/conf.d"
+    state: directory
+
+- name: "multipath: blacklist multipath for sd*"
+  become: true
+  copy:
+    content: |
+      blacklist {
+        devnode "^sd[a-z0-9]+"
+      }
+    dest: /etc/multipath/conf.d/longhorn.conf
+  when:
+  - longhorn.enabled is defined and longhorn.enabled == true
+  notify: restart multipathd

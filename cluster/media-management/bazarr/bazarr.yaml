@@ -34,7 +34,7 @@ spec:
       media:
         enabled: false
       extraExistingClaimMounts:
-      - name: nfs-media
+      - name: nfs-nas-merged-media-pvc
         existingClaim: nfs-nas-merged-media-pvc
         mountPath: /mnt/unionfs
         readOnly: false
