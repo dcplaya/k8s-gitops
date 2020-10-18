@@ -40,7 +40,6 @@ spec:
       enabled: true
       annotations:
         kubernetes.io/ingress.class: "nginx"
-    timezone: "America/Los_Angeles"
     resources:
       requests:
         memory: 350Mi
