@@ -42,10 +42,10 @@ spec:
         requiredDuringSchedulingIgnoredDuringExecution:
           nodeSelectorTerms:
           - matchExpressions:
-            - key: tpu
+            - key: "feature.node.kubernetes.io/custom-coral-tpu"
               operator: In
               values:
-              - google-coral
+              - "true"
       podAntiAffinity:
         requiredDuringSchedulingIgnoredDuringExecution:
         - labelSelector:
