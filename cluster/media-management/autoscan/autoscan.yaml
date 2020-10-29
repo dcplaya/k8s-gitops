@@ -24,7 +24,8 @@ spec:
       image:
         organization: cloudb0x
         repository: autoscan
-        tag: v0.4.0
+        tag: latest
+        pullPolicy: Always
       ingress:
         enabled: true
         annotations:
