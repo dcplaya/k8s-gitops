@@ -1,0 +1,54 @@
+---
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  namespace: media-management
+  name: plex-auto-collections
+  annotations:
+    fluxcd.io/ignore: "false"
+    fluxcd.io/automated: "false"
+  labels:
+    app: plex-auto-collections
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: plex-auto-collections
+  template:
+    metadata:
+      labels:
+        app: plex-auto-collections
+    spec:
+      containers:
+        - name: plex-auto-collections
+          image: burkasaurusrex/plex-auto-collections:latest
+          imagePullPolicy: always
+          # env:
+          #   - name: PUID
+          #     value: "1000"
+          #   - name: GUID
+          #     value: "1000"
+          #   - name: CLOUDPLOW_CONFIG
+          #     value: "/volume1/Media/config/cloudplow/config.json"
+          #   - name: CLOUDPLOW_LOGFILE
+          #     value: "/volume1/Media/config/cloudplow/cloudplow.log"
+          #   - name: CLOUDPLOW_LOGLEVEL
+          #     value: "INFO"
+          #   - name: CLOUDPLOW_CACHEFILE
+          #     value: "/volume1/Media/config/cloudplow/cache.db"
+          #   - name: TZ
+          #     value: "America/New_York"
+          volumeMounts:
+          - mountPath: /config
+            name: config-plex-auto-collection
+          resources:
+            requests:
+              memory: 50Mi
+              cpu: 100m
+            limits:
+              memory: 200Mi
+              cpu: 300m
+      volumes:
+      - name: config-plex-auto-collection
+        persistentVolumeClaim:
+          claimName: config-plex-auto-collection
