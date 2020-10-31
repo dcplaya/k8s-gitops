@@ -6,7 +6,7 @@ metadata:
   name: plex-auto-collections
   annotations:
     fluxcd.io/ignored: "false"
-    fluxcd.io/automated: "false"
+    fluxcd.io/automated: "true"
 spec:
   # Run once a day, every day, starting at 6PM
   schedule: "0 18 * * *"
