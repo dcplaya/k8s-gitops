@@ -22,8 +22,9 @@ spec:
 #    ref: master
   values:
     image:
-      repository: plexinc/pms-docker
-      tag: latest
+      # repository: plexinc/pms-docker
+      repository: cloudb0x/plex
+      tag: beta
       pullPolicy: Always
     hostNetwork: true
 
