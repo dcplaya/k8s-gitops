@@ -22,7 +22,7 @@ spec:
       containers:
         - name: plex-auto-collections
           image: burkasaurusrex/plex-auto-collections:latest
-          imagePullPolicy: always
+          imagePullPolicy: Always
           # env:
           #   - name: PUID
           #     value: "1000"
