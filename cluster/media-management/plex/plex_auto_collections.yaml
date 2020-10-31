@@ -1,28 +1,25 @@
 ---
-kind: Deployment
-apiVersion: apps/v1
+apiVersion: batch/v1beta1
+kind: CronJob
 metadata:
   namespace: media-management
   name: plex-auto-collections
   annotations:
-    fluxcd.io/ignore: "false"
+    fluxcd.io/ignored: "false"
     fluxcd.io/automated: "false"
-  labels:
-    app: plex-auto-collections
 spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      app: plex-auto-collections
-  template:
-    metadata:
-      labels:
-        app: plex-auto-collections
+  # Run once a day, every day, starting at 6PM
+  schedule: "0 18 * * *"
+  failedJobsHistoryLimit: 1
+  successfulJobsHistoryLimit: 1
+  concurrencyPolicy: Forbid
     spec:
       containers:
         - name: plex-auto-collections
           image: burkasaurusrex/plex-auto-collections:latest
           imagePullPolicy: Always
+          command: ["python3"]
+          args: ["/app/plex_auto_collections.py"]
           # env:
           #   - name: PUID
           #     value: "1000"
