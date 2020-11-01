@@ -14,6 +14,7 @@
       --owner={{ github_username }} \
       --repository={{ github_k8s_reponame }} \
       --path=cluster \
+      --branch={{ github_k8s_reponame_branch }} \
       --personal \
       --components=source-controller,kustomize-controller,helm-controller,notification-controller \
       --version=latest
