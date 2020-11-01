@@ -3,7 +3,7 @@ helmOperator:
 git:
   url: "git@github.com:dcplaya/k8s-gitops"
   branch: master
-  path: deployments
+  path: cluster
   user: "dcplaya"
   email: "dcplaya@users.noreply.github.com"
 image:
