@@ -1,4 +1,7 @@
 ---
+- name: Install Flux CLI
+  shell: |
+    curl -s https://toolkit.fluxcd.io/install.sh | sudo bash
 
 - name: Create flux namespace
   command: "kubectl apply -f {{ REPO_ROOT }}/cluster/flux/namespace.yaml"
@@ -7,27 +10,14 @@
 
 - name: Deploy Flux
   shell: |
-    fluxctl install --git-user={{ github_username }} \
-    --git-email={{ github_username }}@users.noreply.github.com \
-    --git-url=git@github.com:{{ github_username }}/{{ github_k8s_reponame }} \
-    --git-branch={{ github_k8s_reponame_branch }} \
-    --git-path=cluster \
-    --namespace flux | kubectl apply -f -
+    flux bootstrap github \
+      --owner={{ github_username }} \
+      --repository={{ github_k8s_reponame }} \
+      --path=cluster \
+      --personal \
+      --components=source-controller,kustomize-controller,helm-controller,notification-controller \
+      --version=latest
   environment:
     KUBECONFIG: "{{ REPO_ROOT }}/kubeconfig"
+    GITHUB_TOKEN: "{{ github_personal_access_token }}"
 
-- name: Get Flux identity
-  command: "{{ item }}"
-  with_items:
-    - fluxctl identity
-  register: flux_identity
-  environment:
-    KUBECONFIG: "{{ REPO_ROOT }}/kubeconfig"
-    FLUX_FORWARD_NAMESPACE: flux
-  until: "'ssh-rsa' in flux_identity.stdout"
-  retries: 30
-  delay: 10
-
-- name: Register Flux Identity with GitHub
-  script: "{{ REPO_ROOT }}/hack/add-repo-key.sh {{ github_username }} '{{ flux_identity.results[0].stdout }}' {{ github_k8s_reponame }}"
-  register: register_result

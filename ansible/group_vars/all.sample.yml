@@ -25,6 +25,7 @@ local_user: "{{ ansible_user }}"
 github_username:
 github_k8s_reponame: k8s-cluster
 github_k8s_reponame_branch: master
+github_personal_access_token:
 
 # ceph options
 ceph:
