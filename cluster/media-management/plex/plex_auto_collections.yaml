@@ -13,6 +13,7 @@ spec:
   failedJobsHistoryLimit: 1
   successfulJobsHistoryLimit: 1
   concurrencyPolicy: Forbid
+  activeDeadlineSeconds: 9999999999999999
   jobTemplate:
     spec:
       template:
