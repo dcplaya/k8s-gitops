@@ -25,7 +25,7 @@ spec:
   tolerations:
     - key: node-role.kubernetes.io/master
       operator: Equal
-      value: true
+      value: "true"
       effect: NoSchedule
   upgrade:
     image: rancher/k3s-upgrade
