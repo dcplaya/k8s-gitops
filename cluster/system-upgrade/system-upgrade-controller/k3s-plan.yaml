@@ -10,7 +10,7 @@ metadata:
     k3s-upgrade: server
 spec:
   concurrency: 1
-  version: v1.19.3+k3s1
+  version: v1.19.3+k3s2
   nodeSelector:
     matchExpressions:
       - {key: k3s-upgrade, operator: Exists}
@@ -34,7 +34,7 @@ metadata:
     k3s-upgrade: agent
 spec:
   concurrency: 2 # in general, this should be the number of workers - 1
-  version: v1.19.3+k3s1
+  version: v1.19.3+k3s2
   nodeSelector:
     matchExpressions:
       - {key: k3s-upgrade, operator: Exists}
