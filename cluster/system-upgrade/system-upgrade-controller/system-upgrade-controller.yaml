@@ -56,6 +56,12 @@ spec:
                 operator: In
                 values:
                 - "true"
+      tolerations:
+        - key: "CriticalAddonsOnly"
+          operator: "Exists"
+        - key: "node-role.kubernetes.io/master"
+          operator: "Exists"
+          effect: "NoSchedule"
       containers:
       - env:
         - name: SYSTEM_UPGRADE_CONTROLLER_NAME
