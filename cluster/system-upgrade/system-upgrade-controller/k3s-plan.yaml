@@ -24,8 +24,9 @@ spec:
   # - {key: node.kubernetes.io/unschedulable, effect: NoSchedule, operator: Exists}
   tolerations:
     - key: "node-role.kubernetes.io/master"
-      operator: "Equal"
-      value: "true"
+      # operator: "Equal"
+      # value: "true"
+      operator: Exists
       effect: "NoSchedule"
   upgrade:
     image: rancher/k3s-upgrade
