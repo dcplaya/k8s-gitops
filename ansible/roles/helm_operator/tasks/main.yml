@@ -23,7 +23,6 @@
     helm upgrade -i helm-operator fluxcd/helm-operator \
     --version 1.2.0 \
     --namespace flux \
-    --set 'createCRD=false' \
     --set 'git.ssh.secretName=flux-git-deploy' \
     --set 'helm.versions=v3' \
     --set 'chartsSyncInterval=5m' \
