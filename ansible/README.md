@@ -30,7 +30,7 @@ Note: Must `sudo chmod a+w /usr/local/bin` for some reason still. Fails on downl
    sudo apt-get install ansible
    ```
 2. Create a Github SSH pesonal access token. Follow directions located at [Github](https://help.github.com/en/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line)
-   Paste the key into `nano ~/.secret/github_access_token`
+   Paste the key into `nano ~/.secret/github_access_token` and also place key in [group_vars](group_vars/)
 3. Clone github repo to home directory
    ```
    cd ~

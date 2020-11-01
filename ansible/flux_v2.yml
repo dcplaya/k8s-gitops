@@ -2,7 +2,8 @@
 ## Flux can be run multiple times, it will auto detect if flux is already installed in the cluster and upgrade if needed
 
 ---
-- hosts: master #defines what hosts to install this role one
-  become: true
+- hosts: localhost #defines what hosts to install this role one
+  gather_facts: yes
+  become: no
   roles:
-    - flux
+    - { role: flux }
