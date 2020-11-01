@@ -36,4 +36,4 @@ spec:
   volumeName: nfs-nas-merged-media-pv
   resources:
     requests:
-      storage: 2Mi
+      storage: 1Mi
