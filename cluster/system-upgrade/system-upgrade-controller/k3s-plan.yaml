@@ -5,7 +5,7 @@ metadata:
   name: k3s-server
   namespace: system-upgrade
 spec:
-  concurrency: 2
+  concurrency: 1
   cordon: true
   nodeSelector:
     matchExpressions:
