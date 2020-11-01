@@ -15,15 +15,14 @@ spec:
   concurrencyPolicy: Forbid
   jobTemplate:
     spec:
-      activeDeadlineSeconds: 999999999999999
       template:
         spec:
           containers:
           - name: plex-auto-collections
             image: burkasaurusrex/plex-auto-collections:latest
             imagePullPolicy: Always
-            command: ["python3"]
-            args: ["/app/plex_auto_collections.py"]
+            command: ["top"]
+            # args: ["/app/plex_auto_collections.py"]
             # env:
             #   - name: PUID
             #     value: "1000"
