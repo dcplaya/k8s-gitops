@@ -21,8 +21,8 @@ spec:
           - name: plex-auto-collections
             image: burkasaurusrex/plex-auto-collections:latest
             imagePullPolicy: Always
-            command: ["dmesg"]
-            args: ["-w"]
+            command: ["sh"]
+            # args: ["-w"]
             # env:
             #   - name: PUID
             #     value: "1000"
