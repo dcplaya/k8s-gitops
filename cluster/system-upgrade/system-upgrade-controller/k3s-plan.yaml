@@ -24,7 +24,7 @@ spec:
   # - {key: node.kubernetes.io/unschedulable, effect: NoSchedule, operator: Exists}
   tolerations:
   - {key: node-role.kubernetes.io/master, effect: NoSchedule, operator: Equals, value: true}
-  - {key: k3s-controlplane, effect: NoExecute, operator: Equals, value: "true"}
+  - {key: CriticalAddonsOnly, effect: NoExecute, operator: Exists}
 
   
   # - key: node-role.kubernetes.io/master
