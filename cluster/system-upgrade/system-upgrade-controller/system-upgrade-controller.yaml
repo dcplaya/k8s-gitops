@@ -28,6 +28,7 @@ data:
   SYSTEM_UPGRADE_JOB_PRIVILEGED: "true"
   SYSTEM_UPGRADE_JOB_TTL_SECONDS_AFTER_FINISH: "901"
   SYSTEM_UPGRADE_PLAN_POLLING_INTERVAL: 15m
+  ARCH: amd64
 kind: ConfigMap
 metadata:
   name: default-controller-env
