@@ -25,7 +25,7 @@ spec:
   tolerations:
     # - {key: node-role.kubernetes.io/master, operator: Exists, value}
   - key: node-role.kubernetes.io/master
-    operator: Exists
+    operator: Equals
     value: "true"
     effect: NoSchedule
   upgrade:
