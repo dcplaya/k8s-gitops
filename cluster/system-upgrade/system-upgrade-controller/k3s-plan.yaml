@@ -23,14 +23,12 @@ spec:
   # Anything specified here is appended to the default of:
   # - {key: node.kubernetes.io/unschedulable, effect: NoSchedule, operator: Exists}
   tolerations:
-  - {key: node-role.kubernetes.io/master, effect: NoSchedule, operator: Equals, value: true}
-  - {key: CriticalAddonsOnly, effect: NoExecute, operator: Exists}
+    - key: "node-role.kubernetes.io/master"
+      operator: "Exists"
+      effect: "NoSchedule"
+    - key: "CriticalAddonsOnly"
+      operator: "Exists"
 
-  
-  # - key: node-role.kubernetes.io/master
-  #   operator: Equals
-  #   value: "true"
-  #   effect: NoSchedule
   upgrade:
     image: rancher/k3s-upgrade
   channel: https://update.k3s.io/v1-release/channels/latest
