@@ -60,7 +60,7 @@ spec:
         - key: "CriticalAddonsOnly"
           operator: "Exists"
         - key: node-role.kubernetes.io/master
-          operator: Equals
+          operator: Equal
           value: "true"
           effect: NoSchedule
       containers:
