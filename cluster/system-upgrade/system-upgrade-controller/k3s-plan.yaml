@@ -26,8 +26,7 @@ spec:
     # - {key: node-role.kubernetes.io/master, operator: Exists, value}
   - key: node-role.kubernetes.io/master
     operator: Exists
-    values: 
-    - "true"
+    value: "true"
     effect: NoSchedule
   upgrade:
     image: rancher/k3s-upgrade
