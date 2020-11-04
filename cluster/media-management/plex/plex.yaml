@@ -6,7 +6,7 @@ metadata:
   namespace: media-management
   annotations:
     fluxcd.io/ignore: "false"
-    fluxcd.io/automated: "true"
+    fluxcd.io/automated: "false"
 #    fluxcd.io/tag.chart-image: 'regexp:^(1\.[0-9]+\.[0-9]+\.[0-9]+-.*)$'
 spec:
   releaseName: plex
@@ -16,15 +16,22 @@ spec:
   chart:
     repository: https://k8s-at-home.com/charts/
     name: plex
-    version: 2.0.1
+    version: 2.0.4
 #    git: git@github.com:dcplaya/billimek-charts
 #    path: charts/nzbget
 #    ref: master
   values:
     image:
-      repository: plexinc/pms-docker
-      tag: 1.20.1.3252-a78fef9a9
+      # repository: plexinc/pms-docker
+      repository: cloudb0x/plex
+      tag: beta
+      pullPolicy: Always
     hostNetwork: true
+
+    ## Set the IDs for proper NAS sharing
+    plexUid: 1000
+    plexGid: 100
+
     ingress:
       enabled: true
       annotations:
@@ -41,12 +48,11 @@ spec:
       loadBalancerIP: 10.201.70.20
       annotations:
         metallb.universe.tf/allow-shared-ip: plex-svc
+
+    ## Storage Info
     persistence:
       transcode:
         enabled: false
-#        storageClass: longhorn
-#        accessMode: ReadWriteOnce
-#        size: 31Gi
       data:
         enabled: false
       extraMounts:
@@ -55,13 +61,14 @@ spec:
         claimName: nfs-nas-merged-media-pvc
         mountPath: mnt/unionfs
       config:
-#        claimName: nfs-plex-pvc
-#        subPath:
-        storageClass: longhorn
-        accessMode: ReadWriteOnce
-        size: 300Gi
-        skipUninstall: true
-    # Probes configuration
+        claimName: config-plex
+        # subPath:
+        # storageClass: longhorn
+        # accessMode: ReadWriteOnce
+        # size: 300Gi
+        # skipUninstall: true
+
+    ## Probes configuration
     probes:
       liveness:
         initialDelaySeconds: 60
@@ -71,15 +78,28 @@ spec:
         initialDelaySeconds: 60
         failureThreshold: 30
         timeoutSeconds: 15
+
+    ## Resource allocation    
     resources:
       limits:
         gpu.intel.com/i915: 1
         memory: 12000Mi
       requests:
-        cpu: 35m
+        ## 1000m = 1 core
+        ## Setting request high enough so this doesnt get scheduled on i3 NUCs
+        cpu: 8000m
         memory: 1500Mi
+    ## Limit where the pod can be scheduled
     affinity:
       podAntiAffinity:
+        requiredDuringSchedulingIgnoredDuringExecution:
+        - labelSelector:
+            matchExpressions:
+            - key: app.kubernetes.io/name
+              operator: In
+              values:
+              - nzbget
+          topologyKey: "kubernetes.io/hostname"
         preferredDuringSchedulingIgnoredDuringExecution:
         - weight: 100
           podAffinityTerm:
@@ -93,5 +113,7 @@ spec:
                 - radarr
                 - bazarr
             topologyKey: "kubernetes.io/hostname"
+
+  ## Has info I don't want shown on Github
   valueFileSecrets:
   - name: "plex-helm-values"

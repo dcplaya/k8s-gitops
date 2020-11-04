@@ -2,14 +2,14 @@
 apiVersion: helm.fluxcd.io/v1
 kind: HelmRelease
 metadata:
-  name: hyperion.ng
+  name: hyperion-ng
   namespace: home-automation
   annotations:
     fluxcd.io/ignore: "false"
     fluxcd.io/automated: "false"
 #    fluxcd.io/tag.chart-image: 'regexp:^stable-(v0.[0-9]+\.[0-9]+-ls.*)$'
 spec:
-  releaseName: hyperion
+  releaseName: hyperion-ng
   rollback:
     enable: true
   chart:
@@ -17,10 +17,10 @@ spec:
     # name: hyperion
     # version: 1.0.0
     git: git@github.com:dcplaya/charts
-    path: charts/hyperion.ng
+    path: charts/hyperion-ng
     ref: hyperion.ng
   values:
-    hyperion.ng:
+    hyperion-ng:
       image:
         organization: sirfragalot
         repository: hyperion.ng
@@ -32,8 +32,25 @@ spec:
         annotations:
           kubernetes.io/ingress.class: "nginx"
       service:
+        port: 8090
         type: LoadBalancer
-        loadBalancerIP: 10.201.40.60
+        annotations:
+          metallb.universe.tf/allow-shared-ip: hyperion
+        additionalSpec:
+          loadBalancerIP: 10.201.40.70
+          ports:
+          - name: http
+            port: 8090
+            protocol: TCP
+            targetPort: 8090
+          - name: proto
+            port: 19445
+            protocol: TCP
+            targetPort: 19445
+          - name: json
+            port: 19444
+            protocol: TCP
+            targetPort: 19444
       configPath: /root/.hyperion
       env:
         TZ: "America/Los_Angeles"

@@ -31,7 +31,8 @@
   when: devices.arm_in_cluster|bool == true
 
 - name: Apply master taints
-  command: kubectl taint --overwrite node {{ item }} node-role.kubernetes.io/master=true:NoSchedule
+  # command: kubectl taint --overwrite node {{ item }} node-role.kubernetes.io/master=true:NoSchedule
+  command: kubectl taint --overwrite node {{ item }} CriticalAddonsOnly=true:NoExecute
   loop: "{{ groups['master'] }}"
   environment:
     KUBECONFIG: "{{ REPO_ROOT }}/kubeconfig"

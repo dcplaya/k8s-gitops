@@ -1,0 +1,46 @@
+## Docker image based on script located https://github.com/mza921/Plex-Auto-Collections/
+
+---
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  namespace: media-management
+  name: plex-auto-collections
+  annotations:
+    fluxcd.io/ignored: "false"
+    fluxcd.io/automated: "true"
+spec:
+  # Run once a day, every day, starting at 6PM
+  schedule: "0 18 * * *"
+  failedJobsHistoryLimit: 1
+  successfulJobsHistoryLimit: 1
+  concurrencyPolicy: Forbid
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+          - name: plex-auto-collections
+            image: burkasaurusrex/plex-auto-collections:latest
+            imagePullPolicy: Always
+            # command: ["sleep"]
+            # args: ["999999999999"]
+            # env:
+            #   - name: PUID
+            #     value: "1000"
+            volumeMounts:
+            - mountPath: /config
+              name: config-plex-auto-collection
+            resources:
+              requests:
+                memory: 50Mi
+                cpu: 100m
+              limits:
+                memory: 200Mi
+                cpu: 300m
+          restartPolicy: Never
+          volumes:
+          - name: config-plex-auto-collection
+            persistentVolumeClaim:
+              claimName: config-plex-auto-collection
+    

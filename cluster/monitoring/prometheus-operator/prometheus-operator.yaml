@@ -45,9 +45,6 @@ spec:
               resources:
                 requests:
                   storage: 10Gi
-        tolerations:
-        - key: "arm"
-          operator: "Exists"
         podMetadata:
       ingress:
         enabled: true
@@ -121,9 +118,6 @@ spec:
       # image:
       #   repository: grafana/grafana
       #   tag: 7.0.4
-      tolerations:
-      - key: "arm"
-        operator: "Exists"
       deploymentStrategy:
         type: Recreate
       persistence:
@@ -136,7 +130,6 @@ spec:
         GF_EXPLORE_ENABLED: true
         GF_DISABLE_SANITIZE_HTML: true
         GF_PANELS_DISABLE_SANITIZE_HTML: true
-#        VAR_BLOCKY_URL: "http://blocky.default.svc.cluster.local:4000"
       ingress:
         enabled: true
         annotations:
@@ -158,17 +151,7 @@ spec:
             editable: true
             options:
               path: /var/lib/grafana/dashboards/default
-#          - name: 'teslamate'
-#            orgId: 1
-#            folder: Teslamate
-#            # folderUid: Nr4ofiDZk
-#            type: file
-#            disableDeletion: false
-#            editable: true
-#            # updateIntervalSeconds: -1
-#            allowUiUpdates: true
-#            options:
-#              path: /var/lib/grafana/dashboards/teslamate
+
       dashboards:
         default:
           nginx-dashboard:
@@ -186,12 +169,6 @@ spec:
           1-node-exporter:
             url: https://grafana.com/api/dashboards/11074/revisions/4/download
             datasource: Prometheus
-          # cable-modem-stats:
-          #   url: https://raw.githubusercontent.com/billimek/k8s-gitops/master/monitoring/prometheus-operator/grafana-dashboards/cable_modem_stats.json
-          #   datasource: influxdb
-          # comcast-sucks:
-          #   url: https://raw.githubusercontent.com/billimek/k8s-gitops/master/monitoring/prometheus-operator/grafana-dashboards/comcast_sucks.json
-          #   datasource: influxdb
           # home-assistant:
           #   url: https://raw.githubusercontent.com/billimek/k8s-gitops/master/monitoring/prometheus-operator/grafana-dashboards/home_assistant.json
           #   datasource: influxdb
@@ -253,12 +230,6 @@ spec:
       enabled: false
     kubeScheduler:
       enabled: false
-    prometheus-node-exporter:
-      tolerations:
-      - key: "arm"
-        operator: "Exists"
-      - key: "armhf"
-        operator: "Exists"
     prometheus:
       ingress:
         enabled: true
@@ -288,12 +259,6 @@ spec:
               resources:
                 requests:
                   storage: 10Gi
-        # tolerations:
-        # - key: "arm"
-        #   operator: "Exists"
-        podMetadata:
-          annotations:
-            backup.velero.io/backup-volumes: prometheus-prometheus-operator-prometheus-db
         thanos:
           image: quay.io/thanos/thanos:v0.13.0
           version: v0.13.0

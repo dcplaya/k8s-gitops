@@ -34,14 +34,14 @@ spec:
       media:
         enabled: false
       extraExistingClaimMounts:
-      - name: nfs-media
+      - name: nfs-nas-merged-media-pvc
         existingClaim: nfs-nas-merged-media-pvc
         mountPath: /mnt/unionfs
         readOnly: false
     resources:
       requests:
         memory: 100Mi
-        cpu: 25m
+        cpu: 26m
       limits:
         memory: 400Mi
     affinity:

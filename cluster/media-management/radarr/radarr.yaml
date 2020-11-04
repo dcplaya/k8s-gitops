@@ -41,17 +41,17 @@ spec:
         media:
           enabled: false
       additionalVolumes:
-        - name: nfs-media
+        - name: nfs-nas-merged-media-pvc
           persistentVolumeClaim:
             claimName: nfs-nas-merged-media-pvc
       additionalVolumeMounts:
-        - name: nfs-media
+        - name: nfs-nas-merged-media-pvc
           mountPath: "/mnt/unionfs"
           # subPath:
       resources:
         requests:
           memory: 350Mi
-          cpu: 25m
+          cpu: 26m
         limits:
           memory: 1000Mi
     affinity:
