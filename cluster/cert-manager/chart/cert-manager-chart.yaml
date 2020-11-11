@@ -5,7 +5,7 @@ metadata:
   name: cert-manager
   namespace: cert-manager
   annotations:
-    fluxcd.io/automated: "true"
+    fluxcd.io/automated: "false"
     fluxcd.io/tag.chart-image: semver:~v1.
 spec:
   releaseName: cert-manager
