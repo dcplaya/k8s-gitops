@@ -1,5 +1,3 @@
-## Docker image based on script located https://github.com/mza921/Plex-Auto-Collections/
-
 ---
 apiVersion: batch/v1beta1
 kind: CronJob
@@ -21,7 +19,7 @@ spec:
         spec:
           containers:
           - name: plex-auto-collections
-            image: burkasaurusrex/plex-auto-collections:latest
+            image: burkasaurusrex/plex-auto-collections:develop
             imagePullPolicy: Always
             # command: ["sleep"]
             # args: ["999999999999"]
@@ -43,4 +41,3 @@ spec:
           - name: config-plex-auto-collection
             persistentVolumeClaim:
               claimName: config-plex-auto-collection
-    
