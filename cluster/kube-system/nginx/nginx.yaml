@@ -66,7 +66,7 @@ spec:
                 description: Too many 4XXs
                 summary: More than 5% of the all requests did return 4XX, this require your attention
       extraArgs:
-        default-ssl-certificate: "kube-system/acme-crt-secret"
+        default-ssl-certificate: "cert-manager/acme-crt-secret"
         #default-ssl-certificate: "kube-system/digicert-ingress-tls"
       resources:
         requests:
