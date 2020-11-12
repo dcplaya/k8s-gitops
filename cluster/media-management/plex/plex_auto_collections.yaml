@@ -25,7 +25,7 @@ spec:
             # command: ["sleep"]
             # args: ["999999999999"]
             command: ["python3"]
-            args: ["/app/plex_auto_collections.py, -u"]
+            args: ["plex_auto_collections.py, -u"]
 
             # env:
             #   - name: PUID
