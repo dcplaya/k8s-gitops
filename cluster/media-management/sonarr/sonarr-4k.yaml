@@ -16,45 +16,45 @@ spec:
   chart:
     repository: https://k8s-at-home.com/charts/
     name: sonarr
-    version: 6.0.0
+    version: 7.2.0
   values:
-    sonarr:
-      image:
-        organization: hotio
-        repository: sonarr
-        tag: nightly
-      ingress:
+    # sonarr:
+    image:
+      organization: hotio
+      repository: sonarr
+      tag: nightly
+    ingress:
+      enabled: true
+      labels:
+        app.kubernetes.io/catagory: "media"
+      annotations:
+        kubernetes.io/ingress.class: "nginx"
+    env:
+      TZ: "America/Los_Angeles"
+      PUID: "1000"
+      PGID: "100"
+    persistence:
+      type: statefulset
+      config:
         enabled: true
-        labels:
-          app.kubernetes.io/catagory: "media"
-        annotations:
-          kubernetes.io/ingress.class: "nginx"
-      env:
-        TZ: "America/Los_Angeles"
-        PUID: "1000"
-        PGID: "100"
-      persistence:
-        type: statefulset
-        config:
-          enabled: true
-          mountPath: /config/app
-          existingClaim: config-sonarr-4k
-        media:
-          enabled: false
-      additionalVolumes:
-        - name: nfs-nas-merged-media-pvc
-          persistentVolumeClaim:
-            claimName: nfs-nas-merged-media-pvc
-      additionalVolumeMounts:
-        - name: nfs-nas-merged-media-pvc
-          mountPath: "/mnt/unionfs"
-          # subPath:
-      resources:
-        requests:
-          memory: 351Mi
-          cpu: 26m
-        limits:
-          memory: 500Mi
+        mountPath: /config/app
+        existingClaim: config-sonarr-4k
+      media:
+        enabled: false
+    additionalVolumes:
+      - name: nfs-nas-merged-media-pvc
+        persistentVolumeClaim:
+          claimName: nfs-nas-merged-media-pvc
+    additionalVolumeMounts:
+      - name: nfs-nas-merged-media-pvc
+        mountPath: "/mnt/unionfs"
+        # subPath:
+    resources:
+      requests:
+        memory: 351Mi
+        cpu: 26m
+      limits:
+        memory: 500Mi
     affinity:
       podAntiAffinity:
         requiredDuringSchedulingIgnoredDuringExecution:
