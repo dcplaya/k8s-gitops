@@ -20,9 +20,9 @@ spec:
   values:
     sonarr:
       image:
-        organization: linuxserver
+        organization: hotio
         repository: sonarr
-        tag: 3.0.3.905-ls35
+        tag: nightly
       ingress:
         enabled: true
         labels:

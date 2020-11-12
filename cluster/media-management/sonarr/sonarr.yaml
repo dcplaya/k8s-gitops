@@ -20,9 +20,9 @@ spec:
   values:
     sonarr:
       image:
-        organization: linuxserver
+        organization: hotio
         repository: sonarr
-        tag: preview
+        tag: nightly
       ingress:
         enabled: true
         labels:
