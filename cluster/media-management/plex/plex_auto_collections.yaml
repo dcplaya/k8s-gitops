@@ -21,8 +21,8 @@ spec:
           - name: plex-auto-collections
             image: burkasaurusrex/plex-auto-collections:develop
             imagePullPolicy: Always
-            # command: ["sleep"]
-            # args: ["999999999999"]
+            command: ["sleep"]
+            args: ["999999999999"]
             # env:
             #   - name: PUID
             #     value: "1000"
