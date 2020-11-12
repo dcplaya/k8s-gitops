@@ -37,6 +37,7 @@ spec:
         type: statefulset
         config:
           enabled: true
+          mountPath: /config/app
           existingClaim: config-sonarr-4k
         media:
           enabled: false
