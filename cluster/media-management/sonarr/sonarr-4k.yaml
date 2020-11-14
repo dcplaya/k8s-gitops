@@ -35,7 +35,7 @@ spec:
       PUID: "1000"
       PGID: "100"
     persistence:
-      type: statefulset
+      # type: statefulset
       config:
         enabled: true
         mountPath: /config/app
