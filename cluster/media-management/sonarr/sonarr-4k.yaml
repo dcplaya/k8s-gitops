@@ -29,7 +29,7 @@ spec:
       labels:
         app.kubernetes.io/catagory: "media"
       annotations:
-        kubernetes.io/ingress.class: "nginx"
+        kubernetes.io/ingress.class: nginx
     env:
       TZ: "America/Los_Angeles"
       PUID: "1000"
