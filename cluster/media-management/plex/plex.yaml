@@ -26,7 +26,7 @@ spec:
       repository: cloudb0x/plex
       tag: beta
       pullPolicy: Always
-    hostNetwork: true
+    # hostNetwork: true
 
     ## Set the IDs for proper NAS sharing
     plexUid: 1000
