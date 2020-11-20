@@ -23,7 +23,7 @@ spec:
   values:
     image:
       repository: adguard/adguardhome
-      tag: beta
+      tag: v0.104.3
     persistence:
       config:
         enabled: false
