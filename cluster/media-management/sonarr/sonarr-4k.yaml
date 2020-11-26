@@ -66,5 +66,5 @@ spec:
               values:
               - plex
           topologyKey: "kubernetes.io/hostname"
-  # valueFileSecrets:
-  # - name: "sonarr-4k-helm-values"
+  valueFileSecrets:
+  - name: "sonarr-4k-helm-values"
