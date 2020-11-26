@@ -16,7 +16,7 @@ spec:
   chart:
     repository: https://k8s-at-home.com/charts/
     name: sonarr
-    version: 7.2.0
+    version: 7.4.0
   values:
     # sonarr:
     controllerType: statefulset
@@ -66,5 +66,5 @@ spec:
               values:
               - plex
           topologyKey: "kubernetes.io/hostname"
-  valueFileSecrets:
-  - name: "sonarr-4k-helm-values"
+  # valueFileSecrets:
+  # - name: "sonarr-4k-helm-values"
