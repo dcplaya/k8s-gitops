@@ -19,7 +19,8 @@ spec:
         spec:
           containers:
           - name: plex-auto-collections
-            image: burkasaurusrex/plex-auto-collections:develop
+            # image: burkasaurusrex/plex-auto-collections:develop
+            image: mza921/plex-auto-collections:latest
             imagePullPolicy: Always
 
             # command: ["sleep"]
